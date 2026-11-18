@@ -464,6 +464,14 @@ class OasisProfileGenerator:
         3. Zep混合检索到的丰富信息
         """
         context_parts = []
+
+        # First, because the prompt keeps only the start of this context.
+        if self.graph_id and self.zep_client:
+            passages = self.zep_client.graph.source_passages(self.graph_id, entity.name)
+            if passages:
+                context_parts.append(
+                    "### Source document passages (authoritative: take this entity's job title, role and "
+                    "stated positions from here; they override anything below)\n" + "\n---\n".join(passages))
         
         # 1. 添加实体属性信息
         if entity.attributes:

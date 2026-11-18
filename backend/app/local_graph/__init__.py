@@ -121,6 +121,9 @@ class _Graph:
         ep = self._e.add_episode(graph_id, data, created_at, metadata)
         return _obj({"uuid": ep, "processed": False})
 
+    def source_passages(self, graph_id: str, name: str, limit: int = 4) -> list:
+        return self._e.source_passages(graph_id, name, limit)
+
     @_guard
     def search(self, graph_id: str, query: str, limit: int = 10, scope: str = "edges",
                reranker: Optional[str] = None, **_):

@@ -273,6 +273,16 @@ class Engine:
         self._ingest(ep, json.loads(g[0]["ontology"] or "{}"))
         self._exec("UPDATE episodes SET state='done' WHERE uuid=?", (ep_uuid,))
 
+    def source_passages(self, graph_id: str, name: str, limit: int = 4) -> list[str]:
+        """Uploaded document chunks mentioning `name`: full-name matches first, then its last word."""
+        words = name.split()
+        full = re.compile(rf"\b{re.escape(name)}\b", re.I)
+        last = re.compile(rf"\b{re.escape(words[-1])}\b", re.I) if words else full
+        rows = self._exec("SELECT data FROM episodes WHERE graph_id=? AND batch_id IS NOT NULL "
+                          "ORDER BY sequence_index", (graph_id,))  # simulation memory has no batch
+        texts = [r["data"] for r in rows]
+        return ([t for t in texts if full.search(t)] + [t for t in texts if last.search(t) and not full.search(t)])[:limit]
+
     def _ingest(self, ep: sqlite3.Row, ontology: dict) -> None:
         text = ep["data"]
         for i in range(0, max(len(text), 1), MAX_EPISODE_CHARS):
