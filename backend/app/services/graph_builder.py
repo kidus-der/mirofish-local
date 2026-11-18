@@ -10,7 +10,7 @@ import threading
 from typing import Dict, Any, List, Optional, Callable
 from dataclasses import dataclass
 
-from zep_cloud import BatchAddItem, EntityEdgeSourceTarget, NotFoundError
+from ..local_graph import BatchAddItem, EntityEdgeSourceTarget, NotFoundError
 
 from ..config import Config
 from ..models.task import TaskManager, TaskStatus
@@ -315,7 +315,7 @@ class GraphBuilderService:
         import warnings
         from typing import Optional
         from pydantic import Field
-        from zep_cloud.external_clients.ontology import EntityModel, EntityText, EdgeModel
+        from ..local_graph.ontology import EntityModel, EntityText, EdgeModel
         
         # 抑制 Pydantic v2 关于 Field(default=None) 的警告
         # 这是 Zep SDK 要求的用法，警告来自动态类创建，可以安全忽略

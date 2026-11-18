@@ -5,7 +5,7 @@ Zep实体读取与过滤服务
 
 from typing import Dict, Any, List, Optional, Set, Callable, TypeVar
 from dataclasses import dataclass, field
-from zep_cloud import NotFoundError
+from ..local_graph import NotFoundError
 
 from ..config import Config
 from ..utils.logger import get_logger

@@ -12,7 +12,7 @@ import time
 import json
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
-from zep_cloud import NotFoundError
+from ..local_graph import NotFoundError
 
 from ..config import Config
 from ..utils.logger import get_logger

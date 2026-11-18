@@ -9,7 +9,7 @@ import traceback
 import threading
 from contextlib import ExitStack, nullcontext
 from flask import request, jsonify
-from zep_cloud import NotFoundError
+from ..local_graph import NotFoundError
 
 from . import graph_bp
 from ..config import Config

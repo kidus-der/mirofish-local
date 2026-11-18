@@ -1,15 +1,14 @@
-"""Shared Zep Cloud client, request limits, and retry policy."""
+"""Shared graph client (local engine), request limits, and retry policy."""
 
 from __future__ import annotations
 
 import os
 import time
-from functools import lru_cache
 from typing import Any, Callable, TypeVar
 
 import httpx
-from zep_cloud.client import Zep
-from zep_cloud.core.api_error import ApiError as ZepApiError
+from ..local_graph import Zep
+from ..local_graph import ApiError as ZepApiError
 
 from ..config import Config
 from .logger import get_logger
@@ -18,14 +17,13 @@ logger = get_logger("mirofish.zep")
 
 T = TypeVar("T")
 
-ZEP_CLOUD_BASE_URL = "https://api.getzep.com/api/v2"
 # Keep request behavior aligned with the zep-cloud 3.25.0 SDK default that
 # MiroFish used before introducing the shared client. This is an internal
 # integration policy, not a deployment setting users need to tune.
 ZEP_HTTP_REQUEST_TIMEOUT_SECONDS = 60.0
 # Zep ingestion is asynchronous and may take several minutes. Preserve the
 # original GraphBuilder deadline while keeping it separate from HTTP timeout.
-ZEP_INGESTION_WAIT_TIMEOUT_SECONDS = 600
+ZEP_INGESTION_WAIT_TIMEOUT_SECONDS = int(os.environ.get("GRAPH_INGESTION_TIMEOUT_SECONDS", "7200"))  # local LLM extraction is slow
 MAX_ZEP_SEARCH_QUERY_CHARS = 400
 MAX_ZEP_SEARCH_RESULTS = 50
 
@@ -53,40 +51,14 @@ def normalize_zep_search_limit(limit: Any) -> int:
     return min(normalized, MAX_ZEP_SEARCH_RESULTS)
 
 
-@lru_cache(maxsize=4)
-def _cached_zep_client(api_key: str, timeout: float) -> Zep:
-    return Zep(
-        api_key=api_key,
-        base_url=ZEP_CLOUD_BASE_URL,
-        timeout=timeout,
-    )
-
-
 def get_zep_client(api_key: str | None = None, timeout: float | None = None) -> Zep:
-    """Return a process-shared, explicitly configured Zep Cloud client."""
+    """Return the process-shared LOCAL graph client (api_key/timeout kept for call-site compatibility)."""
 
-    # zep-cloud gives ZEP_API_URL precedence even when base_url is explicit.
-    # Reject it so this Cloud-only integration cannot silently target a
-    # self-hosted or compatibility endpoint.
-    if os.environ.get("ZEP_API_URL"):
-        raise ValueError("ZEP_API_URL is unsupported; unset it to use Zep Cloud")
-
-    normalized_key = (api_key or Config.ZEP_API_KEY or "").strip()
-    if not normalized_key:
-        raise ValueError("ZEP_API_KEY 未配置")
-
-    request_timeout = float(
-        timeout if timeout is not None else ZEP_HTTP_REQUEST_TIMEOUT_SECONDS
-    )
-    if request_timeout <= 0:
-        raise ValueError("Zep request timeout must be greater than 0")
-    return _cached_zep_client(normalized_key, request_timeout)
+    return Zep()
 
 
 def clear_zep_client_cache() -> None:
-    """Clear cached clients. Intended for tests and controlled reconfiguration."""
-
-    _cached_zep_client.cache_clear()
+    """No cache to clear: the local client is stateless over a shared engine."""
 
 
 def is_retryable_zep_error(error: BaseException) -> bool:
