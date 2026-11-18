@@ -1,56 +1,43 @@
 <template>
-  <div class="main-view">
-    <!-- Header -->
-    <header class="app-header">
-      <div class="header-left">
-        <div class="brand" @click="router.push('/')">MIROFISH</div>
-      </div>
-      
-      <div class="header-center">
-        <div class="view-switcher">
-          <button 
-            v-for="mode in ['graph', 'split', 'workbench']" 
-            :key="mode"
-            class="switch-btn"
-            :class="{ active: viewMode === mode }"
-            @click="viewMode = mode"
-          >
-            {{ { graph: $t('main.layoutGraph'), split: $t('main.layoutSplit'), workbench: $t('main.layoutWorkbench') }[mode] }}
-          </button>
-        </div>
-      </div>
+  <div class="stage">
+    <HarborTopBar :links="navLinks">
+      <template #status>
+        <span>{{ addressesAreLoopback ? $t('home.loopbackAddresses') : $t('home.nonLoopbackAddress') }}</span>
+      </template>
+    </HarborTopBar>
 
-      <div class="header-right">
-        <LanguageSwitcher />
-        <div class="step-divider"></div>
-        <div class="workflow-step">
-          <span class="step-num">Step 5/5</span>
-          <span class="step-name">{{ $tm('main.stepNames')[4] }}</span>
-        </div>
-        <div class="step-divider"></div>
-        <span class="status-indicator" :class="statusClass">
-          <span class="dot"></span>
-          {{ statusText }}
-        </span>
+    <div class="stage-bar hb-surface-water">
+      <h1 class="run-name" :title="runName">{{ runName }}</h1>
+      <ol class="hb-list steps" :aria-label="$t('main.workflowStages', 'Workflow stages')">
+        <li
+          v-for="(name, index) in $tm('main.stepNames')"
+          :key="index"
+          :aria-current="index === 4 ? 'step' : undefined"
+        >
+          <em class="hb-sounding">{{ index + 1 }}</em>
+          <span class="step-name">{{ name }}</span>
+        </li>
+      </ol>
+      <span
+        class="hb-status run-status"
+        :class="`hb-status--${ { processing: 'running', completed: 'completed', error: 'failed', ready: 'idle' }[statusClass] }`"
+        role="status"
+      >{{ statusText }}</span>
+      <div class="view-switcher" role="group" :aria-label="$t('main.layoutLabel', 'Layout')">
+        <button
+          v-for="mode in ['graph', 'split', 'workbench']"
+          :key="mode"
+          type="button"
+          :aria-pressed="viewMode === mode"
+          @click="viewMode = mode"
+        >
+          {{ { graph: $t('main.layoutGraph'), split: $t('main.layoutSplit'), workbench: $t('main.layoutWorkbench') }[mode] }}
+        </button>
       </div>
-    </header>
+    </div>
 
-    <!-- Main Content Area -->
-    <main class="content-area">
-      <!-- Left Panel: Graph -->
-      <div class="panel-wrapper left" :style="leftPanelStyle">
-        <GraphPanel 
-          :graphData="graphData"
-          :loading="graphLoading"
-          :currentPhase="5"
-          :isSimulating="false"
-          @refresh="refreshGraph"
-          @toggle-maximize="toggleMaximize('graph')"
-        />
-      </div>
-
-      <!-- Right Panel: Step5 深度互动 -->
-      <div class="panel-wrapper right" :style="rightPanelStyle">
+    <main class="stage-work" :data-view="viewMode">
+      <div class="pane pane--work">
         <Step5Interaction
           :reportId="currentReportId"
           :simulationId="simulationId"
@@ -59,24 +46,35 @@
           @update-status="updateStatus"
         />
       </div>
+
+      <div class="pane pane--graph">
+        <GraphPanel
+          :graphData="graphData"
+          :loading="graphLoading"
+          :currentPhase="5"
+          :isSimulating="false"
+          @refresh="refreshGraph"
+          @toggle-maximize="toggleMaximize('graph')"
+        />
+      </div>
     </main>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import GraphPanel from '../components/GraphPanel.vue'
 import Step5Interaction from '../components/Step5Interaction.vue'
 import { getProject, getGraphData } from '../api/graph'
 import { getSimulation } from '../api/simulation'
 import { getReport } from '../api/report'
-import LanguageSwitcher from '../components/LanguageSwitcher.vue'
+import HarborTopBar from '../components/HarborTopBar.vue'
+import service from '../api/index'
 
 const route = useRoute()
-const router = useRouter()
-const { t } = useI18n()
+const { t, tm } = useI18n()
 
 // Props
 const props = defineProps({
@@ -84,7 +82,7 @@ const props = defineProps({
 })
 
 // Layout State - 默认切换到工作台视角
-const viewMode = ref('workbench')
+const viewMode = ref('split')
 
 // Data State
 const currentReportId = ref(route.params.reportId)
@@ -95,18 +93,17 @@ const graphLoading = ref(false)
 const systemLogs = ref([])
 const currentStatus = ref('ready') // ready | processing | completed | error
 
-// --- Computed Layout Styles ---
-const leftPanelStyle = computed(() => {
-  if (viewMode.value === 'graph') return { width: '100%', opacity: 1, transform: 'translateX(0)' }
-  if (viewMode.value === 'workbench') return { width: '0%', opacity: 0, transform: 'translateX(-20px)' }
-  return { width: '50%', opacity: 1, transform: 'translateX(0)' }
-})
-
-const rightPanelStyle = computed(() => {
-  if (viewMode.value === 'workbench') return { width: '100%', opacity: 1, transform: 'translateX(0)' }
-  if (viewMode.value === 'graph') return { width: '0%', opacity: 0, transform: 'translateX(20px)' }
-  return { width: '50%', opacity: 1, transform: 'translateX(0)' }
-})
+// --- Shell ---
+const isLoopback = (hostname) => /^(localhost|127(\.\d{1,3}){3}|\[::1\])$/.test(hostname)
+const addressesAreLoopback = [window.location.href, new URL(service.defaults.baseURL, window.location.href).href]
+  .every(url => isLoopback(new URL(url).hostname))
+const navLinks = computed(() => [
+  { label: t('nav.newScenario'), to: { name: 'Home' } },
+  ...(projectData.value?.graph_id ? [{ label: t('main.layoutGraph'), to: { name: 'Process', params: { projectId: projectData.value.project_id } } }] : []),
+  { label: tm('main.stepNames')[3], to: { name: 'Report', params: { reportId: currentReportId.value } } },
+  { label: tm('main.stepNames')[4], to: { name: 'Interaction', params: { reportId: currentReportId.value } } }
+])
+const runName = computed(() => projectData.value?.simulation_requirement || projectData.value?.name || tm('main.stepNames')[4])
 
 // --- Status Computed ---
 const statusClass = computed(() => {
@@ -219,137 +216,207 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.main-view {
+.stage {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #FFF;
+  height: 100dvh;
   overflow: hidden;
-  font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
 }
 
-/* Header */
-.app-header {
-  height: 60px;
-  border-bottom: 1px solid #EAEAEA;
+.stage-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 13px;
+  min-height: var(--hb-topbar);
+  padding: 6px 18px;
+  border-bottom: 1px solid var(--hb-navy);
+}
+
+.run-name {
+  display: -webkit-box;
+  flex: 1 1 12rem;
+  min-width: 0;
+  overflow: hidden;
+  font: 700 var(--hb-text-xl) / 1.15 var(--hb-font-serif);
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.steps {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  background: #FFF;
-  z-index: 100;
+  font-size: var(--hb-text-sm);
+  white-space: nowrap;
+}
+
+.steps li {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: var(--hb-radius);
 }
 
-.header-center {
+.steps li + li {
+  margin-left: 11px;
+}
+
+.steps li + li::before {
+  content: '';
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  left: -11px;
+  width: 11px;
+  height: 1.5px;
+  background: var(--hb-navy);
 }
 
-.brand {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 1px;
-  cursor: pointer;
+.steps [aria-current] {
+  background: var(--hb-navy);
+  color: var(--hb-paper);
+  font-weight: 700;
+}
+
+.run-status {
+  font-size: var(--hb-text-sm);
+  white-space: nowrap;
 }
 
 .view-switcher {
   display: flex;
-  background: #F5F5F5;
-  padding: 4px;
-  border-radius: 6px;
-  gap: 4px;
+  background: var(--hb-paper);
+  border: 1px solid var(--hb-navy);
+  border-radius: var(--hb-radius);
 }
 
-.switch-btn {
-  border: none;
-  background: transparent;
-  padding: 6px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #666;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.switch-btn.active {
-  background: #FFF;
-  color: #000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.workflow-step {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.step-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  color: #999;
-}
-
-.step-name {
-  font-weight: 700;
-  color: #000;
-}
-
-.step-divider {
-  width: 1px;
-  height: 14px;
-  background-color: #E0E0E0;
-}
-
-.status-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #666;
-  font-weight: 500;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #CCC;
-}
-
-.status-indicator.ready .dot { background: #4CAF50; }
-.status-indicator.processing .dot { background: #FF9800; animation: pulse 1s infinite; }
-.status-indicator.completed .dot { background: #4CAF50; }
-.status-indicator.error .dot { background: #F44336; }
-
-@keyframes pulse { 50% { opacity: 0.5; } }
-
-/* Content */
-.content-area {
-  flex: 1;
-  display: flex;
+.view-switcher button {
   position: relative;
+  min-height: calc(var(--hb-control) - 2px);
+  padding: 0 11px;
+  color: var(--hb-navy);
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--hb-navy);
+  font: 500 var(--hb-text-sm) / 1 var(--hb-font-sans);
+  cursor: pointer;
+  transition: background-color var(--hb-motion-fast) ease-out;
+}
+
+.view-switcher button:first-child {
+  border-left: 0;
+}
+
+.view-switcher button:hover {
+  background: var(--hb-water-soft);
+}
+
+.view-switcher button:focus-visible {
+  z-index: 1;
+}
+
+.view-switcher button[aria-pressed='true'] {
+  color: var(--hb-paper);
+  background: var(--hb-navy);
+  font-weight: 700;
+}
+
+.stage-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(420px, 42%, 680px);
+  min-height: 0;
+}
+
+.stage-work[data-view='graph'] {
+  grid-template-columns: 0 minmax(0, 1fr);
+}
+
+.stage-work[data-view='workbench'] {
+  grid-template-columns: minmax(0, 1fr) 0;
+}
+
+.pane {
+  min-width: 0;
+  min-height: 0;
   overflow: hidden;
 }
 
-.panel-wrapper {
-  height: 100%;
-  overflow: hidden;
-  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease, transform 0.3s ease;
-  will-change: width, opacity, transform;
+.pane--graph {
+  border-left: 1px solid var(--hb-navy);
 }
 
-.panel-wrapper.left {
-  border-right: 1px solid #EAEAEA;
+/* Hidden panes stay mounted so run state and scroll position survive a layout switch. */
+.stage-work[data-view='graph'] .pane--work,
+.stage-work[data-view='workbench'] .pane--graph {
+  visibility: hidden;
+  border: 0;
+}
+
+@media (max-width: 1280px) {
+  .steps {
+    order: 5;
+    flex: 0 0 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 980px) {
+  .stage {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .stage-work,
+  .stage-work[data-view] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pane--work {
+    height: max(560px, 78dvh);
+  }
+
+  .pane--graph {
+    height: max(340px, 56dvh);
+    border-top: 1px solid var(--hb-navy);
+    border-left: 0;
+  }
+
+  .stage-work[data-view='graph'] .pane--work,
+  .stage-work[data-view='workbench'] .pane--graph {
+    height: 0;
+  }
+
+  .stage-work[data-view='graph'] .pane--graph {
+    height: max(420px, calc(100dvh - 150px));
+    border-top: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .stage-bar {
+    padding-inline: var(--hb-space-4);
+  }
+
+  .run-name {
+    flex-basis: 100%;
+  }
+
+  .steps li:not([aria-current]) .step-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .view-switcher {
+    margin-left: auto;
+  }
 }
 </style>

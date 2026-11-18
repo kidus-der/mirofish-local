@@ -1,242 +1,276 @@
 <template>
-  <div class="graph-panel">
-    <div class="panel-header">
-      <span class="panel-title">{{ $t('graph.panelTitle') }}</span>
-      <!-- 顶部工具栏 (Internal Top Right) -->
+  <section class="graph-panel" :aria-label="$t('graph.panelTitle')">
+    <header class="panel-header">
+      <h2 class="hb-heading panel-title">{{ $t('graph.panelTitle') }}</h2>
       <div class="header-tools">
-        <button class="tool-btn" @click="$emit('refresh')" :disabled="loading" :title="$t('graph.refreshGraph')">
-          <span class="icon-refresh" :class="{ 'spinning': loading }">↻</span>
-          <span class="btn-text">Refresh</span>
+        <button type="button" class="hb-btn tool-btn" :disabled="loading" :title="$t('graph.refreshGraph')" @click="$emit('refresh')">
+          <svg class="tool-icon" :class="{ spinning: loading }" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13.5 8a5.5 5.5 0 1 1-1.7-4M12 1.5V4.2H9.3" />
+          </svg>
+          <span>Refresh</span>
         </button>
-        <button class="tool-btn" @click="$emit('toggle-maximize')" :title="$t('graph.toggleMaximize')">
-          <span class="icon-maximize">⛶</span>
+        <button type="button" class="hb-btn tool-btn tool-btn--icon" :title="$t('graph.toggleMaximize')" :aria-label="$t('graph.toggleMaximize')" @click="$emit('toggle-maximize')">
+          <svg class="tool-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10" />
+          </svg>
         </button>
       </div>
-    </div>
-    
-    <div class="graph-container" ref="graphContainer">
-      <!-- 图谱可视化 -->
-      <div v-if="graphData" class="graph-view">
-        <svg ref="graphSvg" class="graph-svg"></svg>
-        
-        <!-- 构建中/模拟中提示 -->
-        <div v-if="currentPhase === 1 || isSimulating" class="graph-building-hint">
-          <div class="memory-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="memory-icon">
-              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-4.04z" />
-              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-4.04z" />
-            </svg>
-          </div>
-          {{ isSimulating ? $t('graph.graphMemoryRealtime') : $t('graph.realtimeUpdating') }}
-        </div>
-        
-        <!-- 模拟结束后的提示 -->
-        <div v-if="showSimulationFinishedHint" class="graph-building-hint finished-hint">
-          <div class="hint-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hint-icon">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-          </div>
-          <span class="hint-text">{{ $t('graph.pendingContentHint') }}</span>
-          <button class="hint-close-btn" @click="dismissFinishedHint" :title="$t('graph.closeHint')">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        
-        <!-- 节点/边详情面板 -->
-        <div v-if="selectedItem" class="detail-panel">
-          <div class="detail-panel-header">
-            <span class="detail-title">{{ selectedItem.type === 'node' ? $t('graph.nodeDetails') : $t('graph.relationship') }}</span>
-            <span v-if="selectedItem.type === 'node'" class="detail-type-badge" :style="{ background: selectedItem.color, color: '#fff' }">
-              {{ selectedItem.entityType }}
-            </span>
-            <button class="detail-close" @click="closeDetailPanel">×</button>
-          </div>
-          
-          <!-- 节点详情 -->
-          <div v-if="selectedItem.type === 'node'" class="detail-content">
-            <div class="detail-row">
-              <span class="detail-label">Name:</span>
-              <span class="detail-value">{{ selectedItem.data.name }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">UUID:</span>
-              <span class="detail-value uuid-text">{{ selectedItem.data.uuid }}</span>
-            </div>
-            <div class="detail-row" v-if="selectedItem.data.created_at">
-              <span class="detail-label">Created:</span>
-              <span class="detail-value">{{ formatDateTime(selectedItem.data.created_at) }}</span>
-            </div>
-            
-            <!-- Properties -->
-            <div class="detail-section" v-if="selectedItem.data.attributes && Object.keys(selectedItem.data.attributes).length > 0">
-              <div class="section-title">Properties:</div>
-              <div class="properties-list">
-                <div v-for="(value, key) in selectedItem.data.attributes" :key="key" class="property-item">
-                  <span class="property-key">{{ key }}:</span>
-                  <span class="property-value">{{ value || 'None' }}</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Summary -->
-            <div class="detail-section" v-if="selectedItem.data.summary">
-              <div class="section-title">Summary:</div>
-              <div class="summary-text">{{ selectedItem.data.summary }}</div>
-            </div>
-            
-            <!-- Labels -->
-            <div class="detail-section" v-if="selectedItem.data.labels && selectedItem.data.labels.length > 0">
-              <div class="section-title">Labels:</div>
-              <div class="labels-list">
-                <span v-for="label in selectedItem.data.labels" :key="label" class="label-tag">
-                  {{ label }}
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 边详情 -->
-          <div v-else class="detail-content">
-            <!-- 自环组详情 -->
-            <template v-if="selectedItem.data.isSelfLoopGroup">
-              <div class="edge-relation-header self-loop-header">
-                {{ selectedItem.data.source_name }} - Self Relations
-                <span class="self-loop-count">{{ selectedItem.data.selfLoopCount }} items</span>
-              </div>
-              
-              <div class="self-loop-list">
-                <div 
-                  v-for="(loop, idx) in selectedItem.data.selfLoopEdges" 
-                  :key="loop.uuid || idx" 
-                  class="self-loop-item"
-                  :class="{ expanded: expandedSelfLoops.has(loop.uuid || idx) }"
-                >
-                  <div 
-                    class="self-loop-item-header"
-                    @click="toggleSelfLoop(loop.uuid || idx)"
-                  >
-                    <span class="self-loop-index">#{{ idx + 1 }}</span>
-                    <span class="self-loop-name">{{ loop.name || loop.fact_type || 'RELATED' }}</span>
-                    <span class="self-loop-toggle">{{ expandedSelfLoops.has(loop.uuid || idx) ? '−' : '+' }}</span>
-                  </div>
-                  
-                  <div class="self-loop-item-content" v-show="expandedSelfLoops.has(loop.uuid || idx)">
-                    <div class="detail-row" v-if="loop.uuid">
-                      <span class="detail-label">UUID:</span>
-                      <span class="detail-value uuid-text">{{ loop.uuid }}</span>
-                    </div>
-                    <div class="detail-row" v-if="loop.fact">
-                      <span class="detail-label">Fact:</span>
-                      <span class="detail-value fact-text">{{ loop.fact }}</span>
-                    </div>
-                    <div class="detail-row" v-if="loop.fact_type">
-                      <span class="detail-label">Type:</span>
-                      <span class="detail-value">{{ loop.fact_type }}</span>
-                    </div>
-                    <div class="detail-row" v-if="loop.created_at">
-                      <span class="detail-label">Created:</span>
-                      <span class="detail-value">{{ formatDateTime(loop.created_at) }}</span>
-                    </div>
-                    <div v-if="loop.episodes && loop.episodes.length > 0" class="self-loop-episodes">
-                      <span class="detail-label">Episodes:</span>
-                      <div class="episodes-list compact">
-                        <span v-for="ep in loop.episodes" :key="ep" class="episode-tag small">{{ ep }}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </template>
-            
-            <!-- 普通边详情 -->
-            <template v-else>
-              <div class="edge-relation-header">
-                {{ selectedItem.data.source_name }} → {{ selectedItem.data.name || 'RELATED_TO' }} → {{ selectedItem.data.target_name }}
-              </div>
-              
-              <div class="detail-row">
-                <span class="detail-label">UUID:</span>
-                <span class="detail-value uuid-text">{{ selectedItem.data.uuid }}</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Label:</span>
-                <span class="detail-value">{{ selectedItem.data.name || 'RELATED_TO' }}</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">Type:</span>
-                <span class="detail-value">{{ selectedItem.data.fact_type || 'Unknown' }}</span>
-              </div>
-              <div class="detail-row" v-if="selectedItem.data.fact">
-                <span class="detail-label">Fact:</span>
-                <span class="detail-value fact-text">{{ selectedItem.data.fact }}</span>
-              </div>
-              
-              <!-- Episodes -->
-              <div class="detail-section" v-if="selectedItem.data.episodes && selectedItem.data.episodes.length > 0">
-                <div class="section-title">Episodes:</div>
-                <div class="episodes-list">
-                  <span v-for="ep in selectedItem.data.episodes" :key="ep" class="episode-tag">
-                    {{ ep }}
-                  </span>
-                </div>
-              </div>
-              
-              <div class="detail-row" v-if="selectedItem.data.created_at">
-                <span class="detail-label">Created:</span>
-                <span class="detail-value">{{ formatDateTime(selectedItem.data.created_at) }}</span>
-              </div>
-              <div class="detail-row" v-if="selectedItem.data.valid_at">
-                <span class="detail-label">Valid From:</span>
-                <span class="detail-value">{{ formatDateTime(selectedItem.data.valid_at) }}</span>
-              </div>
-            </template>
-          </div>
-        </div>
+    </header>
+
+    <div v-if="graphData" class="graph-key hb-surface-land-soft">
+      <div class="key-group" role="group" :aria-label="$t('graph.factOrigin', 'Fact origin')">
+        <label v-for="origin in ORIGINS" :key="origin" class="key-check">
+          <input v-model="shownFacts[origin]" class="hb-check" type="checkbox" />
+          <svg class="line-key" width="30" height="8" aria-hidden="true">
+            <line :class="`hb-line hb-line--${origin}`" x1="1" y1="4" x2="29" y2="4" />
+          </svg>
+          {{ originName(origin) }}
+          <b class="hb-tabular">{{ factCounts[origin] }}</b>
+        </label>
+        <label class="key-check">
+          <input v-model="shownFacts.ended" class="hb-check" type="checkbox" />
+          {{ $t('graph.originEnded', 'Ended') }}
+          <b class="hb-tabular">{{ factCounts.ended }}</b>
+        </label>
       </div>
-      
-      <!-- 加载状态 -->
-      <div v-else-if="loading" class="graph-state">
-        <div class="loading-spinner"></div>
-        <p>{{ $t('graph.graphDataLoading') }}</p>
-      </div>
-      
-      <!-- 等待/空状态 -->
-      <div v-else class="graph-state">
-        <div class="empty-icon">❖</div>
-        <p class="empty-text">{{ $t('graph.waitingOntology') }}</p>
-      </div>
+      <label class="key-check">
+        <input v-model="showEdgeLabels" class="hb-check" type="checkbox" />
+        Show Edge Labels
+      </label>
     </div>
 
-    <!-- 底部图例 (Bottom Left) -->
-    <div v-if="graphData && entityTypes.length" class="graph-legend">
-      <span class="legend-title">Entity Types</span>
-      <div class="legend-items">
-        <div class="legend-item" v-for="type in entityTypes" :key="type.name">
-          <span class="legend-dot" :style="{ background: type.color }"></span>
-          <span class="legend-label">{{ type.name }}</span>
+    <div ref="graphContainer" class="graph-container hb-graph-canvas">
+      <div v-if="graphData" class="graph-view">
+        <svg
+          ref="graphSvg"
+          class="graph-svg"
+          :class="{
+            'hide-source': !shownFacts.source,
+            'hide-simulated': !shownFacts.simulated,
+            'hide-unlinked': !shownFacts.unlinked,
+            'hide-ended': !shownFacts.ended
+          }"
+          role="group"
+          :aria-label="$t('graph.panelTitle')"
+        ></svg>
+
+        <p v-if="currentPhase === 1 || isSimulating" class="graph-hint" role="status">
+          <span class="hb-status hb-status--running">
+            {{ isSimulating ? $t('graph.graphMemoryRealtime') : $t('graph.realtimeUpdating') }}
+          </span>
+        </p>
+
+        <div v-if="showSimulationFinishedHint" class="graph-hint" role="status">
+          <span>{{ $t('graph.pendingContentHint') }}</span>
+          <button type="button" class="icon-btn" :title="$t('graph.closeHint')" :aria-label="$t('graph.closeHint')" @click="dismissFinishedHint">
+            <svg class="tool-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" /></svg>
+          </button>
         </div>
+
+        <aside v-if="selectedItem" class="detail-panel" :aria-label="selectedItem.type === 'node' ? $t('graph.nodeDetails') : $t('graph.relationship')">
+          <div class="detail-panel-header">
+            <h3 class="hb-heading">{{ selectedItem.type === 'node' ? $t('graph.nodeDetails') : $t('graph.relationship') }}</h3>
+            <span v-if="selectedItem.type === 'node'" class="hb-tag detail-type">
+              <svg class="mark-key" viewBox="-9 -9 18 18" aria-hidden="true">
+                <path :class="`hb-graph-node mark--${selectedItem.mark.tone}`" :d="markPath(selectedItem.mark, 90)" />
+              </svg>
+              {{ selectedItem.entityType }}
+            </span>
+            <button type="button" class="icon-btn" :title="$t('common.close')" :aria-label="$t('common.close')" @click="closeDetailPanel">
+              <svg class="tool-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" /></svg>
+            </button>
+          </div>
+
+          <div v-if="selectedItem.type === 'node'" class="detail-content">
+            <p class="entity-name">{{ selectedItem.data.name }}</p>
+            <dl class="hb-facts">
+              <dt>UUID</dt>
+              <dd class="uuid-text">{{ selectedItem.data.uuid }}</dd>
+              <template v-if="selectedItem.data.created_at">
+                <dt>Created</dt>
+                <dd>{{ formatDateTime(selectedItem.data.created_at) }}</dd>
+              </template>
+            </dl>
+
+            <section v-if="selectedItem.data.summary" class="detail-section">
+              <h4 class="hb-subheading">Summary</h4>
+              <p class="summary-text">{{ selectedItem.data.summary }}</p>
+            </section>
+
+            <section v-if="selectedItem.data.attributes && Object.keys(selectedItem.data.attributes).length > 0" class="detail-section">
+              <h4 class="hb-subheading">Properties</h4>
+              <dl class="hb-facts">
+                <template v-for="(value, key) in selectedItem.data.attributes" :key="key">
+                  <dt>{{ key }}</dt>
+                  <dd>{{ value || 'None' }}</dd>
+                </template>
+              </dl>
+            </section>
+
+            <section v-if="selectedItem.data.labels && selectedItem.data.labels.length > 0" class="detail-section">
+              <h4 class="hb-subheading">Labels</h4>
+              <ul class="hb-list tag-list">
+                <li v-for="label in selectedItem.data.labels" :key="label" class="hb-tag">{{ label }}</li>
+              </ul>
+            </section>
+
+            <section v-if="selectedFacts.length" class="detail-section">
+              <h4 class="hb-subheading">{{ $t('graph.factsAtEntity', 'Facts at this entity') }}</h4>
+              <p class="fact-totals">
+                <span v-for="origin in ORIGINS" :key="origin" :class="`hb-origin--${origin}`">
+                  <span class="hb-sounding">{{ selectedFacts.filter(fact => fact.origin === origin).length }}</span>
+                  {{ originName(origin) }}
+                </span>
+              </p>
+              <ul class="hb-list">
+                <li v-for="fact in selectedFacts" :key="fact.uuid" :class="fact.origin === 'simulated' ? 'hb-row--simulated' : 'hb-row--source'">
+                  <button
+                    type="button"
+                    class="fact-row"
+                    @click="selectFact(fact)"
+                    @mouseenter="traceFact(fact.uuid)"
+                    @mouseleave="traceFact(null)"
+                    @focus="traceFact(fact.uuid)"
+                    @blur="traceFact(null)"
+                  >
+                    <svg class="line-key" width="30" height="8" aria-hidden="true">
+                      <line :class="`hb-line hb-line--${fact.origin}`" x1="1" y1="4" x2="29" y2="4" />
+                    </svg>
+                    <span class="fact-body">
+                      <span class="fact-head">
+                        <b>{{ fact.route }}</b>
+                        <span class="hb-origin" :class="`hb-origin--${fact.origin}`">{{ originName(fact.origin) }}<template v-if="fact.ended"> · {{ $t('graph.originEnded', 'Ended') }}</template></span>
+                      </span>
+                      <span>{{ fact.text }}</span>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <div v-else class="detail-content">
+            <template v-if="selectedItem.data.isSelfLoopGroup">
+              <p class="edge-relation-header">
+                {{ selectedItem.data.source_name }} - Self Relations
+                <span class="hb-tag">{{ selectedItem.data.selfLoopCount }} items</span>
+              </p>
+
+              <ul class="hb-list">
+                <li
+                  v-for="(loop, idx) in selectedItem.data.selfLoopEdges"
+                  :key="loop.uuid || idx"
+                  :class="factOrigin(loop) === 'simulated' ? 'hb-row--simulated' : 'hb-row--source'"
+                >
+                  <button
+                    type="button"
+                    class="self-loop-toggle"
+                    :aria-expanded="expandedSelfLoops.has(loop.uuid || idx)"
+                    @click="toggleSelfLoop(loop.uuid || idx)"
+                  >
+                    <span class="hb-sounding">{{ idx + 1 }}</span>
+                    <span class="self-loop-name">{{ loop.name || loop.fact_type || 'RELATED' }}</span>
+                    <span class="hb-origin" :class="`hb-origin--${factOrigin(loop)}`">{{ originName(factOrigin(loop)) }}</span>
+                    <svg class="tool-icon" viewBox="0 0 16 16" aria-hidden="true">
+                      <path :d="expandedSelfLoops.has(loop.uuid || idx) ? 'M3 8h10' : 'M3 8h10M8 3v10'" />
+                    </svg>
+                  </button>
+
+                  <dl v-show="expandedSelfLoops.has(loop.uuid || idx)" class="hb-facts self-loop-facts">
+                    <template v-if="loop.uuid">
+                      <dt>UUID</dt>
+                      <dd class="uuid-text">{{ loop.uuid }}</dd>
+                    </template>
+                    <template v-if="loop.fact">
+                      <dt>Fact</dt>
+                      <dd>{{ loop.fact }}</dd>
+                    </template>
+                    <template v-if="loop.fact_type">
+                      <dt>Type</dt>
+                      <dd>{{ loop.fact_type }}</dd>
+                    </template>
+                    <template v-if="loop.created_at">
+                      <dt>Created</dt>
+                      <dd>{{ formatDateTime(loop.created_at) }}</dd>
+                    </template>
+                    <template v-if="loop.episodes && loop.episodes.length > 0">
+                      <dt>Episodes</dt>
+                      <dd>
+                        <span v-for="ep in loop.episodes" :key="ep" class="episode-tag">{{ ep }}</span>
+                      </dd>
+                    </template>
+                  </dl>
+                </li>
+              </ul>
+            </template>
+
+            <template v-else>
+              <p class="edge-relation-header">
+                {{ selectedItem.data.source_name }} → {{ selectedItem.data.name || 'RELATED_TO' }} → {{ selectedItem.data.target_name }}
+              </p>
+              <p class="edge-origin">
+                <svg class="line-key" width="30" height="8" aria-hidden="true">
+                  <line :class="`hb-line hb-line--${factOrigin(selectedItem.data)}`" x1="1" y1="4" x2="29" y2="4" />
+                </svg>
+                <span class="hb-origin" :class="`hb-origin--${factOrigin(selectedItem.data)}`">
+                  {{ originName(factOrigin(selectedItem.data)) }}<template v-if="isEnded(selectedItem.data)"> · {{ $t('graph.originEnded', 'Ended') }}</template>
+                </span>
+              </p>
+
+              <dl class="hb-facts">
+                <template v-if="selectedItem.data.fact">
+                  <dt>Fact</dt>
+                  <dd>{{ selectedItem.data.fact }}</dd>
+                </template>
+                <dt>Label</dt>
+                <dd>{{ selectedItem.data.name || 'RELATED_TO' }}</dd>
+                <dt>Type</dt>
+                <dd>{{ selectedItem.data.fact_type || 'Unknown' }}</dd>
+                <dt>UUID</dt>
+                <dd class="uuid-text">{{ selectedItem.data.uuid }}</dd>
+                <template v-if="selectedItem.data.created_at">
+                  <dt>Created</dt>
+                  <dd>{{ formatDateTime(selectedItem.data.created_at) }}</dd>
+                </template>
+                <template v-if="selectedItem.data.valid_at">
+                  <dt>Valid From</dt>
+                  <dd>{{ formatDateTime(selectedItem.data.valid_at) }}</dd>
+                </template>
+              </dl>
+
+              <section v-if="selectedItem.data.episodes && selectedItem.data.episodes.length > 0" class="detail-section">
+                <h4 class="hb-subheading">Episodes</h4>
+                <span v-for="ep in selectedItem.data.episodes" :key="ep" class="episode-tag">{{ ep }}</span>
+              </section>
+            </template>
+          </div>
+        </aside>
       </div>
+
+      <p v-else-if="loading" class="graph-state" role="status">
+        <span class="hb-status hb-status--running">{{ $t('graph.graphDataLoading') }}</span>
+      </p>
+
+      <p v-else class="graph-state hb-soft">{{ $t('graph.waitingOntology') }}</p>
     </div>
-    
-    <!-- 显示边标签开关 -->
-    <div v-if="graphData" class="edge-labels-toggle">
-      <label class="toggle-switch">
-        <input type="checkbox" v-model="showEdgeLabels" />
-        <span class="slider"></span>
-      </label>
-      <span class="toggle-label">Show Edge Labels</span>
+
+    <div v-if="graphData && entityTypes.length" class="graph-legend">
+      <h3 class="hb-subheading">Entity Types</h3>
+      <ul class="hb-list legend-items">
+        <li v-for="type in entityTypes" :key="type.name" class="legend-item">
+          <svg class="mark-key" viewBox="-9 -9 18 18" aria-hidden="true">
+            <path :class="`hb-graph-node mark--${type.mark.tone}`" :d="markPath(type.mark, 90)" />
+          </svg>
+          {{ type.name }}
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import * as d3 from 'd3'
 
 const props = defineProps({
@@ -248,6 +282,8 @@ const props = defineProps({
 
 const emit = defineEmits(['refresh', 'toggle-maximize'])
 
+const { t } = useI18n()
+
 const graphContainer = ref(null)
 const graphSvg = ref(null)
 const selectedItem = ref(null)
@@ -255,6 +291,66 @@ const showEdgeLabels = ref(true) // 默认显示边标签
 const expandedSelfLoops = ref(new Set()) // 展开的自环项
 const showSimulationFinishedHint = ref(false) // 模拟结束后的提示
 const wasSimulating = ref(false) // 追踪之前是否在模拟中
+const shownFacts = ref({ source: true, simulated: true, unlinked: true, ended: true })
+
+// Entity types repeat after eight, so shape and fill both carry the distinction.
+const MARKS = [
+  { symbol: d3.symbolSquare, tone: 'land' },
+  { symbol: d3.symbolCircle, tone: 'navy' },
+  { symbol: d3.symbolDiamond, tone: 'water' },
+  { symbol: d3.symbolTriangle, tone: 'paper' },
+  { symbol: d3.symbolCircle, tone: 'land' },
+  { symbol: d3.symbolSquare, tone: 'navy' },
+  { symbol: d3.symbolTriangle, tone: 'water' },
+  { symbol: d3.symbolDiamond, tone: 'paper' }
+]
+const markPath = (mark, size = 130) => d3.symbol(mark.symbol, size)()
+
+const ORIGINS = ['source', 'simulated', 'unlinked']
+const originName = (origin) => ({
+  source: t('graph.originSource', 'Source'),
+  simulated: t('graph.originSimulated', 'Simulated'),
+  unlinked: t('graph.originUnlinked', 'No label')
+})[origin]
+
+const factOrigin = (edge) => {
+  const origin = edge.attributes?.origin
+  if (origin === 'simulation' || /^\s*\[SIMULATED\]/.test(edge.fact || '')) return 'simulated'
+  return origin === 'document' ? 'source' : 'unlinked'
+}
+const isEnded = (edge) => Boolean(edge.expired_at || edge.invalid_at)
+
+// A merged self-loop is drawn as simulated if any fact in it is, so simulated material is never shown as source.
+const groupOrigin = (edges) => ['simulated', 'source', 'unlinked']
+  .find(origin => edges.some(edge => factOrigin(edge) === origin))
+
+const factCounts = computed(() => {
+  const counts = { source: 0, simulated: 0, unlinked: 0, ended: 0 }
+  const nodeIds = new Set((props.graphData?.nodes || []).map(node => node.uuid))
+  ;(props.graphData?.edges || [])
+    .filter(edge => nodeIds.has(edge.source_node_uuid) && nodeIds.has(edge.target_node_uuid))
+    .forEach(edge => {
+      counts[factOrigin(edge)]++
+      if (isEnded(edge)) counts.ended++
+    })
+  return counts
+})
+
+const selectedFacts = computed(() => {
+  const item = selectedItem.value
+  if (item?.type !== 'node') return []
+  const names = Object.fromEntries((props.graphData?.nodes || []).map(node => [node.uuid, node.name]))
+  return (props.graphData?.edges || [])
+    .filter(edge => edge.source_node_uuid === item.data.uuid || edge.target_node_uuid === item.data.uuid)
+    .map(edge => ({
+      uuid: edge.uuid,
+      origin: factOrigin(edge),
+      ended: isEnded(edge),
+      route: `${names[edge.source_node_uuid]} → ${names[edge.target_node_uuid]}`,
+      text: (edge.fact || edge.name || '').replace(/^\s*\[SIMULATED\]\s*/, '')
+    }))
+    .sort((a, b) => a.ended - b.ended || ORIGINS.indexOf(a.origin) - ORIGINS.indexOf(b.origin))
+})
 
 // 关闭模拟结束提示
 const dismissFinishedHint = () => {
@@ -285,13 +381,11 @@ const toggleSelfLoop = (id) => {
 const entityTypes = computed(() => {
   if (!props.graphData?.nodes) return []
   const typeMap = {}
-  // 美观的颜色调色板
-  const colors = ['#FF6B35', '#004E89', '#7B2D8E', '#1A936F', '#C5283D', '#E9724C', '#3498db', '#9b59b6', '#27ae60', '#f39c12']
-  
+
   props.graphData.nodes.forEach(node => {
     const type = node.labels?.find(l => l !== 'Entity') || 'Entity'
     if (!typeMap[type]) {
-      typeMap[type] = { name: type, count: 0, color: colors[Object.keys(typeMap).length % colors.length] }
+      typeMap[type] = { name: type, count: 0, mark: MARKS[Object.keys(typeMap).length % MARKS.length] }
     }
     typeMap[type].count++
   })
@@ -321,22 +415,65 @@ const closeDetailPanel = () => {
   expandedSelfLoops.value = new Set() // 重置展开状态
 }
 
+
 let currentSimulation = null
 let linkLabelsRef = null
-let linkLabelBgRef = null
+let graphParts = null
+let drawnSize = null
+let resizeObserver = null
+
+const edgeHasFact = (d, uuid) => d.rawData.uuid === uuid || d.rawData.selfLoopEdges?.some(loop => loop.uuid === uuid)
+
+const paintSelection = () => {
+  if (!graphParts) return
+  const { link, linkLabels, node, nodeLabels } = graphParts
+  const item = selectedItem.value
+  const nodeId = item?.type === 'node' ? item.data.uuid : null
+  const edgeKey = item?.type === 'edge' ? item.key : null
+  const isOn = d => d.key === edgeKey || d.source.id === nodeId || d.target.id === nodeId
+  link.classed('is-on', isOn)
+  linkLabels.classed('is-on', isOn)
+  node.classed('is-selected', d => d.id === nodeId)
+  nodeLabels.classed('is-selected', d => d.id === nodeId)
+}
+
+const traceFact = (uuid) => {
+  graphParts?.link.classed('is-traced', d => Boolean(uuid) && edgeHasFact(d, uuid))
+}
+
+const selectFact = (fact) => {
+  const edge = graphParts?.edges.find(d => edgeHasFact(d, fact.uuid))
+  if (edge) selectedItem.value = { type: 'edge', data: edge.rawData, key: edge.key }
+}
+
+// With reduced motion the layout is computed up front instead of animating into place.
+const settle = (simulation) => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    simulation.stop().tick(300)
+    simulation.on('tick')()
+  } else {
+    simulation.restart()
+  }
+}
 
 const renderGraph = () => {
   if (!graphSvg.value || !props.graphData) return
-  
+
   // 停止之前的仿真
   if (currentSimulation) {
     currentSimulation.stop()
   }
-  
+  currentSimulation = null
+  graphParts = null
+
   const container = graphContainer.value
   const width = container.clientWidth
   const height = container.clientHeight
-  
+
+  // A hidden pane has no size; the resize observer draws the graph when it is shown.
+  if (!width || !height) return
+  drawnSize = { width, height }
+
   const svg = d3.select(graphSvg.value)
     .attr('width', width)
     .attr('height', height)
@@ -412,6 +549,9 @@ const renderGraph = () => {
         name: `Self Relations (${allSelfLoops.length})`,
         curvature: 0,
         isSelfLoop: true,
+        key: `loop:${e.source_node_uuid}`,
+        origin: groupOrigin(allSelfLoops),
+        ended: allSelfLoops.every(isEnded),
         rawData: {
           isSelfLoopGroup: true,
           source_name: nodeName,
@@ -453,6 +593,9 @@ const renderGraph = () => {
       name: e.name || e.fact_type || 'RELATED',
       curvature,
       isSelfLoop: false,
+      key: e.uuid || `${pairKey}:${currentIndex}`,
+      origin: factOrigin(e),
+      ended: isEnded(e),
       pairIndex: currentIndex,
       pairTotal: totalCount,
       rawData: {
@@ -462,11 +605,6 @@ const renderGraph = () => {
       }
     })
   })
-    
-  // Color scale
-  const colorMap = {}
-  entityTypes.value.forEach(t => colorMap[t.name] = t.color)
-  const getColor = (type) => colorMap[type] || '#999'
 
   // Simulation - 根据边数量动态调整节点间距
   const simulation = d3.forceSimulation(nodes)
@@ -568,97 +706,62 @@ const renderGraph = () => {
     return { x: midX, y: midY }
   }
   
-  const link = linkGroup.selectAll('path')
+
+  const edgeClass = d => `edge--${d.origin}${d.ended ? ' edge--ended' : ''}`
+  const selectEdge = (event, d) => {
+    event.stopPropagation()
+    selectedItem.value = { type: 'edge', data: d.rawData, key: d.key }
+  }
+
+  // Source facts are solid chart lines, simulated facts dashed magenta tracks.
+  const link = linkGroup.selectAll('path.edge-line')
     .data(edges)
     .enter().append('path')
-    .attr('stroke', '#C0C0C0')
-    .attr('stroke-width', 1.5)
-    .attr('fill', 'none')
-    .style('cursor', 'pointer')
-    .on('click', (event, d) => {
-      event.stopPropagation()
-      // 重置之前选中边的样式
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
-      // 高亮当前选中的边
-      d3.select(event.target).attr('stroke', '#3498db').attr('stroke-width', 3)
-      
-      selectedItem.value = {
-        type: 'edge',
-        data: d.rawData
-      }
-    })
+    .attr('class', d => `edge-line hb-line hb-line--${d.origin}${d.ended ? ' hb-line--ended' : ''} ${edgeClass(d)}`)
 
-  // Link labels background (白色背景使文字更清晰)
-  const linkLabelBg = linkGroup.selectAll('rect')
+  // Thin dashed lines are hard to hit, so a wider invisible stroke takes the pointer.
+  const linkHit = linkGroup.selectAll('path.edge-hit')
     .data(edges)
-    .enter().append('rect')
-    .attr('fill', 'rgba(255,255,255,0.95)')
-    .attr('rx', 3)
-    .attr('ry', 3)
-    .style('cursor', 'pointer')
-    .style('pointer-events', 'all')
-    .style('display', showEdgeLabels.value ? 'block' : 'none')
-    .on('click', (event, d) => {
-      event.stopPropagation()
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
-      // 高亮对应的边
-      link.filter(l => l === d).attr('stroke', '#3498db').attr('stroke-width', 3)
-      d3.select(event.target).attr('fill', 'rgba(52, 152, 219, 0.1)')
-      
-      selectedItem.value = {
-        type: 'edge',
-        data: d.rawData
-      }
-    })
+    .enter().append('path')
+    .attr('class', d => `edge-hit ${edgeClass(d)}`)
+    .on('click', selectEdge)
+  linkHit.append('title')
+    .text(d => `${d.rawData.source_name} → ${d.rawData.target_name}: ${d.rawData.fact || d.name}`)
 
   // Link labels
   const linkLabels = linkGroup.selectAll('text')
     .data(edges)
     .enter().append('text')
     .text(d => d.name)
-    .attr('font-size', '9px')
-    .attr('fill', '#666')
+    .attr('class', d => `edge-name edge-name--${d.origin} ${edgeClass(d)}`)
     .attr('text-anchor', 'middle')
     .attr('dominant-baseline', 'middle')
-    .style('cursor', 'pointer')
-    .style('pointer-events', 'all')
-    .style('font-family', 'system-ui, sans-serif')
     .style('display', showEdgeLabels.value ? 'block' : 'none')
-    .on('click', (event, d) => {
-      event.stopPropagation()
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
-      // 高亮对应的边
-      link.filter(l => l === d).attr('stroke', '#3498db').attr('stroke-width', 3)
-      d3.select(event.target).attr('fill', '#3498db')
-      
-      selectedItem.value = {
-        type: 'edge',
-        data: d.rawData
-      }
-    })
-  
+    .on('click', selectEdge)
+
   // 保存引用供外部控制显隐
   linkLabelsRef = linkLabels
-  linkLabelBgRef = linkLabelBg
 
   // Nodes group
   const nodeGroup = g.append('g').attr('class', 'nodes')
-  
-  // Node circles
-  const node = nodeGroup.selectAll('circle')
+  const markByType = Object.fromEntries(entityTypes.value.map(type => [type.name, type.mark]))
+  const selectNode = (d) => {
+    selectedItem.value = {
+      type: 'node',
+      data: d.rawData,
+      entityType: d.type,
+      mark: markByType[d.type]
+    }
+  }
+
+  const node = nodeGroup.selectAll('path')
     .data(nodes)
-    .enter().append('circle')
-    .attr('r', 10)
-    .attr('fill', d => getColor(d.type))
-    .attr('stroke', '#fff')
-    .attr('stroke-width', 2.5)
-    .style('cursor', 'pointer')
+    .enter().append('path')
+    .attr('class', d => `graph-node hb-graph-node mark--${markByType[d.type].tone}`)
+    .attr('d', d => markPath(markByType[d.type]))
+    .attr('tabindex', 0)
+    .attr('role', 'button')
+    .attr('aria-label', d => `${d.name}, ${d.type}`)
     .call(d3.drag()
       .on('start', (event, d) => {
         // 只记录位置，不重启仿真（区分点击和拖拽）
@@ -697,91 +800,56 @@ const renderGraph = () => {
     )
     .on('click', (event, d) => {
       event.stopPropagation()
-      // 重置所有节点样式
-      node.attr('stroke', '#fff').attr('stroke-width', 2.5)
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      // 高亮选中节点
-      d3.select(event.target).attr('stroke', '#E91E63').attr('stroke-width', 4)
-      // 高亮与此节点相连的边
-      link.filter(l => l.source.id === d.id || l.target.id === d.id)
-        .attr('stroke', '#E91E63')
-        .attr('stroke-width', 2.5)
-      
-      selectedItem.value = {
-        type: 'node',
-        data: d.rawData,
-        entityType: d.type,
-        color: getColor(d.type)
-      }
+      selectNode(d)
     })
-    .on('mouseenter', (event, d) => {
-      if (!selectedItem.value || selectedItem.value.data?.uuid !== d.rawData.uuid) {
-        d3.select(event.target).attr('stroke', '#333').attr('stroke-width', 3)
-      }
+    .on('keydown', (event, d) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return
+      event.preventDefault()
+      event.stopPropagation()
+      selectNode(d)
     })
-    .on('mouseleave', (event, d) => {
-      if (!selectedItem.value || selectedItem.value.data?.uuid !== d.rawData.uuid) {
-        d3.select(event.target).attr('stroke', '#fff').attr('stroke-width', 2.5)
-      }
-    })
+  node.append('title').text(d => `${d.name} · ${d.type}`)
 
   // Node Labels
   const nodeLabels = nodeGroup.selectAll('text')
     .data(nodes)
     .enter().append('text')
-    .text(d => d.name.length > 8 ? d.name.substring(0, 8) + '…' : d.name)
-    .attr('font-size', '11px')
-    .attr('fill', '#333')
-    .attr('font-weight', '500')
-    .attr('dx', 14)
+    .text(d => d.name.length > 22 ? d.name.substring(0, 22) + '…' : d.name)
+    .attr('class', 'hb-graph-label graph-node-label')
+    .attr('dx', 13)
     .attr('dy', 4)
-    .style('pointer-events', 'none')
-    .style('font-family', 'system-ui, sans-serif')
 
   simulation.on('tick', () => {
     // 更新曲线路径
-    link.attr('d', d => getLinkPath(d))
-    
+    link.attr('d', getLinkPath)
+    linkHit.attr('d', getLinkPath)
+
     // 更新边标签位置（无旋转，水平显示更清晰）
     linkLabels.each(function(d) {
       const mid = getLinkMidpoint(d)
       d3.select(this)
         .attr('x', mid.x)
         .attr('y', mid.y)
-        .attr('transform', '') // 移除旋转，保持水平
-    })
-    
-    // 更新边标签背景
-    linkLabelBg.each(function(d, i) {
-      const mid = getLinkMidpoint(d)
-      const textEl = linkLabels.nodes()[i]
-      const bbox = textEl.getBBox()
-      d3.select(this)
-        .attr('x', mid.x - bbox.width / 2 - 4)
-        .attr('y', mid.y - bbox.height / 2 - 2)
-        .attr('width', bbox.width + 8)
-        .attr('height', bbox.height + 4)
-        .attr('transform', '') // 移除旋转
     })
 
-    node
-      .attr('cx', d => d.x)
-      .attr('cy', d => d.y)
+    node.attr('transform', d => `translate(${d.x},${d.y})`)
 
     nodeLabels
       .attr('x', d => d.x)
       .attr('y', d => d.y)
   })
-  
+
   // 点击空白处关闭详情面板
   svg.on('click', () => {
     selectedItem.value = null
-    node.attr('stroke', '#fff').attr('stroke-width', 2.5)
-    linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-    linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-    linkLabels.attr('fill', '#666')
   })
+
+  graphParts = { link, linkLabels, node, nodeLabels, edges }
+  paintSelection()
+  settle(simulation)
 }
+
+watch(selectedItem, paintSelection)
 
 watch(() => props.graphData, () => {
   nextTick(renderGraph)
@@ -792,21 +860,38 @@ watch(showEdgeLabels, (newVal) => {
   if (linkLabelsRef) {
     linkLabelsRef.style('display', newVal ? 'block' : 'none')
   }
-  if (linkLabelBgRef) {
-    linkLabelBgRef.style('display', newVal ? 'block' : 'none')
-  }
 })
 
+// Panels resize with the layout switch as well as the window, so watch the container itself.
 const handleResize = () => {
-  nextTick(renderGraph)
+  const width = graphContainer.value?.clientWidth
+  const height = graphContainer.value?.clientHeight
+  if (!width || !height || !props.graphData) return
+  if (!currentSimulation) {
+    renderGraph()
+    return
+  }
+  if (width === drawnSize.width && height === drawnSize.height) return
+
+  // Refit in place so positions, zoom and the selection survive.
+  drawnSize = { width, height }
+  d3.select(graphSvg.value)
+    .attr('width', width)
+    .attr('height', height)
+    .attr('viewBox', `0 0 ${width} ${height}`)
+  currentSimulation.force('center').x(width / 2).y(height / 2)
+  currentSimulation.force('x').x(width / 2)
+  currentSimulation.force('y').y(height / 2)
+  settle(currentSimulation.alpha(0.3))
 }
 
 onMounted(() => {
-  window.addEventListener('resize', handleResize)
+  resizeObserver = new ResizeObserver(handleResize)
+  resizeObserver.observe(graphContainer.value)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
+  resizeObserver?.disconnect()
   if (currentSimulation) {
     currentSimulation.stop()
   }
@@ -815,609 +900,456 @@ onUnmounted(() => {
 
 <style scoped>
 .graph-panel {
-  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #FAFAFA;
-  background-image: radial-gradient(#D0D0D0 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  overflow: hidden;
+  background: var(--hb-paper);
 }
 
 .panel-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px;
-  z-index: 10;
   display: flex;
-  justify-content: space-between;
+  flex: none;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0));
-  pointer-events: none;
+  justify-content: space-between;
+  gap: var(--hb-space-3);
+  padding: 7px var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-navy);
 }
 
 .panel-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  pointer-events: auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .header-tools {
-  pointer-events: auto;
   display: flex;
-  gap: 10px;
-  align-items: center;
+  flex: none;
+  gap: var(--hb-space-2);
 }
 
 .tool-btn {
-  height: 32px;
-  padding: 0 12px;
-  border: 1px solid #E0E0E0;
-  background: #FFF;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  color: #666;
-  transition: all 0.2s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  font-size: 13px;
+  font-size: var(--hb-text-sm);
 }
 
-.tool-btn:hover {
-  background: #F5F5F5;
-  color: #000;
-  border-color: #CCC;
+.tool-btn--icon {
+  width: var(--hb-control);
+  padding: 0;
 }
 
-.tool-btn .btn-text {
-  font-size: 12px;
+.tool-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
 }
 
-.icon-refresh.spinning {
+.tool-icon.spinning {
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.icon-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--hb-control);
+  height: var(--hb-control);
+  color: var(--hb-navy);
+  background: transparent;
+  border: 0;
+  border-radius: var(--hb-radius);
+  cursor: pointer;
+  transition: background-color var(--hb-motion-fast) ease-out;
+}
+
+.icon-btn:hover {
+  background: var(--hb-water-soft);
+}
+
+.graph-key {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px var(--hb-space-4);
+  padding: 5px var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-navy);
+  font-size: var(--hb-text-sm);
+}
+
+.key-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
+.key-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.line-key {
+  flex: none;
+}
 
 .graph-container {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.graph-view,
+.graph-svg {
+  display: block;
   width: 100%;
   height: 100%;
 }
 
-.graph-view, .graph-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.graph-svg {
+  cursor: grab;
+}
+
+.graph-svg:active {
+  cursor: grabbing;
+}
+
+.graph-svg :deep(.edge-line) {
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+  transition: stroke-width var(--hb-motion-fast) ease-out;
+}
+
+.graph-svg :deep(.edge-line:not(.is-on):not(.is-traced)) {
+  opacity: 0.72;
+}
+
+.graph-svg :deep(.edge-line.hb-line--ended:not(.is-on):not(.is-traced)) {
+  opacity: 0.48;
+}
+
+.graph-svg :deep(.edge-line.is-on) {
+  stroke-width: 2.3;
+}
+
+.graph-svg :deep(.edge-line.is-traced) {
+  stroke-width: 3.4;
+}
+
+.graph-svg :deep(.edge-hit) {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 12;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.graph-svg :deep(.edge-name) {
+  fill: var(--hb-navy-soft);
+  font: 500 var(--hb-text-xs) var(--hb-font-sans);
+  paint-order: stroke;
+  stroke: var(--hb-water-soft);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+
+.graph-svg :deep(.edge-name--simulated) {
+  fill: var(--hb-magenta);
+}
+
+.graph-svg :deep(.edge-name.is-on) {
+  font-weight: 700;
+}
+
+.graph-svg.hide-source :deep(.edge--source),
+.graph-svg.hide-simulated :deep(.edge--simulated),
+.graph-svg.hide-unlinked :deep(.edge--unlinked),
+.graph-svg.hide-ended :deep(.edge--ended) {
+  display: none;
+}
+
+.graph-svg :deep(.graph-node) {
+  cursor: pointer;
+  transition: stroke-width var(--hb-motion-fast) ease-out;
+}
+
+.graph-svg :deep(.graph-node:hover) {
+  stroke-width: 2.4;
+}
+
+.graph-svg :deep(.graph-node.is-selected),
+.graph-svg :deep(.graph-node:focus-visible) {
+  stroke-width: 3;
+}
+
+.graph-svg :deep(.graph-node-label) {
+  pointer-events: none;
+}
+
+.graph-svg :deep(.graph-node-label.is-selected) {
+  font-weight: 800;
+}
+
+.graph-panel :deep(.mark--land) { fill: var(--hb-land); }
+.graph-panel :deep(.mark--navy) { fill: var(--hb-navy); }
+.graph-panel :deep(.mark--water) { fill: var(--hb-water); }
+.graph-panel :deep(.mark--paper) { fill: var(--hb-paper); }
+
+.mark-key {
+  flex: none;
+  width: 14px;
+  height: 14px;
 }
 
 .graph-state {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hb-space-5);
   text-align: center;
-  color: #999;
 }
 
-.empty-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-  opacity: 0.2;
-}
-
-/* Entity Types Legend - Bottom Left */
-.graph-legend {
+.graph-hint {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  background: rgba(255,255,255,0.95);
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #EAEAEA;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  z-index: 10;
+  bottom: var(--hb-space-3);
+  left: var(--hb-space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--hb-space-2);
+  max-width: min(460px, calc(100% - 24px));
+  min-height: var(--hb-control);
+  padding: 4px 10px;
+  background: var(--hb-paper);
+  border: 1px solid var(--hb-navy);
+  border-radius: var(--hb-radius);
+  font-size: var(--hb-text-sm);
 }
 
-.legend-title {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  color: #E91E63;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.graph-hint:has(.icon-btn) {
+  padding-right: 0;
+}
+
+.graph-legend {
+  display: flex;
+  flex: none;
+  align-items: baseline;
+  gap: 4px var(--hb-space-3);
+  max-height: 64px;
+  padding: 5px var(--hb-space-4);
+  overflow-y: auto;
+  border-top: 1px solid var(--hb-navy);
+}
+
+.graph-legend h3 {
+  flex: none;
 }
 
 .legend-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 16px;
-  max-width: 320px;
+  gap: 2px 14px;
+  font-size: var(--hb-text-sm);
 }
 
 .legend-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #555;
+  gap: 5px;
+  overflow-wrap: anywhere;
 }
 
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.legend-label {
-  white-space: nowrap;
-}
-
-/* Edge Labels Toggle - Top Right */
-.edge-labels-toggle {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #FFF;
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1px solid #E0E0E0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  z-index: 10;
-}
-
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 22px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #E0E0E0;
-  border-radius: 22px;
-  transition: 0.3s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-input:checked + .slider {
-  background-color: #7B2D8E;
-}
-
-input:checked + .slider:before {
-  transform: translateX(18px);
-}
-
-.toggle-label {
-  font-size: 12px;
-  color: #666;
-}
-
-/* Detail Panel - Right Side */
 .detail-panel {
   position: absolute;
-  top: 60px;
-  right: 20px;
-  width: 320px;
-  max-height: calc(100% - 100px);
-  background: #FFF;
-  border: 1px solid #EAEAEA;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  overflow: hidden;
-  font-family: 'Noto Sans SC', system-ui, sans-serif;
-  font-size: 13px;
-  z-index: 20;
+  top: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
+  width: min(380px, 100%);
+  background: var(--hb-paper);
+  border-left: 1px solid var(--hb-navy);
 }
 
 .detail-panel-header {
   display: flex;
-  justify-content: space-between;
+  flex: none;
   align-items: center;
-  padding: 14px 16px;
-  background: #FAFAFA;
-  border-bottom: 1px solid #EEE;
-  flex-shrink: 0;
+  gap: var(--hb-space-2);
+  padding: 5px 6px 5px var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-navy);
 }
 
-.detail-title {
-  font-weight: 600;
-  color: #333;
-  font-size: 14px;
+.detail-panel-header h3 {
+  flex: 1;
+  min-width: 0;
 }
 
-.detail-type-badge {
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 500;
-  margin-left: auto;
-  margin-right: 12px;
-}
-
-.detail-close {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #999;
-  line-height: 1;
-  padding: 0;
-  transition: color 0.2s;
-}
-
-.detail-close:hover {
-  color: #333;
+.detail-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .detail-content {
-  padding: 16px;
+  flex: 1;
+  min-height: 0;
+  padding: var(--hb-space-3) var(--hb-space-4) var(--hb-space-4);
   overflow-y: auto;
-  flex: 1;
+  overscroll-behavior: contain;
 }
 
-.detail-row {
-  margin-bottom: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+.entity-name {
+  margin-bottom: var(--hb-space-2);
+  font: 700 var(--hb-text-2xl) / 1.12 var(--hb-font-serif);
+  overflow-wrap: anywhere;
 }
 
-.detail-label {
-  color: #888;
-  font-size: 12px;
-  font-weight: 500;
-  min-width: 80px;
-}
-
-.detail-value {
-  color: #333;
-  flex: 1;
-  word-break: break-word;
-}
-
-.detail-value.uuid-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: #666;
-}
-
-.detail-value.fact-text {
-  line-height: 1.5;
-  color: #444;
+.uuid-text {
+  font-size: var(--hb-text-xs);
+  font-variant-numeric: tabular-nums;
 }
 
 .detail-section {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid #F0F0F0;
+  margin-top: var(--hb-space-4);
 }
 
-.section-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.properties-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.property-item {
-  display: flex;
-  gap: 8px;
-}
-
-.property-key {
-  color: #888;
-  font-weight: 500;
-  min-width: 90px;
-}
-
-.property-value {
-  color: #333;
-  flex: 1;
+.detail-section h4 {
+  margin-bottom: 5px;
 }
 
 .summary-text {
-  line-height: 1.6;
-  color: #444;
-  font-size: 12px;
+  font-size: var(--hb-text-sm);
+  line-height: 1.4;
 }
 
-.labels-list {
+.tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--hb-space-1);
 }
 
-.label-tag {
-  display: inline-block;
-  padding: 4px 12px;
-  background: #F5F5F5;
-  border: 1px solid #E0E0E0;
-  border-radius: 16px;
-  font-size: 11px;
-  color: #555;
-}
-
-.episodes-list {
+.fact-totals {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 2px var(--hb-space-4);
+  padding: 5px 0;
+  border-block: 1px solid var(--hb-navy);
+  font-size: var(--hb-text-sm);
 }
 
-.episode-tag {
-  display: inline-block;
-  padding: 6px 10px;
-  background: #F8F8F8;
-  border: 1px solid #E8E8E8;
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: #666;
-  word-break: break-all;
+.fact-totals .hb-sounding {
+  font-size: var(--hb-text-xl);
 }
 
-/* Edge relation header */
+.fact-row,
+.self-loop-toggle {
+  display: flex;
+  gap: 9px;
+  width: 100%;
+  padding: 5px 3px;
+  color: var(--hb-navy);
+  background: transparent;
+  border: 0;
+  font: 400 var(--hb-text-sm) / 1.25 var(--hb-font-sans);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--hb-motion-fast) ease-out;
+}
+
+.fact-row:hover,
+.self-loop-toggle:hover {
+  background: var(--hb-water-soft);
+}
+
+.fact-row .line-key {
+  margin-top: 5px;
+}
+
+.fact-body {
+  display: grid;
+  flex: 1;
+  gap: 1px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.fact-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--hb-space-2);
+}
+
+.fact-head .hb-origin {
+  padding-top: 2px;
+}
+
 .edge-relation-header {
-  background: #F8F8F8;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #333;
-  line-height: 1.5;
-  word-break: break-word;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px var(--hb-space-2);
+  margin-bottom: var(--hb-space-2);
+  font: 700 var(--hb-text-xl) / 1.2 var(--hb-font-serif);
+  overflow-wrap: anywhere;
 }
 
-/* Building hint */
-.graph-building-hint {
-  position: absolute;
-  bottom: 160px; /* Moved up from 80px */
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 13px;
+.edge-origin {
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  z-index: 100;
-}
-
-.memory-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: breathe 2s ease-in-out infinite;
-}
-
-.memory-icon {
-  width: 18px;
-  height: 18px;
-  color: #4CAF50;
-}
-
-@keyframes breathe {
-  0%, 100% { opacity: 0.7; transform: scale(1); filter: drop-shadow(0 0 2px rgba(76, 175, 80, 0.3)); }
-  50% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6)); }
-}
-
-/* 模拟结束后的提示样式 */
-.graph-building-hint.finished-hint {
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.finished-hint .hint-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.finished-hint .hint-icon {
-  width: 18px;
-  height: 18px;
-  color: #FFF;
-}
-
-.finished-hint .hint-text {
-  flex: 1;
-  white-space: nowrap;
-}
-
-.hint-close-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  color: #FFF;
-  transition: all 0.2s;
-  margin-left: 8px;
-  flex-shrink: 0;
-}
-
-.hint-close-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(1.1);
-}
-
-/* Loading spinner */
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #E0E0E0;
-  border-top-color: #7B2D8E;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 16px;
-}
-
-/* Self-loop styles */
-.self-loop-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
-  border: 1px solid #C8E6C9;
-}
-
-.self-loop-count {
-  margin-left: auto;
-  font-size: 11px;
-  color: #666;
-  background: rgba(255,255,255,0.8);
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-
-.self-loop-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.self-loop-item {
-  background: #FAFAFA;
-  border: 1px solid #EAEAEA;
-  border-radius: 8px;
-}
-
-.self-loop-item-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  background: #F5F5F5;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.self-loop-item-header:hover {
-  background: #EEEEEE;
-}
-
-.self-loop-item.expanded .self-loop-item-header {
-  background: #E8E8E8;
-}
-
-.self-loop-index {
-  font-size: 10px;
-  font-weight: 600;
-  color: #888;
-  background: #E0E0E0;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.self-loop-name {
-  font-size: 12px;
-  font-weight: 500;
-  color: #333;
-  flex: 1;
+  gap: var(--hb-space-2);
+  margin-bottom: var(--hb-space-3);
 }
 
 .self-loop-toggle {
-  width: 20px;
-  height: 20px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: #888;
-  background: #E0E0E0;
-  border-radius: 4px;
-  transition: all 0.2s;
 }
 
-.self-loop-item.expanded .self-loop-toggle {
-  background: #D0D0D0;
-  color: #666;
+.self-loop-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
-.self-loop-item-content {
-  padding: 12px;
-  border-top: 1px solid #EAEAEA;
+.self-loop-facts {
+  padding: 0 3px var(--hb-space-2);
 }
 
-.self-loop-item-content .detail-row {
-  margin-bottom: 8px;
+.episode-tag {
+  display: block;
+  font-size: var(--hb-text-xs);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
-.self-loop-item-content .detail-label {
-  font-size: 11px;
-  min-width: 60px;
-}
-
-.self-loop-item-content .detail-value {
-  font-size: 12px;
-}
-
-.self-loop-episodes {
-  margin-top: 8px;
-}
-
-.episodes-list.compact {
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.episode-tag.small {
-  padding: 3px 6px;
-  font-size: 9px;
+@container (max-width: 520px) {
+  .detail-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    height: 62%;
+    border-top: 1px solid var(--hb-navy);
+    border-left: 0;
+  }
 }
 </style>
