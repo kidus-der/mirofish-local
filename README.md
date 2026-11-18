@@ -197,7 +197,7 @@ To try the included fictional example without preparing a document, upload [`eva
 How will residents, officials, the union and the press react before the 15 July vote on the 9 percent water tariff plan?
 ```
 
-Expect a long run. The reference test used 19 agents and 24 simulated hours, and took 81 minutes on a machine at the minimum memory requirement.
+Expect a long run. The reference test used 19 agents and 24 simulated hours, and took 81 minutes.
 
 > [!WARNING]
 > Refreshing the running simulation page is safe. Going **back to the setup page stops the active simulation**, because that page deliberately closes it.
