@@ -1706,7 +1706,7 @@ watch(() => props.simulationId, (newId) => {
 
 :deep(.code-block code),
 :deep(.inline-code) {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.8125rem;
 }
 
