@@ -5,6 +5,15 @@ MiroFish Backend 启动入口
 import os
 import sys
 
+# Local-only fork: install the network guard before anything else imports, and make child
+# processes (the simulation scripts) load it too via sitecustomize.py on PYTHONPATH.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _HERE)
+os.environ["PYTHONPATH"] = os.pathsep.join(p for p in (_HERE, os.environ.get("PYTHONPATH", "")) if p)
+import netguard
+
+netguard.install()
+
 # 解决 Windows 控制台中文乱码问题：在所有导入之前设置 UTF-8 编码
 if sys.platform == 'win32':
     # 设置环境变量确保 Python 使用 UTF-8
