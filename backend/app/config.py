@@ -14,6 +14,10 @@ else:
     load_dotenv(override=True)
 
 
+# Qwen 3.5 thinks by default, which is about 20x slower for JSON tasks that gain nothing from it.
+os.environ.setdefault('LLM_REASONING_EFFORT', 'none')
+
+
 class Config:
     """Flask配置类"""
     

@@ -7,6 +7,7 @@ gracefully adapting request parameters for GPT-5 family models.
 
 from __future__ import annotations
 
+import os
 from typing import Any, Dict, List, Optional
 
 
@@ -42,6 +43,11 @@ def create_chat_completion(
 
     if response_format is not None:
         kwargs["response_format"] = response_format
+
+    # Qwen 3.5 thinks by default on Ollama: about 20x slower here, for JSON work that does not need it.
+    effort = os.environ.get("LLM_REASONING_EFFORT")
+    if effort:
+        kwargs["reasoning_effort"] = effort
 
     gpt5_family = is_gpt5_family(model)
 

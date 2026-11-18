@@ -26,6 +26,11 @@ def client_for(recorder):
     return SimpleNamespace(chat=SimpleNamespace(completions=recorder))
 
 
+@pytest.fixture(autouse=True)
+def _no_reasoning_override(monkeypatch):
+    monkeypatch.delenv("LLM_REASONING_EFFORT", raising=False)
+
+
 def test_gpt5_uses_completion_token_limit_without_temperature():
     recorder = CompletionRecorder()
     messages = [{"role": "user", "content": "hello"}]
