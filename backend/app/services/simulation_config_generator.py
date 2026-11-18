@@ -672,6 +672,8 @@ class SimulationConfigGenerator:
             for t, examples in type_examples.items()
         ])
         
+        poster_names = "\n".join(f"- {e.name}" for e in entities)
+
         # 使用配置的上下文截断长度
         context_truncated = context[:self.EVENT_CONFIG_CONTEXT_LENGTH]
         
@@ -683,6 +685,9 @@ class SimulationConfigGenerator:
 
 ## 可用实体类型及示例
 {type_info}
+
+## Available poster names
+{poster_names}
 
 ## 任务
 请生成事件配置JSON：
@@ -698,14 +703,14 @@ class SimulationConfigGenerator:
     "hot_topics": ["关键词1", "关键词2", ...],
     "narrative_direction": "<舆论发展方向描述>",
     "initial_posts": [
-        {{"content": "帖子内容", "poster_type": "实体类型（必须从可用类型中选择）"}},
+        {{"content": "帖子内容", "poster_name": "exact name of the speaker from Available poster names", "poster_type": "实体类型（必须从可用类型中选择）"}},
         ...
     ],
     "reasoning": "<简要说明>"
 }}"""
 
         system_prompt = "你是舆论分析专家。返回纯JSON格式。注意 poster_type 必须精确匹配可用实体类型。"
-        system_prompt = f"{system_prompt}\n\n{get_language_instruction()}\nIMPORTANT: The 'poster_type' field value MUST be in English PascalCase exactly matching the available entity types. Only 'content', 'narrative_direction', 'hot_topics' and 'reasoning' fields should use the specified language."
+        system_prompt = f"{system_prompt}\n\n{get_language_instruction()}\nIMPORTANT: Each post's 'poster_name' MUST copy the name of the entity actually speaking in that post from the available poster names. The 'poster_type' field value MUST be in English PascalCase exactly matching the available entity types. Only 'content', 'narrative_direction', 'hot_topics' and 'reasoning' fields should use the specified language."
 
         try:
             return self._call_llm_with_retry(prompt, system_prompt)
@@ -762,6 +767,7 @@ class SimulationConfigGenerator:
         
         # 记录每种类型已使用的 agent 索引，避免重复使用同一个 agent
         used_indices: Dict[str, int] = {}
+        by_name = {a.entity_name.strip().lower(): a.agent_id for a in agent_configs}
         
         updated_posts = []
         for post in event_config.initial_posts:
@@ -769,10 +775,13 @@ class SimulationConfigGenerator:
             content = post.get("content", "")
             
             # 尝试找到匹配的 agent
-            matched_agent_id = None
+            # A type alone can pick the wrong speaker ("Person" -> first person), so the name wins.
+            matched_agent_id = by_name.get(str(post.get("poster_name") or "").strip().lower())
             
             # 1. 直接匹配
-            if poster_type in agents_by_type:
+            if matched_agent_id is not None:
+                pass
+            elif poster_type in agents_by_type:
                 agents = agents_by_type[poster_type]
                 idx = used_indices.get(poster_type, 0) % len(agents)
                 matched_agent_id = agents[idx].agent_id
@@ -804,6 +813,7 @@ class SimulationConfigGenerator:
             updated_posts.append({
                 "content": content,
                 "poster_type": post.get("poster_type", "Unknown"),
+                "poster_name": post.get("poster_name"),
                 "poster_agent_id": matched_agent_id
             })
             
