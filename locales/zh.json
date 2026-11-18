@@ -30,7 +30,12 @@
     "description": "MiroFish - 社交媒体舆论模拟系统"
   },
   "nav": {
-    "visitGithub": "访问我们的Github主页"
+    "visitGithub": "访问我们的Github主页",
+    "mainNavigation": "主导航",
+    "language": "语言",
+    "newScenario": "新建情景",
+    "latestGraph": "最新图谱",
+    "latestReport": "最新报告"
   },
   "home": {
     "tagline": "简洁通用的群体智能引擎",
@@ -69,13 +74,51 @@
     "promptPlaceholder": "// 用自然语言输入模拟或预测需求（例.武大若发布撤销肖某处分的公告，会引发什么舆情走向）",
     "engineBadge": "引擎: MiroFish-V1.0",
     "startEngine": "启动引擎",
-    "initializing": "初始化中..."
+    "initializing": "初始化中...",
+    "lede": "提供文档和问题。MiroFish Local 会在这台 Mac 上构建知识图谱、创建智能体，并让它们在模拟的 Twitter 和 Reddit 上运行。",
+    "documents": "文档",
+    "addDocuments": "添加文档",
+    "removeFile": "移除",
+    "removeFileNamed": "移除 {name}",
+    "filesSkipped": "已跳过 {names}。请使用 PDF、Markdown 或 TXT 文件。",
+    "question": "问题",
+    "setupAgents": "智能体",
+    "setupAgentsValue": "根据文档创建",
+    "setupTime": "模拟时长",
+    "setupTimeValue": "在环境搭建中设置",
+    "setupPlatforms": "平台",
+    "setupPlatformsValue": "Twitter 和 Reddit",
+    "setupMemory": "图谱记忆",
+    "setupMemoryValue": "开启",
+    "startHint": "请至少添加一份文档并填写问题后开始。",
+    "notForecast": "模拟结果不是预测或民意调查，也不能作为关于真实人物的证据。",
+    "railLabel": "最近运行与隐私状态",
+    "privacyTitle": "隐私",
+    "privacyPage": "当前页面",
+    "privacyBackendAddress": "后端地址",
+    "privacyBackendState": "后端",
+    "privacyScope": "由当前浏览器会话检测。",
+    "loopback": "回环地址",
+    "notLoopback": "非回环地址",
+    "loopbackAddresses": "回环地址",
+    "nonLoopbackAddress": "正在使用非回环地址",
+    "backendChecking": "检查中",
+    "backendReachable": "可访问",
+    "backendUnreachable": "无响应"
   },
   "main": {
     "layoutGraph": "图谱",
     "layoutSplit": "双栏",
     "layoutWorkbench": "工作台",
-    "stepNames": ["图谱构建", "环境搭建", "开始模拟", "报告生成", "深度互动"]
+    "stepNames": [
+      "图谱构建",
+      "环境搭建",
+      "开始模拟",
+      "报告生成",
+      "深度互动"
+    ],
+    "layoutLabel": "布局",
+    "workflowStages": "工作流程阶段"
   },
   "step1": {
     "ontologyGeneration": "本体生成",
@@ -295,7 +338,13 @@
     "graphDataLoading": "图谱数据加载中...",
     "waitingOntology": "等待本体生成...",
     "toggleMaximize": "最大化/还原",
-    "closeHint": "关闭提示"
+    "closeHint": "关闭提示",
+    "originSource": "来源",
+    "originSimulated": "模拟",
+    "originUnlinked": "未标注",
+    "originEnded": "已结束",
+    "factOrigin": "事实来源",
+    "factsAtEntity": "该实体的事实"
   },
   "history": {
     "title": "推演记录",
@@ -316,7 +365,11 @@
     "notStarted": "未开始",
     "roundsProgress": "{current}/{total} 轮",
     "untitledSimulation": "未命名模拟",
-    "unknownFile": "未知文件"
+    "unknownFile": "未知文件",
+    "empty": "还没有运行记录。你启动的情景会显示在这里。",
+    "loadFailed": "无法加载最近运行记录。请确认本地后端正在运行，然后重试。",
+    "agentsCount": "{count} 个智能体",
+    "stopped": "已停止"
   },
   "api": {
     "projectNotFound": "项目不存在: {id}",
