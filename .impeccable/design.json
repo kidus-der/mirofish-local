@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T21:46:04+00:00",
+  "title": "Design System: MiroFish Local",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Sounding Navy",
+        "canonical": "#12324a",
+        "tonalRamp": [
+          "#000c1a",
+          "#06273f",
+          "#25455e",
+          "#446580",
+          "#6587a3",
+          "#87aac7",
+          "#b0cde6",
+          "#e4f0fb"
+        ]
+      },
+      "navy-soft": {
+        "role": "neutral",
+        "displayName": "Soft Sounding",
+        "canonical": "#37556b",
+        "tonalRamp": [
+          "#000d19",
+          "#09283b",
+          "#28455b",
+          "#47657c",
+          "#67879f",
+          "#89aac3",
+          "#b2cde2",
+          "#e4f0fa"
+        ]
+      },
+      "navy-soft-on-land": {
+        "role": "neutral",
+        "displayName": "Soft Sounding on Land",
+        "canonical": "#2f4a5e",
+        "tonalRamp": [
+          "#000d19",
+          "#0d283a",
+          "#2a4559",
+          "#49657a",
+          "#69869d",
+          "#8ba9c0",
+          "#b4cde0",
+          "#e5f0f9"
+        ]
+      },
+      "navy-soft-on-land-soft": {
+        "role": "neutral",
+        "displayName": "Soft Sounding on Pale Land",
+        "canonical": "#324f64",
+        "tonalRamp": [
+          "#000d19",
+          "#0a283b",
+          "#29455a",
+          "#47657b",
+          "#68879e",
+          "#8aaac2",
+          "#b3cde1",
+          "#e5f0f9"
+        ]
+      },
+      "navy-hover": {
+        "role": "primary",
+        "displayName": "Harbour Night Hover",
+        "canonical": "#1c4560",
+        "tonalRamp": [
+          "#000d18",
+          "#002840",
+          "#1d4661",
+          "#3d6683",
+          "#5e88a6",
+          "#80abca",
+          "#abcee9",
+          "#e2f1fd"
+        ]
+      },
+      "water": {
+        "role": "neutral",
+        "displayName": "Chart Water",
+        "canonical": "#bfe0e6",
+        "tonalRamp": [
+          "#000e11",
+          "#0c2a2f",
+          "#2a474c",
+          "#49676c",
+          "#6a898e",
+          "#8cacb1",
+          "#b5cfd3",
+          "#e5f1f3"
+        ]
+      },
+      "water-soft": {
+        "role": "neutral",
+        "displayName": "Shallow Water",
+        "canonical": "#e4f2f4",
+        "tonalRamp": [
+          "#060d0e",
+          "#1d2729",
+          "#394446",
+          "#586466",
+          "#788587",
+          "#9ba8aa",
+          "#c1cccd",
+          "#ebeff0"
+        ]
+      },
+      "land": {
+        "role": "neutral",
+        "displayName": "Chart Land",
+        "canonical": "#e7d59b",
+        "tonalRamp": [
+          "#100b00",
+          "#2e2400",
+          "#504000",
+          "#706028",
+          "#92814a",
+          "#b6a46c",
+          "#d7c99b",
+          "#f5eedb"
+        ]
+      },
+      "land-soft": {
+        "role": "neutral",
+        "displayName": "Pale Land",
+        "canonical": "#f6efd6",
+        "tonalRamp": [
+          "#0f0b01",
+          "#2a2511",
+          "#48422d",
+          "#67614c",
+          "#89826c",
+          "#aca58e",
+          "#cfc9b6",
+          "#f1eee6"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Chart Paper",
+        "canonical": "#fcfbf5",
+        "tonalRamp": [
+          "#0c0b08",
+          "#262521",
+          "#43423d",
+          "#62615c",
+          "#83827d",
+          "#a6a5a0",
+          "#cac9c5",
+          "#efeeec"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "magenta": {
+        "role": "tertiary",
+        "displayName": "Notice Magenta",
+        "canonical": "#b0187a",
+        "tonalRamp": [
+          "#1c0010",
+          "#47012e",
+          "#770250",
+          "#aa0d75",
+          "#d24097",
+          "#fb66bb",
+          "#feacd6",
+          "#ffe7f2"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Buoy Red",
+        "canonical": "#d9472b",
+        "tonalRamp": [
+          "#1d0100",
+          "#490901",
+          "#7b1602",
+          "#b12201",
+          "#db492d",
+          "#fd765b",
+          "#feb4a4",
+          "#ffe9e4"
+        ]
+      },
+      "red-hover": {
+        "role": "secondary",
+        "displayName": "Lit Buoy",
+        "canonical": "#e4613f",
+        "tonalRamp": [
+          "#1c0200",
+          "#470d01",
+          "#781c01",
+          "#ab2f07",
+          "#d45331",
+          "#fd7755",
+          "#feb5a1",
+          "#ffe9e3"
+        ]
+      },
+      "ink": {
+        "role": "secondary",
+        "displayName": "Hull Ink",
+        "canonical": "#170704",
+        "tonalRamp": [
+          "#140805",
+          "#32201b",
+          "#513c37",
+          "#725b55",
+          "#947c76",
+          "#b79f98",
+          "#d9c4be",
+          "#f6ecea"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "rgba(18, 50, 74, 0.24)",
+        "tonalRamp": [
+          "#000c1a",
+          "#06273f",
+          "#25455e",
+          "#446580",
+          "#6587a3",
+          "#87aac7",
+          "#b0cde6",
+          "#e4f0fb"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single page or report title."
+      },
+      "question": {
+        "displayName": "Question",
+        "purpose": "The researcher's scenario question, as authored content."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Run names and panel-level serif titles."
+      },
+      "heading": {
+        "displayName": "Heading",
+        "purpose": "Small-caps section headings in panes and rails."
+      },
+      "subheading": {
+        "displayName": "Subheading",
+        "purpose": "Small-caps groups inside a section."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The introductory sentence beneath a display title."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default interface text."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Metadata, notes and dense lists."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Button labels."
+      },
+      "control-small": {
+        "displayName": "Small Control",
+        "purpose": "Selects, segmented switches and mode tabs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tags and origin labels."
+      },
+      "sounding": {
+        "displayName": "Sounding",
+        "purpose": "Italic oldstyle ordinals and chart counts; size is inherited."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "motion-fast",
+        "value": "120ms ease-out",
+        "purpose": "Fill, stroke-weight and chevron state changes."
+      },
+      {
+        "name": "row-arrival",
+        "value": "700ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "New simulation rows settle from Chart Land to their resting tone."
+      },
+      {
+        "name": "waiting-pulse",
+        "value": "1.6s ease-in-out infinite alternate",
+        "purpose": "Opacity pulse to 0.35 for report waiting states."
+      },
+      {
+        "name": "typing-sounding",
+        "value": "1200ms ease-in-out infinite",
+        "purpose": "Staggered square typing indicator in interviews."
+      },
+      {
+        "name": "spinner",
+        "value": "1s linear infinite",
+        "purpose": "Graph refresh icon while loading."
+      }
+    ],
+    "lineWork": [
+      {
+        "name": "source",
+        "stroke": "navy",
+        "width": 1.5,
+        "dash": null
+      },
+      {
+        "name": "simulated",
+        "stroke": "magenta",
+        "width": 1.7,
+        "dash": "7 4.5"
+      },
+      {
+        "name": "unlinked",
+        "stroke": "navy-soft",
+        "width": 1.6,
+        "dash": "1.2 4",
+        "linecap": "round"
+      },
+      {
+        "name": "ended",
+        "width": 1.1,
+        "opacity": 0.62
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stage-wrap",
+        "value": "1280px"
+      },
+      {
+        "name": "topbar-status-wrap",
+        "value": "1080px"
+      },
+      {
+        "name": "run-stack",
+        "value": "980px"
+      },
+      {
+        "name": "home-stack",
+        "value": "960px"
+      },
+      {
+        "name": "nav-row",
+        "value": "620px"
+      },
+      {
+        "name": "home-compact",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "The standard command on paper.",
+      "html": "<button class=\"ds-btn\">Add documents</button>",
+      "css": ".ds-btn { color: var(--hb-navy); background: var(--hb-paper); min-height: var(--hb-control); padding: 0 13px; border: 1px solid var(--hb-navy); border-radius: var(--hb-radius); font: 700 var(--hb-text-md) / 1 var(--hb-font-sans); cursor: pointer; transition: background-color var(--hb-motion-fast) ease-out; } .ds-btn:hover { background: var(--hb-water-soft); } .ds-btn:focus-visible { outline: 2px solid var(--hb-focus); outline-offset: 2px; } .ds-btn:disabled { color: var(--hb-navy-soft); background: var(--hb-land-soft); border-color: var(--hb-navy-soft); cursor: not-allowed; }"
+    },
+    {
+      "name": "Action Button",
+      "kind": "button",
+      "refersTo": "button-action",
+      "description": "Buoy red forward action for a stage.",
+      "html": "<button class=\"ds-btn-action\">Start simulation</button>",
+      "css": ".ds-btn-action { color: var(--hb-ink); background: var(--hb-red); min-height: var(--hb-control); padding: 0 13px; border: 1px solid var(--hb-navy); border-radius: var(--hb-radius); font: 700 var(--hb-text-md) / 1 var(--hb-font-sans); cursor: pointer; transition: background-color var(--hb-motion-fast) ease-out; border-color: var(--hb-ink); } .ds-btn-action:hover { background: var(--hb-red-hover); } .ds-btn-action:focus-visible { outline: 2px solid var(--hb-focus); outline-offset: 2px; }"
+    },
+    {
+      "name": "Question Field",
+      "kind": "input",
+      "refersTo": "textarea-question",
+      "description": "Serif writing field for the scenario question.",
+      "html": "<textarea class=\"ds-question\" rows=\"3\" placeholder=\"What would you like to test?\"></textarea>",
+      "css": ".ds-question { display: block; width: 100%; padding: 13px 15px; color: var(--hb-navy); background: var(--hb-field); border: 1px solid var(--hb-navy); border-radius: var(--hb-radius); font: 400 var(--hb-text-2xl) / 1.36 var(--hb-font-serif); resize: vertical; } .ds-question::placeholder { color: var(--hb-navy-soft); opacity: 1; } .ds-question:focus-visible { outline: 2px solid var(--hb-focus); outline-offset: 2px; }"
+    },
+    {
+      "name": "Top Bar Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Navy route bar with a paper current tab.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">New scenario</a><a href=\"#\">Latest graph</a><a href=\"#\">Latest report</a></nav>",
+      "css": ".ds-nav { display: flex; min-height: var(--hb-topbar); color: var(--hb-paper); background: var(--hb-navy); font-family: var(--hb-font-sans); --hb-focus: var(--hb-land); } .ds-nav a { display: flex; align-items: center; padding: 0 15px; color: inherit; font-weight: 500; text-decoration: none; transition: background-color var(--hb-motion-fast) ease-out; } .ds-nav a:hover { background: var(--hb-navy-hover); } .ds-nav a:focus-visible { outline: 2px solid var(--hb-focus); outline-offset: -3px; } .ds-nav a[aria-current] { color: var(--hb-navy); background: var(--hb-paper); font-weight: 700; }"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small-caps tag and the land-filled latest mark.",
+      "html": "<span class=\"ds-tag\">PDF</span> <span class=\"ds-tag ds-tag-latest\">Latest round</span>",
+      "css": ".ds-tag { display: inline-block; padding: 0 7px; color: var(--hb-navy); border: 1px solid var(--hb-navy); border-radius: var(--hb-radius); font: 500 var(--hb-text-xs) / 20px var(--hb-font-sc); white-space: nowrap; } .ds-tag-latest { background: var(--hb-land); font-weight: 700; }"
+    },
+    {
+      "name": "Status Marks",
+      "kind": "custom",
+      "refersTo": "status-mark",
+      "description": "Square marks that read without colour.",
+      "html": "<span class=\"ds-status ds-running\">Running</span> <span class=\"ds-status ds-done\">Completed</span> <span class=\"ds-status ds-failed\">Failed</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 6px; margin-right: 12px; color: var(--hb-navy); font: 700 var(--hb-text-sm) var(--hb-font-sans); } .ds-status::before { content: ''; width: 10px; height: 10px; background: var(--hb-paper); border: 1.5px solid var(--hb-navy); } .ds-running::before { background: var(--hb-water); } .ds-done::before { background: var(--hb-navy); } .ds-failed::before { background: linear-gradient(45deg, transparent 43%, var(--hb-navy) 43% 57%, transparent 57%), linear-gradient(-45deg, transparent 43%, var(--hb-navy) 43% 57%, transparent 57%), var(--hb-paper); }"
+    },
+    {
+      "name": "Provenance Key",
+      "kind": "custom",
+      "refersTo": "origin-simulated",
+      "description": "The signature source, simulated and unlinked line language.",
+      "html": "<ul class=\"ds-key\"><li><svg width=\"30\" height=\"8\" aria-hidden=\"true\"><line class=\"ds-source\" x1=\"1\" y1=\"4\" x2=\"29\" y2=\"4\"/></svg>Source</li><li class=\"ds-sim\"><svg width=\"30\" height=\"8\" aria-hidden=\"true\"><line class=\"ds-simulated\" x1=\"1\" y1=\"4\" x2=\"29\" y2=\"4\"/></svg>Simulated</li><li><svg width=\"30\" height=\"8\" aria-hidden=\"true\"><line class=\"ds-unlinked\" x1=\"1\" y1=\"4\" x2=\"29\" y2=\"4\"/></svg>Unlinked</li></ul>",
+      "css": ".ds-key { display: flex; gap: 14px; padding: 5px 16px; color: var(--hb-navy); background: var(--hb-land-soft); font: 500 var(--hb-text-xs) / 20px var(--hb-font-sc); list-style: none; } .ds-key li { display: flex; align-items: center; gap: 6px; } .ds-sim { color: var(--hb-magenta); font-weight: 700; } .ds-key line { fill: none; } .ds-source { stroke: var(--hb-navy); stroke-width: var(--hb-line-source-width); } .ds-simulated { stroke: var(--hb-magenta); stroke-width: var(--hb-line-simulated-width); stroke-dasharray: var(--hb-dash-simulated); } .ds-unlinked { stroke: var(--hb-navy-soft); stroke-width: var(--hb-line-unlinked-width); stroke-dasharray: var(--hb-dash-unlinked); stroke-linecap: round; }"
+    },
+    {
+      "name": "Fact Sheet",
+      "kind": "card",
+      "refersTo": "fact-sheet",
+      "description": "Ruled definition rows for system status and run details.",
+      "html": "<dl class=\"ds-facts\"><dt>Page</dt><dd>127.0.0.1:3000 · Loopback</dd><dt>Backend</dt><dd>Reachable</dd></dl>",
+      "css": ".ds-facts { display: grid; grid-template-columns: minmax(6.5rem, auto) minmax(0, 1fr); column-gap: 10px; color: var(--hb-navy); font: 400 var(--hb-text-sm) / 1.35 var(--hb-font-sans); font-variant-numeric: lining-nums tabular-nums; } .ds-facts dt, .ds-facts dd { margin: 0; padding: 7px 0; border-top: 1px solid var(--hb-rule); } .ds-facts dt { color: var(--hb-navy-soft); } .ds-facts dd { font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Private Harbour Chart",
+    "overview": "MiroFish Local reads like a working nautical chart kept on the researcher's own desk. Water, land and paper are the surfaces; navy is the survey ink; thin rules do the structural work that cards and shadows do elsewhere. The chart metaphor lives in colour, line and figures only, so the interface stays a serious instrument for long local runs rather than a themed one.\n\nThe system's central duty is provenance. A surveyed fact and a simulated one must never look alike, so every surface shares one line language: solid navy for source material, dashed magenta for simulation, dotted soft navy for facts with no recorded origin. The same language runs from the graph into report text, interview answers and activity feeds.\n\nDensity is high and calm: compact 34px controls, a 48px top bar, tabular figures, and panes that stay in place while a run moves underneath them. The direction explicitly refuses the generic AI dashboard and the hacker terminal.",
+    "keyCharacteristics": [
+      "Flat chart surfaces divided by 1px navy rules, with no shadows anywhere in the routed app.",
+      "Near-square controls (2px) and square panels.",
+      "A three-voice Alegreya family: serif for the researcher's content, sans for the interface, small caps for labels.",
+      "Provenance carried by line style and colour together, never by colour alone.",
+      "Red kept for what the researcher can act on; status carried by shape and navy."
+    ],
+    "rules": [
+      {
+        "name": "The Survey Line Rule",
+        "body": "Dashed magenta means simulated and nothing else; solid navy means source; dotted soft navy means the origin is unlinked. Other dashes may exist, such as the logo ring in water blue, but none may be magenta.",
+        "section": "colors"
+      },
+      {
+        "name": "The Buoy Rule",
+        "body": "Red marks what can be acted on: action buttons and link underlines. It never signals error, warning or status.",
+        "section": "colors"
+      },
+      {
+        "name": "The Land Legibility Rule",
+        "body": "Magenta text stays off full Chart Land, where it reaches only 4.42:1; pale land, paper and both waters all clear 4.5:1.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Figures Rule",
+        "body": "Measured values that must align use tabular lining figures; chart-like ordinals and counts use italic oldstyle soundings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Small Caps Rule",
+        "body": "Compact labels use the true small-caps face at a slight +0.015em. They are never produced with uppercase transforms and wide tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Printed Chart Rule",
+        "body": "Surfaces are printed, not stacked. Separate them with tone and rule; do not add shadow, blur or glow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** take colours, type sizes, spacing and control heights from the `--hb-` custom properties in `frontend/src/styles/harbor.css`.",
+      "**Do** label simulated material with both dashed magenta and words, in every surface where it appears.",
+      "**Do** pair every status colour with a shape or label, as the status mark does.",
+      "**Do** use Hull Ink (#170704) on Buoy Red.",
+      "**Do** switch secondary text to the darker soft navy on land surfaces by using the surface classes.",
+      "**Do** keep hidden panes mounted when changing layouts during a run.",
+      "**Do** keep charts and tables in tabular figures where values must align."
+    ],
+    "donts": [
+      "**Don't** use magenta for emphasis, branding or anything that is not simulated material.",
+      "**Don't** use red for errors, warnings or status; failed work uses the crossed navy mark.",
+      "**Don't** present simulated material with the solid source line, even when a merged item also contains source facts.",
+      "**Don't** add shadows, blurs, glows or gradients to surfaces.",
+      "**Don't** round controls beyond 2px or give panels rounded corners.",
+      "**Don't** add anchors, waves, compass roses or other nautical icons and ornament.",
+      "**Don't** set labels in tracked uppercase; use Alegreya Sans SC.",
+      "**Don't** drift toward the generic AI dashboard or the hacker terminal."
+    ]
+  }
+}
