@@ -3,6 +3,7 @@ Zep图谱记忆更新服务
 将模拟中的Agent活动动态更新到Zep图谱中
 """
 
+import os
 import time
 import threading
 from typing import Dict, Any, List, Optional
@@ -225,7 +226,8 @@ class ZepGraphMemoryUpdater:
     """
     
     # 批量发送大小（每个平台累积多少条后发送）
-    BATCH_SIZE = 5
+    # Every episode costs many local LLM calls, so send fewer, larger ones (upstream: 5).
+    BATCH_SIZE = int(os.environ.get("GRAPH_MEMORY_BATCH_SIZE", "20"))
     
     # 平台名称映射（用于控制台显示）
     PLATFORM_DISPLAY_NAMES = {
@@ -616,6 +618,9 @@ class ZepGraphMemoryUpdater:
                 )
                 if getattr(episode, "processed", False):
                     pending.remove(episode_uuid)
+                    if getattr(episode, "error", None):
+                        self._failed_count += 1
+                        logger.error("graph memory episode %s failed: %s", episode_uuid, episode.error)
             if pending:
                 time.sleep(3)
         self._pending_episode_uuids = []
