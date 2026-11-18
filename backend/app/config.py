@@ -25,12 +25,13 @@ class Config:
     JSON_AS_ASCII = False
     
     # LLM配置（统一使用OpenAI格式）
-    LLM_API_KEY = os.environ.get('LLM_API_KEY')
-    LLM_BASE_URL = os.environ.get('LLM_BASE_URL', 'https://api.openai.com/v1')
-    LLM_MODEL_NAME = os.environ.get('LLM_MODEL_NAME', 'gpt-4o-mini')
+    LLM_API_KEY = os.environ.get('LLM_API_KEY') or 'local'  # local servers ignore the key
+    LLM_BASE_URL = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11435/v1')
+    LLM_MODEL_NAME = os.environ.get('LLM_MODEL_NAME', 'mirofish-qwen')
     
     # Zep配置
-    ZEP_API_KEY = os.environ.get('ZEP_API_KEY')
+    # Graph memory is the local engine (app/local_graph); kept so existing 'key configured' checks pass.
+    ZEP_API_KEY = 'local'
     
     # 文件上传配置
     MAX_CONTENT_LENGTH = 50 * 1024 * 1024  # 50MB
@@ -64,12 +65,16 @@ class Config:
     def validate(cls) -> list[str]:
         """验证必要配置"""
         errors: list[str] = []
-        if not cls.LLM_API_KEY:
-            errors.append("LLM_API_KEY 未配置")
-        if not cls.ZEP_API_KEY:
-            errors.append("ZEP_API_KEY 未配置")
-        if os.environ.get("ZEP_API_URL"):
-            errors.append("ZEP_API_URL 不受支持；MiroFish 仅连接 Zep Cloud")
+        from urllib.parse import urlparse
+        import sys
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+        from netguard import host_allowed
+        for name, url in (("LLM_BASE_URL", cls.LLM_BASE_URL),
+                          ("LLM_BOOST_BASE_URL", os.environ.get("LLM_BOOST_BASE_URL")),
+                          ("EMBED_BASE_URL", os.environ.get("EMBED_BASE_URL"))):
+            if url and not host_allowed(urlparse(url).hostname):
+                errors.append(f"{name} must point at this machine (got {url}); "
+                              "this fork is local-only (see NETGUARD_ALLOW in .env.example)")
         if cls.DEBUG:
             import warnings
             warnings.warn("Flask DEBUG mode is enabled. Do not use in production.", RuntimeWarning)
