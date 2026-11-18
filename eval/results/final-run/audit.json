@@ -1,0 +1,513 @@
+{
+ "score": {
+  "n_items": 62,
+  "stance_reviewer": {
+   "oppose": 23,
+   "support": 4,
+   "neutral": 35
+  },
+  "stance_qwen": {
+   "oppose": 35,
+   "support": 8,
+   "neutral": 19
+  },
+  "agreement": 0.7096774193548387,
+  "kappa": 0.5234842015371478,
+  "personas_ok": 17,
+  "personas": 19,
+  "bad_personas": [
+   "Harbor Vale",
+   "Kessler Reservoir pipeline"
+  ],
+  "openings_ok": 5,
+  "openings": 5,
+  "claims": 41,
+  "claims_by": {
+   "unsupported": 14,
+   "supported": 24,
+   "contradicted": 3
+  },
+  "claims_detail": {
+   "forecast/unsupported": 4,
+   "simulation_event/supported": 15,
+   "source_fact/supported": 8,
+   "simulation_event/unsupported": 10,
+   "simulation_event/contradicted": 2,
+   "forecast/supported": 1,
+   "source_fact/contradicted": 1
+  },
+  "overclaims": 7,
+  "quotes": 14,
+  "quotes_verbatim": 10,
+  "quotes_graph_only": 4,
+  "exact_dup_items": 9
+ },
+ "review": {
+  "personas": [
+   {
+    "name": "Lena Fischer",
+    "role_ok": true,
+    "why": "Courier investigative reporter matches seed."
+   },
+   {
+    "name": "Eastside district",
+    "role_ok": true,
+    "why": "Seed describes Eastside only as a district of renters on shared meters; org framing is harmless colour."
+   },
+   {
+    "name": "Samuel Adeyemi",
+    "role_ok": true,
+    "why": "Water Workers Union leader, matches seed."
+   },
+   {
+    "name": "Brightline Consulting",
+    "role_ok": true,
+    "why": "Consultancy owned by Marco Reyes, paid 4.2M; consistent."
+   },
+   {
+    "name": "Daniel Oyelaran",
+    "role_ok": true,
+    "why": "Council member chairing finance committee, opposed 18 percent; matches."
+   },
+   {
+    "name": "Coastal Infrastructure Bank",
+    "role_ok": true,
+    "why": "Lender of the 60M loan; consistent."
+   },
+   {
+    "name": "Harbor Vale Water Authority",
+    "role_ok": true,
+    "why": "Public water utility, 240,000 residents, 1961 pipeline; consistent."
+   },
+   {
+    "name": "Marco Reyes",
+    "role_ok": true,
+    "why": "Owner of Brightline, brother of Tomas Reyes; matches."
+   },
+   {
+    "name": "Harbor Vale",
+    "role_ok": false,
+    "why": "Entity is the city, but persona and bio are Priya Raman, a person who also has her own persona."
+   },
+   {
+    "name": "Tomas Reyes",
+    "role_ok": true,
+    "why": "Former HVWA chief executive who resigned; misattributes Varga's 'failure waiting to happen' quote but role correct."
+   },
+   {
+    "name": "Grace Lindqvist",
+    "role_ok": true,
+    "why": "State auditor who examined Brightline; matches."
+   },
+   {
+    "name": "city council",
+    "role_ok": true,
+    "why": "Council that votes on the plan; consistent."
+   },
+   {
+    "name": "Water Workers Union",
+    "role_ok": true,
+    "why": "Union led by Adeyemi focused on maintenance jobs; matches."
+   },
+   {
+    "name": "Harbor Vale Courier",
+    "role_ok": true,
+    "why": "City newspaper running the Brightline investigation; matches."
+   },
+   {
+    "name": "Kessler Reservoir pipeline",
+    "role_ok": false,
+    "why": "Entity is the pipeline, but profession and bio make it the official HVWA account, a different organisation."
+   },
+   {
+    "name": "Ilse Varga",
+    "role_ok": true,
+    "why": "Mayor who first backed then withdrew support; matches."
+   },
+   {
+    "name": "Tenants Alliance of Harbor Vale",
+    "role_ok": true,
+    "why": "Renter advocacy group running the petition; matches."
+   },
+   {
+    "name": "Priya Raman",
+    "role_ok": true,
+    "why": "Tenants Alliance organizer focused on Eastside meters; matches."
+   },
+   {
+    "name": "Nadia Okafor",
+    "role_ok": true,
+    "why": "Chief engineer and acting CEO after Reyes resigned; matches."
+   }
+  ],
+  "opening_posts": [
+   {
+    "id": "opening_0",
+    "speaker_fits": true,
+    "why": "Union leader speaks for union on 200-job strike threat."
+   },
+   {
+    "id": "opening_1",
+    "speaker_fits": true,
+    "why": "Acting CEO defending revised plan and loan; plausible."
+   },
+   {
+    "id": "opening_2",
+    "speaker_fits": true,
+    "why": "Raman speaking about Eastside meters, her stated issue."
+   },
+   {
+    "id": "opening_3",
+    "speaker_fits": true,
+    "why": "Courier reporter on her own investigation; 'likely' hedges the later audit finding."
+   },
+   {
+    "id": "opening_4",
+    "speaker_fits": true,
+    "why": "Council member urging colleagues before the 15 July vote."
+   }
+  ],
+  "report_claims": [
+   {
+    "claim": "The simulation predicts a polarized outcome where passage of the 9% plan without job guarantees triggers a union strike",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "No vote or strike simulated; only threats (twitter:post:1, reddit:comment:14). 'Polarized' ignores Okafor and Varga backing job protection."
+   },
+   {
+    "claim": "Okafor describes the 9% tariff as a lifeline for aging pipes and stresses transparency and low-income protection",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:2 matches the quoted text."
+   },
+   {
+    "claim": "The Coastal Infrastructure Bank offers a 60 million dollar loan to cover remaining costs",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: remaining cost covered by 60 million dollar loan from Coastal Infrastructure Bank."
+   },
+   {
+    "claim": "The Coastal Infrastructure Bank has entered the fray / supports Okafor's narrative",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "No post or comment by the Bank exists in the simulation."
+   },
+   {
+    "claim": "Water Workers Union and Tenants Alliance view the loan with suspicion",
+    "kind": "simulation_event",
+    "verdict": "contradicted",
+    "evidence": "reddit:comment:10 Tenants call the loan 'necessary'; report itself quotes Tenants supporting it."
+   },
+   {
+    "claim": "Quote: 'Water Workers Union opposes the Coastal Infrastructure Bank loan if it comes at the expense of essential workers.'",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Not a post; closest is twitter:post:21, worded differently."
+   },
+   {
+    "claim": "Quote: 'Tenants Alliance ... supports Coastal Infrastructure Bank loan while demanding immediate action to replace shared meters'",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Not verbatim in any post; reddit:comment:10 is similar but differently worded."
+   },
+   {
+    "claim": "Tenants Alliance, led by Priya Raman, mobilized over 31,000 petition signatures",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: petition had 31,000 signatures; Raman leads the Alliance."
+   },
+   {
+    "claim": "Eastside renters pay more per litre than homeowners because of shared meters",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: Raman said Eastside renters pay more per litre due to old shared meters."
+   },
+   {
+    "claim": "Quote: 'The Tenants Alliance opposed the revised plan and would keep campaigning until shared meters were replaced.'",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Not a simulation post; seed says Raman welcomed the discount. twitter:post:20 calls 9% a step forward."
+   },
+   {
+    "claim": "Water Workers Union led by Samuel Adeyemi threatens to strike if plan passes without job guarantees",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: union has threatened a strike if plan passes without a guarantee on jobs."
+   },
+   {
+    "claim": "Quote: 'We cannot raise rates by 9% while forcing cuts to our maintenance teams...'",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:1 by samuel_adeyemi_252, matches."
+   },
+   {
+    "claim": "Quote: 'The Water Workers Union opposes the HVWA's plan to cut 200 maintenance positions without compensation or guarantees.'",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Not verbatim; reddit:comment:11 differs. Seed says cuts follow from the smaller rise, not an HVWA plan."
+   },
+   {
+    "claim": "Tenants Alliance insists shared meters be replaced before any rate hike is approved",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:3 and reddit:comment:7 demand meters fixed before any increase."
+   },
+   {
+    "claim": "The union's stance on job security is non-negotiable",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:11 'Job security is non-negotiable'."
+   },
+   {
+    "claim": "Okafor, supported by the Bank, champions necessity and transparency against an equity camp, making demands mutually exclusive",
+    "kind": "simulation_event",
+    "verdict": "contradicted",
+    "evidence": "reddit:post:6 Okafor says no jobs cut; Varga (comment:6) and the HVWA account (reddit:post:11) side with the union."
+   },
+   {
+    "claim": "Fischer quote: 'Following the money is crucial...'",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:18 by lena_fischer_633."
+   },
+   {
+    "claim": "Lena Fischer highlighted corruption risks and the need for fair pricing",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:post:12 and twitter:post:4 cover Brightline and Eastside inequity."
+   },
+   {
+    "claim": "A council vote for the 9% plan without addressing jobs and meters would likely cause a union strike",
+    "kind": "forecast",
+    "verdict": "supported",
+    "evidence": "Union threats twitter:post:19, reddit:comment:14; meters are not tied to any strike threat."
+   },
+   {
+    "claim": "A strike would paralyze the water system and become a humanitarian emergency",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "No simulated post describes service paralysis or a humanitarian emergency."
+   },
+   {
+    "claim": "The Courier and Fischer demand transparency about municipal contracts",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:2 and comment:3, twitter:post:29."
+   },
+   {
+    "claim": "Brightline is owned by the chief executive's brother, creating a corruption risk",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: Brightline owned by Marco Reyes, brother of HVWA chief executive."
+   },
+   {
+    "claim": "The media narrative forced officials to defend procurement integrity",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "Okafor twitter:post:6, 8, 12 and HVWA twitter:post:14 respond to the Brightline investigation."
+   },
+   {
+    "claim": "The media fractured the administration's unified front, with officials split on pipeline necessity",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Okafor, HVWA and Varga posts all agree on transparency; no split appears."
+   },
+   {
+    "claim": "Quote: 'This is the kind of investigative journalism we need...' and the 'Every dollar...' quote",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:10 and twitter:post:29 by harbor_vale_courier_543."
+   },
+   {
+    "claim": "The Courier explicitly links the tariff hike to broader accountability issues",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "The Courier posts and comments never mention the tariff."
+   },
+   {
+    "claim": "A cross-sector coalition between Tenants Alliance and Water Workers Union formed",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:1 Tenants 'stand with the workers'; twitter:post:28 Fischer 'stand together'. Thin evidence."
+   },
+   {
+    "claim": "The two groups both call the plan a 'trap'",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Only Adeyemi used 'trap' (twitter:post:19); Tenants posts never do."
+   },
+   {
+    "claim": "Media spotlight and the 9% hike catalyzed the alliance; media bridged the groups",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "No simulated post shows the media causing the alliance."
+   },
+   {
+    "claim": "Quote: 'The Tenants Alliance ... and the Water Workers Union stand together...' and the loan/200-positions quote",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:28 (Fischer) and reddit:comment:16 (Adeyemi). First is Fischer's, not the groups'."
+   },
+   {
+    "claim": "The Mayor and certain Council Members aligned with transparency and job security",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "Varga reddit:comment:5, 6 supported; Oyelaran reddit:post:7 only transparency."
+   },
+   {
+    "claim": "Mayor and Council Members form a coalition opposing the 'original 9% plan'",
+    "kind": "source_fact",
+    "verdict": "contradicted",
+    "evidence": "seed: original plan was 18%; Oyelaran now supports the 9% plan; Varga withdrew from 18%."
+   },
+   {
+    "claim": "Varga quote: 'As Mayor Varga, I share the union's concerns...'",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:6 by ilse_varga_130."
+   },
+   {
+    "claim": "Oyelaran quote on the 4.2 million Brightline fee and Finance Committee transparency",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:post:7 by daniel_oyelaran_144."
+   },
+   {
+    "claim": "Oyelaran is Finance Committee Chair",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: Oyelaran chairs the council's finance committee."
+   },
+   {
+    "claim": "Quote: 'The audit by Grace Lindqvist should include a full breakdown of the proposed workforce reductions...'",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:16 by samuel_adeyemi_252."
+   },
+   {
+    "claim": "If the administration ignores transparency, the coalition will solidify and strike likelihood rises",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "No simulated behaviour shows coalition hardening or administration response."
+   },
+   {
+    "claim": "The July 15 vote outcome will be heavily influenced by media framing",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "The simulation never reaches the vote or tests media framing."
+   },
+   {
+    "claim": "The media acted as a force multiplier for equity and united groups against corruption",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Interpretive; no post shows media uniting groups."
+   },
+   {
+    "claim": "The council votes on the 9% plan on July 15",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: council will vote on the 9 percent plan on 15 July."
+   },
+   {
+    "claim": "Nadia Okafor is Acting Chief Executive and the pipeline is the aging Kessler Reservoir pipeline",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "seed: board appointed Okafor acting CEO; pipeline built 1961."
+   }
+  ],
+  "overclaims": [
+   {
+    "text": "The simulation predicts a polarized outcome where the 9% tariff plan faces a critical fork",
+    "why": "One small run is presented as a prediction; no vote or strike was simulated."
+   },
+   {
+    "text": "the result will likely be a union strike. This would paralyze the water system, turning the infrastructure crisis into a humanitarian emergency",
+    "why": "Outcome stated with confidence and escalated beyond anything simulated."
+   },
+   {
+    "text": "the union's stance is non-negotiable... The simulation suggests that the path forward is blocked by these mutually exclusive demands",
+    "why": "Presents deadlock as certain although simulated officials backed job protection."
+   },
+   {
+    "text": "the media has successfully united disparate groups against a common enemy",
+    "why": "Causal claim stated as fact from a few posts."
+   },
+   {
+    "text": "the outcome of the July 15 vote will be heavily influenced by how the media frames the final arguments",
+    "why": "Stated as certain; the simulation never reaches the vote."
+   },
+   {
+    "text": "the coalition between tenants and workers is expected to solidify, increasing the likelihood of a strike",
+    "why": "Forecast with no simulated basis; coalition rests on thin evidence."
+   },
+   {
+    "text": "the media in this simulation has acted as a force multiplier for the social equity argument",
+    "why": "Definitive conclusion beyond what a small run shows."
+   }
+  ],
+  "stance": {
+   "twitter:post:1": "oppose",
+   "twitter:post:2": "support",
+   "twitter:post:3": "oppose",
+   "twitter:post:4": "neutral",
+   "twitter:post:5": "neutral",
+   "twitter:post:6": "neutral",
+   "twitter:post:7": "neutral",
+   "twitter:post:8": "neutral",
+   "twitter:post:10": "neutral",
+   "twitter:post:12": "neutral",
+   "twitter:post:13": "neutral",
+   "twitter:post:14": "neutral",
+   "twitter:post:15": "neutral",
+   "twitter:post:16": "neutral",
+   "twitter:post:17": "oppose",
+   "twitter:post:18": "neutral",
+   "twitter:post:19": "oppose",
+   "twitter:post:20": "oppose",
+   "twitter:post:21": "oppose",
+   "twitter:post:22": "oppose",
+   "twitter:post:23": "neutral",
+   "twitter:post:24": "oppose",
+   "twitter:post:25": "neutral",
+   "twitter:post:26": "neutral",
+   "twitter:post:27": "neutral",
+   "twitter:post:28": "neutral",
+   "twitter:post:29": "neutral",
+   "twitter:post:30": "neutral",
+   "twitter:post:31": "oppose",
+   "twitter:post:32": "neutral",
+   "twitter:post:35": "oppose",
+   "twitter:post:36": "oppose",
+   "twitter:post:37": "neutral",
+   "reddit:post:1": "oppose",
+   "reddit:post:2": "support",
+   "reddit:post:3": "oppose",
+   "reddit:post:4": "neutral",
+   "reddit:post:5": "neutral",
+   "reddit:post:6": "support",
+   "reddit:post:7": "neutral",
+   "reddit:post:8": "neutral",
+   "reddit:post:9": "neutral",
+   "reddit:post:10": "oppose",
+   "reddit:post:11": "oppose",
+   "reddit:post:12": "oppose",
+   "reddit:comment:1": "oppose",
+   "reddit:comment:2": "neutral",
+   "reddit:comment:3": "neutral",
+   "reddit:comment:4": "neutral",
+   "reddit:comment:5": "neutral",
+   "reddit:comment:6": "oppose",
+   "reddit:comment:7": "oppose",
+   "reddit:comment:8": "neutral",
+   "reddit:comment:9": "neutral",
+   "reddit:comment:10": "neutral",
+   "reddit:comment:11": "oppose",
+   "reddit:comment:12": "neutral",
+   "reddit:comment:13": "oppose",
+   "reddit:comment:14": "oppose",
+   "reddit:comment:15": "support",
+   "reddit:comment:16": "oppose",
+   "reddit:comment:17": "neutral"
+  }
+ }
+}

@@ -1,0 +1,469 @@
+{
+ "score": {
+  "n_items": 89,
+  "stance_reviewer": {
+   "neutral": 64,
+   "oppose": 24,
+   "support": 1
+  },
+  "stance_qwen": {
+   "neutral": 53,
+   "support": 6,
+   "oppose": 30
+  },
+  "agreement": 0.8539325842696629,
+  "kappa": 0.6957665001314751,
+  "personas_ok": 16,
+  "personas": 17,
+  "bad_personas": [
+   "Ilse Varga"
+  ],
+  "openings_ok": 2,
+  "openings": 4,
+  "claims": 30,
+  "claims_by": {
+   "supported": 12,
+   "unsupported": 15,
+   "contradicted": 3
+  },
+  "claims_detail": {
+   "source_fact/supported": 6,
+   "simulation_event/supported": 6,
+   "simulation_event/unsupported": 9,
+   "simulation_event/contradicted": 2,
+   "source_fact/contradicted": 1,
+   "forecast/unsupported": 6
+  },
+  "overclaims": 10,
+  "quotes": 9,
+  "quotes_verbatim": 1,
+  "quotes_graph_only": 8,
+  "exact_dup_items": 19
+ },
+ "review": {
+  "personas": [
+   {
+    "name": "Samuel Adeyemi",
+    "role_ok": true,
+    "why": "Union leader of Water Workers Union, matches seed."
+   },
+   {
+    "name": "Marco Reyes",
+    "role_ok": true,
+    "why": "Owner of Brightline Consulting, matches seed."
+   },
+   {
+    "name": "Ilse Varga",
+    "role_ok": false,
+    "why": "Seed: Ilse Varga is the mayor. Persona makes her a freelance consultant and community organizer, and blames Oyelaran for the funding method."
+   },
+   {
+    "name": "Tomas Reyes",
+    "role_ok": true,
+    "why": "Former HVWA chief executive who resigned in March; matches seed."
+   },
+   {
+    "name": "Nadia Okafor",
+    "role_ok": true,
+    "why": "Chief engineer and acting chief executive of HVWA; matches seed."
+   },
+   {
+    "name": "Priya Raman",
+    "role_ok": true,
+    "why": "Leads the Tenants Alliance; seed-consistent."
+   },
+   {
+    "name": "Grace Lindqvist",
+    "role_ok": true,
+    "why": "State auditor who opened the HVWA audit; matches seed."
+   },
+   {
+    "name": "Harbor Vale Water Authority",
+    "role_ok": true,
+    "why": "Water utility supplying the city; matches seed."
+   },
+   {
+    "name": "Water Workers Union",
+    "role_ok": true,
+    "why": "Union led by Adeyemi representing water workers; matches seed."
+   },
+   {
+    "name": "Eastside district",
+    "role_ok": true,
+    "why": "Seed barely describes it beyond renters and shared meters; persona fits."
+   },
+   {
+    "name": "Coastal Infrastructure Bank",
+    "role_ok": true,
+    "why": "Lender of the 60 million dollar loan; matches seed."
+   },
+   {
+    "name": "Lena Fischer",
+    "role_ok": true,
+    "why": "Courier reporter who wrote the Brightline investigation; matches seed."
+   },
+   {
+    "name": "The Harbor Vale Courier",
+    "role_ok": true,
+    "why": "City's newspaper; role fits. It calls Ilse Varga a councilor, a minor slip."
+   },
+   {
+    "name": "Brightline Consulting",
+    "role_ok": true,
+    "why": "Consulting firm owned by Marco Reyes; matches seed."
+   },
+   {
+    "name": "Tenants Alliance of Harbor Vale",
+    "role_ok": true,
+    "why": "Renter advocacy group led by Raman; matches seed."
+   },
+   {
+    "name": "city council",
+    "role_ok": true,
+    "why": "Body that votes on the plan 15 July; seed-consistent."
+   },
+   {
+    "name": "Daniel Oyelaran",
+    "role_ok": true,
+    "why": "Council member; persona omits finance chair but does not contradict seed."
+   }
+  ],
+  "opening_posts": [
+   {
+    "id": "opening_0",
+    "speaker_fits": false,
+    "why": "HVWA account speaks as the union (our 200 positions, survival of our jobs); the strike threat belongs to the Water Workers Union."
+   },
+   {
+    "id": "opening_1",
+    "speaker_fits": true,
+    "why": "HVWA could say it paid Brightline and that acting CEO Okafor will publish contracts (seed)."
+   },
+   {
+    "id": "opening_2",
+    "speaker_fits": true,
+    "why": "Courier reporting on council leanings fits a newspaper voice."
+   },
+   {
+    "id": "opening_3",
+    "speaker_fits": false,
+    "why": "Adeyemi speaks for Eastside renters and shared meters; seed assigns those to Raman and the Tenants Alliance, not the union leader."
+   }
+  ],
+  "report_claims": [
+   {
+    "claim": "The 9 percent tariff plan is the Authority's revised plan, voted by the council on July 15.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: Okafor presented revised 9 percent plan; council votes 15 July."
+   },
+   {
+    "claim": "Samuel Adeyemi leads the Water Workers Union.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: Water Workers Union, led by Samuel Adeyemi."
+   },
+   {
+    "claim": "200 maintenance positions are at risk under the 9 percent plan.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: Adeyemi says smaller rise would force 200 maintenance position cuts."
+   },
+   {
+    "claim": "The Union opposes the 9 percent plan without job guarantees (quoted as Adeyemi).",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:18, twitter:post:58: no tariff increase without binding job guarantees; wording differs."
+   },
+   {
+    "claim": "Tenants Alliance, led by Priya Raman, backed the union's job-guarantee position.",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:22, reddit:post:6 (Priya) endorse union demand."
+   },
+   {
+    "claim": "Adeyemi supports the Tenants Alliance's stance that a rate hike jeopardizing workers is unacceptable.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Reversed: reddit:comment:22 is Tenants Alliance backing union; Adeyemi wrote no such text."
+   },
+   {
+    "claim": "Council member Oyelaran joined the coalition and opposes the plan for lacking job protections.",
+    "kind": "simulation_event",
+    "verdict": "contradicted",
+    "evidence": "reddit:comment:14, 21: backs job guarantees but urges proceeding with pipeline and loan; seed: he supports revised plan."
+   },
+   {
+    "claim": "Ilse Varga is a community organizer in Eastside who opposes the plan.",
+    "kind": "source_fact",
+    "verdict": "contradicted",
+    "evidence": "Seed: Ilse Varga is the mayor, who withdrew support for the 18 percent increase."
+   },
+   {
+    "claim": "Lena Fischer supports calls for transparency and to publish every contract before July 15.",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:1, reddit:comment:11 by lena_fischer_893."
+   },
+   {
+    "claim": "The local press aligns with the coalition's goals.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Courier posts (twitter:post:4, 9, 21) claim unbiased reporting and take no side on the plan."
+   },
+   {
+    "claim": "Tenants Alliance said it supports the Courier's stance on job guarantees and opposing hikes.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "No Courier or Tenants Alliance text states this; Courier never mentions job guarantees as its stance."
+   },
+   {
+    "claim": "The Water Workers Union stands ready to strike if the plan passes without a job guarantee.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: union has threatened a strike if the plan passes without a guarantee on jobs."
+   },
+   {
+    "claim": "The coalition is unified around a single non-negotiable job-guarantee demand across union, officials and community leaders.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Eastside, Priya focus on shared meters, pricing and $60M loan; council and Courier take no such demand."
+   },
+   {
+    "claim": "Public debate is dominated by equity and transparency arguments.",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "Many posts on Eastside pricing, transparency and publishing contracts, e.g. twitter:post:12, reddit:comment:1."
+   },
+   {
+    "claim": "The strike will commence immediately if the council passes the plan without guarantees.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "Samuel (reddit:comment:12) only says no strike unless positions protected; no vote or strike simulated."
+   },
+   {
+    "claim": "The union has mobilized its members and the threat is operational.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "No simulated text describes mobilization or strike preparations."
+   },
+   {
+    "claim": "The council opposes the Authority's statement about standing ready to strike.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "twitter:post:6 from city_council_639 never mentions a strike; the strike text came from HVWA account."
+   },
+   {
+    "claim": "Oyelaran and council members formed a political block against the plan.",
+    "kind": "simulation_event",
+    "verdict": "contradicted",
+    "evidence": "Seed: Oyelaran supports revised plan; reddit:comment:21 argues loan and replacement are necessary."
+   },
+   {
+    "claim": "The Eastside district opposes the 9 percent revision over unfair renter pricing.",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "twitter:post:12 by eastside_district_185."
+   },
+   {
+    "claim": "Brightline Consulting received 4.2 million dollars for a pipeline study, and a scandal followed.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: HVWA paid Brightline 4.2 million; audit found procurement rules broken."
+   },
+   {
+    "claim": "State Auditor Grace Lindqvist produced audit findings on the contracts.",
+    "kind": "source_fact",
+    "verdict": "supported",
+    "evidence": "Seed: Lindqvist audit found in June the contract broke procurement rules."
+   },
+   {
+    "claim": "Eastside residents see the tariff as a direct attack on infrastructure stability.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Eastside posts (twitter:post:12, reddit:comment:23) concern renter pricing and shared meters, not infrastructure stability."
+   },
+   {
+    "claim": "Media and community leaders use the vote to demand publication of every contract.",
+    "kind": "simulation_event",
+    "verdict": "supported",
+    "evidence": "reddit:comment:1, 6, 19 demand publication before the July 15th vote."
+   },
+   {
+    "claim": "Media coverage shifted from tariff numbers to HVWA's financial black box.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Courier posts (twitter:post:21, 32, 42) stay on the tariff vote; no shift appears."
+   },
+   {
+    "claim": "The debate shifted from infrastructure costs to a cultural clash and is paralyzed.",
+    "kind": "simulation_event",
+    "verdict": "unsupported",
+    "evidence": "Nothing in the simulation shows a shift or paralysis; Oyelaran still argues infrastructure need."
+   },
+   {
+    "claim": "The council will reject the 9 percent plan by July 15, a definitive rejection.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "No vote simulated; seed says Oyelaran will support the plan."
+   },
+   {
+    "claim": "Outcome is binary: plan passes with guarantees, or union strikes.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "Ignores rejection and a plan passing without a strike; simulation tested neither."
+   },
+   {
+    "claim": "Passage of the plan without job guarantees is viewed as politically impossible by most simulated agents.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "Most posts neutral boilerplate (twitter:post:4, 9); only some oppose, none call passage impossible."
+   },
+   {
+    "claim": "A strike would halt water maintenance services.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "No simulated text describes strike effects."
+   },
+   {
+    "claim": "By July 15 discourse will be saturated with job and transparency narratives.",
+    "kind": "forecast",
+    "verdict": "unsupported",
+    "evidence": "Twitter posts dominated by Courier boilerplate and Eastside meters; saturation not shown."
+   }
+  ],
+  "overclaims": [
+   {
+    "text": "The simulation predicts a definitive rejection of the 9% water tariff plan by July 15",
+    "why": "No vote was simulated; one small run cannot predict a definitive outcome and seed says Oyelaran will support the plan."
+   },
+   {
+    "text": "making the passage of the tariff plan without job guarantees virtually impossible",
+    "why": "Stated as near-certain; only some agents opposed and the council never acted."
+   },
+   {
+    "text": "the strike will commence immediately",
+    "why": "Certain-sounding forecast; the sim only had conditional statements, no strike."
+   },
+   {
+    "text": "signaling that industrial action is the inevitable next step",
+    "why": "Inevitability claim not supported by one small run."
+   },
+   {
+    "text": "The union has mobilized its members, and the threat is no longer rhetorical but operational.",
+    "why": "No simulated evidence of mobilization."
+   },
+   {
+    "text": "The strike remains imminent",
+    "why": "Presents the strike as certain though only a conditional threat is in the seed and sim."
+   },
+   {
+    "text": "is viewed by the majority of the simulated agents as politically impossible",
+    "why": "Gives the sim authority it lacks; most posts were neutral boilerplate."
+   },
+   {
+    "text": "no tariff plan can be considered legitimate",
+    "why": "Absolute conclusion beyond what the simulation showed."
+   },
+   {
+    "text": "The coalition of labor unions, city officials, and community leaders has successfully unified around a single non-negotiable demand",
+    "why": "Overstates unity; city council never agreed and Priya and Eastside pushed other demands."
+   },
+   {
+    "text": "the question remains whether the city council will cave to this unified front",
+    "why": "Presents a unified front as established fact."
+   }
+  ],
+  "stance": {
+   "twitter:post:1": "neutral",
+   "twitter:post:2": "neutral",
+   "twitter:post:3": "oppose",
+   "twitter:post:4": "neutral",
+   "twitter:post:5": "neutral",
+   "twitter:post:6": "neutral",
+   "twitter:post:7": "neutral",
+   "twitter:post:8": "oppose",
+   "twitter:post:9": "neutral",
+   "twitter:post:10": "neutral",
+   "twitter:post:11": "neutral",
+   "twitter:post:12": "oppose",
+   "twitter:post:13": "neutral",
+   "twitter:post:14": "neutral",
+   "twitter:post:15": "neutral",
+   "twitter:post:16": "neutral",
+   "twitter:post:17": "neutral",
+   "twitter:post:18": "neutral",
+   "twitter:post:19": "neutral",
+   "twitter:post:20": "neutral",
+   "twitter:post:21": "neutral",
+   "twitter:post:22": "neutral",
+   "twitter:post:23": "neutral",
+   "twitter:post:24": "neutral",
+   "twitter:post:25": "neutral",
+   "twitter:post:26": "neutral",
+   "twitter:post:27": "oppose",
+   "twitter:post:28": "neutral",
+   "twitter:post:29": "neutral",
+   "twitter:post:30": "neutral",
+   "twitter:post:31": "neutral",
+   "twitter:post:32": "neutral",
+   "twitter:post:33": "neutral",
+   "twitter:post:34": "neutral",
+   "twitter:post:35": "neutral",
+   "twitter:post:36": "neutral",
+   "twitter:post:37": "neutral",
+   "twitter:post:38": "neutral",
+   "twitter:post:39": "neutral",
+   "twitter:post:40": "neutral",
+   "twitter:post:41": "neutral",
+   "twitter:post:42": "neutral",
+   "twitter:post:43": "oppose",
+   "twitter:post:44": "neutral",
+   "twitter:post:45": "neutral",
+   "twitter:post:46": "neutral",
+   "twitter:post:47": "oppose",
+   "twitter:post:48": "neutral",
+   "twitter:post:49": "oppose",
+   "twitter:post:50": "neutral",
+   "twitter:post:51": "neutral",
+   "twitter:post:52": "neutral",
+   "twitter:post:53": "oppose",
+   "twitter:post:54": "neutral",
+   "twitter:post:55": "oppose",
+   "twitter:post:56": "oppose",
+   "twitter:post:57": "neutral",
+   "twitter:post:58": "oppose",
+   "twitter:post:59": "oppose",
+   "twitter:post:60": "oppose",
+   "reddit:post:1": "oppose",
+   "reddit:post:2": "neutral",
+   "reddit:post:3": "neutral",
+   "reddit:post:4": "oppose",
+   "reddit:post:5": "neutral",
+   "reddit:post:6": "oppose",
+   "reddit:comment:1": "neutral",
+   "reddit:comment:2": "neutral",
+   "reddit:comment:3": "neutral",
+   "reddit:comment:4": "neutral",
+   "reddit:comment:5": "neutral",
+   "reddit:comment:6": "neutral",
+   "reddit:comment:7": "neutral",
+   "reddit:comment:8": "neutral",
+   "reddit:comment:9": "oppose",
+   "reddit:comment:10": "neutral",
+   "reddit:comment:11": "neutral",
+   "reddit:comment:12": "oppose",
+   "reddit:comment:13": "oppose",
+   "reddit:comment:14": "neutral",
+   "reddit:comment:15": "oppose",
+   "reddit:comment:16": "neutral",
+   "reddit:comment:17": "oppose",
+   "reddit:comment:18": "oppose",
+   "reddit:comment:19": "neutral",
+   "reddit:comment:20": "neutral",
+   "reddit:comment:21": "support",
+   "reddit:comment:22": "oppose",
+   "reddit:comment:23": "oppose"
+  }
+ }
+}
