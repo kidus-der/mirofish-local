@@ -9,7 +9,9 @@ import warnings
 # 需要在所有其他导入之前设置
 warnings.filterwarnings("ignore", message=".*resource_tracker.*")
 
-from flask import Flask, request
+import re
+
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 from .config import Config
@@ -20,6 +22,8 @@ def create_app(config_class=Config):
     """Flask应用工厂函数"""
     app = Flask(__name__)
     app.config.from_object(config_class)
+    # Host-header allowlist (DNS-rebinding defence); werkzeug ignores the port.
+    app.config["TRUSTED_HOSTS"] = ["localhost", "127.0.0.1", "[::1]"]
     
     # 设置JSON编码：确保中文直接显示（而不是 \uXXXX 格式）
     # Flask >= 2.3 使用 app.json.ensure_ascii，旧版本使用 JSON_AS_ASCII 配置
@@ -40,7 +44,7 @@ def create_app(config_class=Config):
         logger.info("=" * 50)
     
     # 启用CORS
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}})
     
     # 注册模拟进程清理函数（确保服务器关闭时终止所有模拟进程）
     from .services.simulation_runner import SimulationRunner
@@ -48,6 +52,24 @@ def create_app(config_class=Config):
     if should_log_startup:
         logger.info("已注册模拟进程清理函数")
     
+    # Cross-site multipart POSTs need no CORS preflight, so refuse foreign Origins outright.
+    _allowed_origins = {"http://localhost:3000", "http://127.0.0.1:3000"}
+
+    @app.before_request
+    def reject_foreign_origin():
+        origin = request.headers.get("Origin")
+        if origin is not None and origin not in _allowed_origins:
+            return jsonify({"success": False, "error": "origin not allowed"}), 403
+
+    # IDs become directory names; reject anything that could traverse (e.g. "..").
+    _safe_id = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
+
+    @app.before_request
+    def reject_unsafe_ids():
+        for key, value in (request.view_args or {}).items():
+            if key.endswith("_id") and not _safe_id.match(str(value)):
+                return jsonify({"success": False, "error": f"invalid {key}"}), 400
+
     # 请求日志中间件
     @app.before_request
     def log_request():
