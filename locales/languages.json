@@ -5,7 +5,7 @@
   },
   "en": {
     "label": "English",
-    "llmInstruction": "Please respond in English."
+    "llmInstruction": "IMPORTANT: Write every part of your answer in English, including titles, section headings and summaries. Do not use Chinese, even if these instructions contain Chinese."
   },
   "es": {
     "label": "Español",
