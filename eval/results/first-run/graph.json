@@ -1,0 +1,1585 @@
+{
+  "edge_count": 72,
+  "edges": [
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Ilse Varga works at Harbor Vale Courier",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Harbor Vale",
+      "target_node_uuid": "d075e971-eb39-435b-9a42-591a4e347eaf",
+      "uuid": "ffbf6bde-628a-4426-92a8-d569221ab9e8",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer supports the call to publish every contract and demands full accountability before the July 15th vote.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "ff496ce7-991e-4192-8921-decd762a70f6",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "0a4b7c08-7e42-4b76-b3b8-051d0ec3bd6a",
+        "2fda06de-58ea-49db-a717-641bb978b8a8",
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": null,
+      "fact": "Nadia Okafor was appointed as acting chief executive of the Authority.",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Nadia Okafor",
+      "source_node_uuid": "d47c2a36-11b8-451b-93fc-0f908fd14657",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "fa8a8c48-a6ee-496e-8e32-8f72d567a10e",
+      "valid_at": "2026-03-28"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer reports on The Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "The Harbor Vale Courier",
+      "target_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "uuid": "f6a78cb3-cc14-4b54-a49f-f95cb5718a93",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "c1c9f9bb-4882-47f1-a514-3361ff98b059"
+      ],
+      "expired_at": null,
+      "fact": "The Tenants Alliance of Harbor Vale supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "The Harbor Vale Courier",
+      "target_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "uuid": "f0ca54eb-4bb1-4f77-8693-82bda52b647f",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833",
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Samuel Adeyemi opposes The Harbor Vale Water Authority's 9 percent tariff plan without job guarantees.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "e52c7e09-912d-43d5-a372-9084259cd126",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "Ilse Varga supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "e50ca20e-be12-4684-af76-763a004228a4",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {
+        "details": "Brightline Consulting is owned by Marco Reyes."
+      },
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2815494a-9b5a-4c58-8ff5-0b3135fb3df5"
+      ],
+      "expired_at": null,
+      "fact": "Brightline Consulting is owned by Marco Reyes.",
+      "fact_type": "OWNED_BY",
+      "invalid_at": null,
+      "name": "OWNED_BY",
+      "source_node_name": "Marco Reyes",
+      "source_node_uuid": "ef455a31-cae6-4965-8cd3-9f1b5e4c6b40",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "e3b06cdc-c018-4e33-8254-fb2924e1b058",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": null,
+      "fact": "The Harbor Vale Courier reports on The Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "The Harbor Vale Courier",
+      "source_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "e194bc38-8c2a-4422-b67d-624d2d5cc728",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Ilse Varga opposes the use of the $60 million loan from the Coastal Infrastructure Bank to pass costs directly to consumers as taxes.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Coastal Infrastructure Bank",
+      "target_node_uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59",
+      "uuid": "daac3724-1567-4dbf-a5d9-b5c7f357d741",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "d8014f3e-4a4c-45ca-a978-a4243e9a0bad",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "The Harbor Vale Courier supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "The Harbor Vale Courier",
+      "source_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "d7f82453-25e8-42ec-a927-dad1ee01752e",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": null,
+      "fact": "Daniel Oyelaran serves as a Council member.",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "d392cf6b-ec30-468e-8435-83c7aee7cda4",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "3329d0ea-3132-4c53-802f-d64ae938874d"
+      ],
+      "expired_at": null,
+      "fact": "Daniel Oyelaran requires immediate, full transparency regarding the $4.2 million payment to Brightline Consulting and cites audit findings from State Auditor Grace Lindqvist.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "d37a3959-c945-42c1-9f07-7f334b5c6c27",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "The Tenants Alliance of Harbor Vale opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "ce991e8a-9362-436d-951a-dc54b89ab874",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "95180e11-a280-4e21-81e7-3d7e0518e18f"
+      ],
+      "expired_at": null,
+      "fact": "The Coastal Infrastructure Bank provided a 60 million dollar loan to Harbor Vale Water Authority to cover the remaining cost of the tariff rise.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Coastal Infrastructure Bank",
+      "source_node_uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "c99127ee-039f-4dbd-8d60-f9ca11d223eb",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "3329d0ea-3132-4c53-802f-d64ae938874d"
+      ],
+      "expired_at": null,
+      "fact": "Daniel Oyelaran references the audit findings from State Auditor Grace Lindqvist regarding the payment to Brightline Consulting.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "State Auditor Grace Lindqvist",
+      "target_node_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+      "uuid": "c6b0987e-72cd-404c-8bb9-d52fc12d9b03",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {
+        "source_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+        "target_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731"
+      },
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "Grace Lindqvist supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "State Auditor Grace Lindqvist",
+      "source_node_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "c51acaf4-34a8-45d3-a525-fb50a77514f4",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Daniel Oyelaran opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "b5dec6c4-92af-4002-bb2b-be3b3c76d43f",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": null,
+      "fact": "Daniel Oyelaran opposes the $4.2 million payment to Brightline Consulting made without proper competitive bidding or compliance checks.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "b50e13b9-cdf8-4a55-af9f-fca34c26c317",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": null,
+      "fact": "Ilse Varga is a community organizer in the Eastside district.",
+      "fact_type": "LIVES_IN",
+      "invalid_at": null,
+      "name": "LIVES_IN",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Eastside district",
+      "target_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "uuid": "b369f1e2-44b3-4a83-95b9-609d3754b1a9",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "92e1831d-7cd4-407b-9755-7080053bab3f"
+      ],
+      "expired_at": null,
+      "fact": "Samuel Adeyemi opposes the revised plan of HVWA.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "b34b1a08-7ed7-4069-b7e9-1150a8f986d7",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "The Eastside district supports Samuel Adeyemi's stance on opposing shared meters and addressing unfair pricing.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Eastside district",
+      "source_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "target_node_name": "Samuel Adeyemi",
+      "target_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "uuid": "b0ae190c-2608-437a-9083-72e19cffb6ed",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "6b6853db-a5a4-4b07-ab2b-4f358b5d2da3"
+      ],
+      "expired_at": null,
+      "fact": "The city council will vote on the 9 percent plan on 15 July",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "city council",
+      "source_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "b060de77-6b97-45b8-a48b-4ed1a503a159",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "95180e11-a280-4e21-81e7-3d7e0518e18f",
+        "fd256565-4e3a-4154-8aea-9168cca9dd94",
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Marco Reyes works for Brightline Consulting.",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": "2026-11-18",
+      "name": "WORKS_FOR",
+      "source_node_name": "Marco Reyes",
+      "source_node_uuid": "ef455a31-cae6-4965-8cd3-9f1b5e4c6b40",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "ae26fbb1-4aa7-4237-befd-8c109a444593",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "758537ef-ba52-4727-9190-0fd97fb3bf07"
+      ],
+      "expired_at": null,
+      "fact": "Tenants Alliance of Harbor Vale opposes Brightline Consulting regarding the $4.2 million payment and calls for transparency and an independent investigation.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "ab6d4cb8-7182-4423-afc8-2358a0a12f77",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "The Water Workers Union opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Water Workers Union",
+      "source_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "a21ce1e0-2481-4aa8-a1d7-26195adff253",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Tomas Reyes supports the call for full scrutiny of the $4.2 million contract with Brightline Consulting.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Tomas Reyes",
+      "source_node_uuid": "d79f7693-a458-421f-97b0-04f04153925e",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "a14bd4fe-ce12-40ce-be4d-75d65ead62b5",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Tenants Alliance of Harbor Vale is associated with Eastside",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "Eastside district",
+      "target_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "uuid": "a0300916-79a3-417a-8f0e-f274c8176049",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Samuel Adeyemi works at Brightline Consulting",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "9cdedd46-9659-49df-976e-c7f68a1d0b71",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "0a4b7c08-7e42-4b76-b3b8-051d0ec3bd6a"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Tomas Reyes resigned as chief executive of the Authority on 28 March 2026.",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": "2026-03-28",
+      "name": "WORKS_FOR",
+      "source_node_name": "Tomas Reyes",
+      "source_node_uuid": "d79f7693-a458-421f-97b0-04f04153925e",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "96649ec8-2082-413f-a1e9-894ea72f1c2e",
+      "valid_at": "2026-03-28"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "city council opposes The Harbor Vale Water Authority's 9 percent tariff plan without job guarantees.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "city council",
+      "source_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "95aeec66-7730-4f5e-a92d-687eadc3f823",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Daniel Oyelaran works at Harbor Vale Council",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Daniel Oyelaran",
+      "source_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "9363feed-e84b-48e8-b98b-414cb144701d",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cd281421-2d70-4f5d-b14a-fac73ae096c7"
+      ],
+      "expired_at": null,
+      "fact": "The Tenants Alliance of Harbor Vale supports the Water Workers Union's demand for job guarantees for the 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "Water Workers Union",
+      "target_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "uuid": "8ab1a78a-7452-4f22-b361-6371c64e18f5",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "Harbor Vale Water Authority has paid $4.2 million to Brightline Consulting for a pipeline study.",
+      "fact_type": "PAID",
+      "invalid_at": null,
+      "name": "PAID",
+      "source_node_name": "Harbor Vale Water Authority",
+      "source_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "8750f83b-76ba-4da4-b3d8-8c20de10d33a",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer works at Harbor Vale Courier",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Harbor Vale",
+      "target_node_uuid": "d075e971-eb39-435b-9a42-591a4e347eaf",
+      "uuid": "84863043-6a2f-40c8-96ed-cb3e992d3267",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "92e1831d-7cd4-407b-9755-7080053bab3f"
+      ],
+      "expired_at": null,
+      "fact": "Priya Raman opposes the shared meters in Eastside of HVWA.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Priya Raman",
+      "source_node_uuid": "ccae9b23-6f5b-43da-bc52-3739dd4f92cd",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "83c5a948-fe8f-4c73-b116-fe45fb446426",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "cb917cc1-3ff5-4a18-bb81-e775332f142a"
+      ],
+      "expired_at": null,
+      "fact": "Ilse Varga opposed Daniel Oyelaran regarding the plan to raise household water tariffs by 18 percent to replace the Kessler Reservoir pipeline built in 1961.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Daniel Oyelaran",
+      "target_node_uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c",
+      "uuid": "82b9d8ab-6d52-4a3b-966b-2b35d66c02ee",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Water Workers Union opposes Harbor Vale Water Authority's tariff increase without job guarantees",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Water Workers Union",
+      "source_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "805ae689-3862-44b3-a4b8-d68ed86d4305",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {
+        "source_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+        "target_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731"
+      },
+      "created_at": "2026-11-18",
+      "episodes": [
+        "0a4b7c08-7e42-4b76-b3b8-051d0ec3bd6a",
+        "95180e11-a280-4e21-81e7-3d7e0518e18f"
+      ],
+      "expired_at": null,
+      "fact": "Grace Lindqvist opened a formal audit of HVWA in March 2026.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "State Auditor Grace Lindqvist",
+      "source_node_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "8000f7b4-9952-4e71-a615-b4bc8982793f",
+      "valid_at": "2026-03-01"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "6b6853db-a5a4-4b07-ab2b-4f358b5d2da3"
+      ],
+      "expired_at": null,
+      "fact": "The Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Water Workers Union",
+      "source_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "7e6433ad-ec42-48ba-a2ad-77f0c0680646",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": null,
+      "fact": "The Eastside district supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Eastside district",
+      "source_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "7cb87561-24de-4594-95f6-fe104ba10866",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "c1c9f9bb-4882-47f1-a514-3361ff98b059"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Priya Raman supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Priya Raman",
+      "source_node_uuid": "ccae9b23-6f5b-43da-bc52-3739dd4f92cd",
+      "target_node_name": "The Harbor Vale Courier",
+      "target_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "uuid": "77e3c40d-2cd9-4caa-a5dd-f122a922a709",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2815494a-9b5a-4c58-8ff5-0b3135fb3df5",
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer works for The Harbor Vale Courier.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "The Harbor Vale Courier",
+      "target_node_uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0",
+      "uuid": "6e5ead7e-9688-4122-81a8-e853ae4a5788",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "95180e11-a280-4e21-81e7-3d7e0518e18f"
+      ],
+      "expired_at": null,
+      "fact": "The Coastal Infrastructure Bank provided a 60 million dollar loan to Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Coastal Infrastructure Bank",
+      "source_node_uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "68602094-d925-4ebe-8a2f-44da894e18d4",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a9913f6f-4601-404b-8589-14d8b4d59206"
+      ],
+      "expired_at": null,
+      "fact": "Tomas Reyes is the chief executive of the Harbor Vale Water Authority (HVWA).",
+      "fact_type": "WORKS_FOR",
+      "invalid_at": null,
+      "name": "WORKS_FOR",
+      "source_node_name": "Tomas Reyes",
+      "source_node_uuid": "d79f7693-a458-421f-97b0-04f04153925e",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "678c09f2-b7ac-417a-a991-04c695f5a7fd",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer reports on Samuel Adeyemi's concerns about shared meters in the Eastside district.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Samuel Adeyemi",
+      "target_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "uuid": "5d744985-5cc7-49bf-9e40-b86add22ffb4",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {
+        "source_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+        "target_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8"
+      },
+      "created_at": "2026-11-18",
+      "episodes": [
+        "fd256565-4e3a-4154-8aea-9168cca9dd94"
+      ],
+      "expired_at": null,
+      "fact": "Grace Lindqvist audits Brightline Consulting.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "State Auditor Grace Lindqvist",
+      "source_node_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "5ab3b2eb-178b-48c6-a685-330e69673bd1",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2815494a-9b5a-4c58-8ff5-0b3135fb3df5"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "5994f5f0-a60e-4fd5-b234-f8d1971c8164",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Harbor Vale Water Authority opposes Harbor Vale Council's tariff revision plan",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Harbor Vale Water Authority",
+      "source_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "target_node_name": "city council",
+      "target_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "uuid": "52045657-fcce-4999-bed6-6dcb5ff1b9b7",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "c1c9f9bb-4882-47f1-a514-3361ff98b059"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Priya Raman supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Priya Raman",
+      "source_node_uuid": "ccae9b23-6f5b-43da-bc52-3739dd4f92cd",
+      "target_node_name": "Water Workers Union",
+      "target_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "uuid": "45d98161-d3f6-44a4-9108-f3936ca3e6d2",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "The Water Workers Union stands ready to strike if the city council votes for the 9 percent tariff plan without a guaranteed guarantee for our 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Water Workers Union",
+      "source_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "45bf5c17-24ab-435d-8cba-164401c170fa",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": null,
+      "fact": "Tomas Reyes opposes the procurement irregularities involving Brightline Consulting and advocates for transparency at the Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tomas Reyes",
+      "source_node_uuid": "d79f7693-a458-421f-97b0-04f04153925e",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "435bb325-9ed5-40e6-bc7f-b113d5be0a98",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "3315d256-31ea-4289-9c97-a7bb7f418568"
+      ],
+      "expired_at": null,
+      "fact": "The Coastal Infrastructure Bank has provided $60 million for the Kessler Reservoir replacement.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Coastal Infrastructure Bank",
+      "source_node_uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "3fc66e5f-3afd-43ef-ac63-1cb8af371bc5",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Tenants Alliance of Harbor Vale opposes Harbor Vale Water Authority's proposed 9% tariff hike",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "397c09d9-017c-42c2-8c6d-0b0f810788a6",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "758537ef-ba52-4727-9190-0fd97fb3bf07"
+      ],
+      "expired_at": null,
+      "fact": "Water Workers Union supports renters in the Eastside district and advocates for equitable water pricing and against shared meters.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Water Workers Union",
+      "source_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "target_node_name": "Eastside district",
+      "target_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "uuid": "388bde7c-046f-4de7-9407-4195e34aeeb3",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "9a4630b0-d8eb-4036-9fed-2da5295aca55"
+      ],
+      "expired_at": null,
+      "fact": "Coastal Infrastructure Bank provided a 60 million dollar loan to cover the remaining cost of the revised water tariff plan.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Coastal Infrastructure Bank",
+      "target_node_uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59",
+      "uuid": "36dad1a5-755a-4474-9e03-843c3123bae7",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "89560b9e-4635-4836-903d-2ce786a21bd0"
+      ],
+      "expired_at": null,
+      "fact": "Harbor Vale Water Authority owns Kessler Reservoir pipeline",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Harbor Vale Water Authority",
+      "source_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "target_node_name": "Kessler Reservoir pipeline",
+      "target_node_uuid": "d550c16f-fd47-468f-9a1d-e7b15f2b146f",
+      "uuid": "343fe2b3-7173-41eb-86c5-1f5654ff722c",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "95180e11-a280-4e21-81e7-3d7e0518e18f"
+      ],
+      "expired_at": null,
+      "fact": "Brightline Consulting conducted a pipeline study for Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Brightline Consulting",
+      "source_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "30a03b50-4789-426d-9bdb-20a4bc86bc2c",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "92e1831d-7cd4-407b-9755-7080053bab3f",
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9",
+        "758537ef-ba52-4727-9190-0fd97fb3bf07"
+      ],
+      "expired_at": null,
+      "fact": "Samuel Adeyemi leads the Water Workers Union.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Water Workers Union",
+      "target_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "uuid": "27edb7ca-eaf0-4330-9748-0a9bfba45ea3",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "c1c9f9bb-4882-47f1-a514-3361ff98b059"
+      ],
+      "expired_at": null,
+      "fact": "The Tenants Alliance of Harbor Vale supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Tenants Alliance of Harbor Vale",
+      "source_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "target_node_name": "Water Workers Union",
+      "target_node_uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1",
+      "uuid": "2673534d-61cb-4bea-9506-f726995ac11c",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": null,
+      "fact": "The Eastside district opposes the 9 percent tariff revision plan proposed by the Harbor Vale Water Authority due to unfair pricing for renters.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Eastside district",
+      "source_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "231dc5ce-e0bc-401e-97c7-e50d3b8a05b2",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a9913f6f-4601-404b-8589-14d8b4d59206"
+      ],
+      "expired_at": null,
+      "fact": "The Harbor Vale Water Authority (HVWA) is responsible for the Kessler Reservoir pipeline, which was built in 1961.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Harbor Vale Water Authority",
+      "source_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "target_node_name": "Kessler Reservoir pipeline",
+      "target_node_uuid": "d550c16f-fd47-468f-9a1d-e7b15f2b146f",
+      "uuid": "22653b84-9abd-450f-a4b0-c0cea22ddafa",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "3329d0ea-3132-4c53-802f-d64ae938874d"
+      ],
+      "expired_at": null,
+      "fact": "Samuel Adeyemi supports the Tenants Alliance of Harbor Vale's stance that a rate hike jeopardizing essential workers' livelihoods is unacceptable and that job guarantees are a necessity.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Tenants Alliance of Harbor Vale",
+      "target_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "uuid": "17d51378-4ae7-451e-a1b5-6fe03a335840",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2815494a-9b5a-4c58-8ff5-0b3135fb3df5"
+      ],
+      "expired_at": null,
+      "fact": "Lena Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Lena Fischer",
+      "source_node_uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "0d795d63-60d5-44dc-98fe-2c0187506314",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": null,
+      "fact": "Brightline Consulting opposes the conclusions drawn about its procurement audit without reviewing the full report, in relation to the Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Brightline Consulting",
+      "source_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "0b9cafc8-86e3-4ceb-8868-255b081bb6be",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {
+        "source_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+        "target_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8"
+      },
+      "created_at": "2026-11-18",
+      "episodes": [
+        "6b6853db-a5a4-4b07-ab2b-4f358b5d2da3"
+      ],
+      "expired_at": null,
+      "fact": "Lindqvist found that the Brightline contract had broken procurement rules",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "State Auditor Grace Lindqvist",
+      "source_node_uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "09927e4c-12c5-4f2f-a08c-588246abae3e",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Tomas Reyes opposes Brightline Consulting's involvement in the pipeline study.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Tomas Reyes",
+      "source_node_uuid": "d79f7693-a458-421f-97b0-04f04153925e",
+      "target_node_name": "Brightline Consulting",
+      "target_node_uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8",
+      "uuid": "09481295-cde5-40dd-9950-16a60ab25d98",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "The city council opposes the Harbor Vale Water Authority's statement about standing ready to strike without a guaranteed guarantee for 200 maintenance positions.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "city council",
+      "source_node_uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "073b7dae-2e5f-460d-b93c-8b804ff15bc0",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "252d3c68-ea1d-4348-90ba-1e57975c04a9"
+      ],
+      "expired_at": "2026-11-18",
+      "fact": "Ilse Varga opposes the 9 percent tariff revision plan proposed by the Harbor Vale Water Authority.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": "2026-11-18",
+      "name": "RELATES_TO",
+      "source_node_name": "Ilse Varga",
+      "source_node_uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617",
+      "target_node_name": "Harbor Vale Water Authority",
+      "target_node_uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731",
+      "uuid": "05880c1c-8ae3-4c33-ad33-9bd09555fa11",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "2fda06de-58ea-49db-a717-641bb978b8a8",
+        "a1054718-56ce-4ffe-88ef-845e70b84833"
+      ],
+      "expired_at": null,
+      "fact": "Samuel Adeyemi opposes shared meters in the Eastside district and demands that the new tariff plan addresses the unfair pricing renters face compared to homeowners.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Samuel Adeyemi",
+      "source_node_uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b",
+      "target_node_name": "Eastside district",
+      "target_node_uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b",
+      "uuid": "04e7e1ff-eae7-4c63-ba0d-cf9a8cf0b937",
+      "valid_at": "2026-11-18"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "episodes": [
+        "9176e2d3-7cfd-4df4-a63b-045f5706c1f3",
+        "92e1831d-7cd4-407b-9755-7080053bab3f",
+        "c1c9f9bb-4882-47f1-a514-3361ff98b059"
+      ],
+      "expired_at": null,
+      "fact": "Priya Raman leads the Tenants Alliance of Harbor Vale.",
+      "fact_type": "RELATES_TO",
+      "invalid_at": null,
+      "name": "RELATES_TO",
+      "source_node_name": "Priya Raman",
+      "source_node_uuid": "ccae9b23-6f5b-43da-bc52-3739dd4f92cd",
+      "target_node_name": "Tenants Alliance of Harbor Vale",
+      "target_node_uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259",
+      "uuid": "029d8998-a78c-4d02-a877-4fd084105d03",
+      "valid_at": "2026-11-18"
+    }
+  ],
+  "graph_id": "mirofish_cf3b44ec002c46d1",
+  "node_count": 19,
+  "nodes": [
+    {
+      "attributes": {
+        "occupation": "Water Workers Union leader"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Samuel Adeyemi",
+      "summary": "Samuel Adeyemi leads the Water Workers Union.\nSamuel Adeyemi opposes the revised plan of HVWA.\nSamuel Adeyemi opposes shared meters in the Eastside district and demands that the new tariff plan addresses the unfair pricing renters face compared to homeowners.\nThe Eastside district supports Samuel Adeyemi's stance on opposing shared meters and addressing unfair pricing.\nSamuel Adeyemi opposes The Harbor Vale Water Authority's 9 percent tariff plan without job guarantees.\nLena Fischer reports on Samuel Adeyemi's concerns about shared meters in the Eastside district.\nSamuel Adeyemi works at Brightline Consulting\nSamuel Adeyemi supports the Tenants Alliance of Harbor Vale's stance that a rate hike jeopardizing essential workers' livelihoods is unacceptable and that job guarantees are a necessity.",
+      "uuid": "efc852e6-d12d-4ef4-a130-94b0fbbd154b"
+    },
+    {
+      "attributes": {
+        "location": "Harbor Vale",
+        "occupation": "Consultant"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Marco Reyes",
+      "summary": "Brightline Consulting is owned by Marco Reyes.\nMarco Reyes works for Brightline Consulting.",
+      "uuid": "ef455a31-cae6-4965-8cd3-9f1b5e4c6b40"
+    },
+    {
+      "attributes": {},
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Ilse Varga",
+      "summary": "Ilse Varga opposed Daniel Oyelaran regarding the plan to raise household water tariffs by 18 percent to replace the Kessler Reservoir pipeline built in 1961.\nCoastal Infrastructure Bank provided a 60 million dollar loan to cover the remaining cost of the revised water tariff plan.\nIlse Varga supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.\nIlse Varga opposes the 9 percent tariff revision plan proposed by the Harbor Vale Water Authority.\nIlse Varga opposes the use of the $60 million loan from the Coastal Infrastructure Bank to pass costs directly to consumers as taxes.\nIlse Varga is a community organizer in the Eastside district.\nIlse Varga works at Harbor Vale Courier",
+      "uuid": "e9ea50ec-738f-4e2c-92b3-af3e9a587617"
+    },
+    {
+      "attributes": {
+        "location": "Harbor Vale",
+        "occupation": "chief engineer"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Tomas Reyes",
+      "summary": "Tomas Reyes is the chief executive of the Harbor Vale Water Authority (HVWA).\nTomas Reyes resigned as chief executive of the Authority on 28 March 2026.\nTomas Reyes supports the call for full scrutiny of the $4.2 million contract with Brightline Consulting.\nTomas Reyes opposes Brightline Consulting's involvement in the pipeline study.\nTomas Reyes opposes the procurement irregularities involving Brightline Consulting and advocates for transparency at the Harbor Vale Water Authority.",
+      "uuid": "d79f7693-a458-421f-97b0-04f04153925e"
+    },
+    {
+      "attributes": {
+        "org_type": "Reservoir",
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Kessler Reservoir pipeline",
+      "summary": "The Harbor Vale Water Authority (HVWA) is responsible for the Kessler Reservoir pipeline, which was built in 1961.\nHarbor Vale Water Authority owns Kessler Reservoir pipeline The Kessler Reservoir pipeline was built in 1961. It is the subject of a modernization plan involving a 9 percent tariff increase, a 60 million dollar loan from the Coastal Infrastructure Bank, and a revised proposal by Nadia Okafor that includes discounts for low-income households. The pipeline study for the replacement project cost 4.2 million dollars and was conducted by Brightline Consulting, a firm owned by Marco Reyes, the brother of former HVWA chief executive Tomas Reyes. Grace Lindqvist's audit in June found that the Brightline contract broke procurement rules, though no evidence suggested Tomas Reyes personally profited. The Harbor Vale Water Authority, led by acting chief executive Nadia Okafor, committed to publishing every pipeline contract to restore public trust ahead of the city council vote on 15 July.",
+      "uuid": "d550c16f-fd47-468f-9a1d-e7b15f2b146f"
+    },
+    {
+      "attributes": {
+        "occupation": "Chief engineer"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Nadia Okafor",
+      "summary": "Nadia Okafor was appointed as acting chief executive of the Authority. Chief engineer Nadia Okafor was appointed acting chief executive of the Harbor Vale Water Authority on 28 March following the resignation of Tomas Reyes. She stated she would publish every pipeline contract.",
+      "uuid": "d47c2a36-11b8-451b-93fc-0f908fd14657"
+    },
+    {
+      "attributes": {
+        "org_type": "Organization",
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Harbor Vale",
+      "summary": "Harbor Vale is a city facing a water tariff controversy involving the Harbor Vale Water Authority (HVWA). The city's largest newspaper, the Harbor Vale Courier, published an investigation revealing HVWA paid $4.2 million to Brightline Consulting for a pipeline study. State auditor Grace Lindqvist opened a formal audit of HVWA in March, finding the Brightline contract broke procurement rules, though no evidence showed HVWA chief executive Tomas Reyes personally profited. HVWA resigned Reyes as chief executive on 28 March and appointed chief engineer Nadia Okafor as acting chief executive. Mayor Ilse Varga withdrew support for an 18 percent tariff increase on 2 April, calling for a pause to rebuild public trust. In May, Okafor presented a revised plan cutting the tariff rise to 9 percent with a discount for income-support households, funded by a $60 million loan from the Coastal Infrastructure Bank.\nIlse Varga works at Harbor Vale Courier\nLena Fischer works at Harbor Vale Courier",
+      "uuid": "d075e971-eb39-435b-9a42-591a4e347eaf"
+    },
+    {
+      "attributes": {
+        "location": "Harbor Vale, Eastside District, United States of America",
+        "occupation": "organizer"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Priya Raman",
+      "summary": "Priya Raman leads the Tenants Alliance of Harbor Vale.\nPriya Raman opposes the shared meters in Eastside of HVWA.\nPriya Raman supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nPriya Raman supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "uuid": "ccae9b23-6f5b-43da-bc52-3739dd4f92cd"
+    },
+    {
+      "attributes": {
+        "occupation": "State Auditor"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "State Auditor Grace Lindqvist",
+      "summary": "Daniel Oyelaran references the audit findings from State Auditor Grace Lindqvist regarding the payment to Brightline Consulting. Grace Lindqvist opened a formal audit of HVWA in March 2026. State auditor Grace Lindqvist opened a formal audit of the Harbor Vale Water Authority in March after Council member Daniel Oyelaran requested the examination of a contract between HVWA and Brightline Consulting.\nLindqvist found that the Brightline contract had broken procurement rules\nGrace Lindqvist supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.\nGrace Lindqvist audits Brightline Consulting.",
+      "uuid": "cb20e41c-13a0-4e5f-89ac-6d80b81e494c"
+    },
+    {
+      "attributes": {
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Harbor Vale Water Authority",
+      "summary": "The Harbor Vale Water Authority (HVWA) supplies drinking water to Harbor Vale, a coastal city of 240,000 people. HVWA manages the Kessler Reservoir pipeline, built in 1961. Tomas Reyes served as chief executive until resigning on 28 March 2026 following an audit that found HVWA paid $4.2 million to Brightline Consulting for a pipeline study, a contract that broke procurement rules. Nadia Okafor, chief engineer, became acting chief executive and committed to publishing every pipeline contract. HVWA faces a city council vote on 15 July 2026 regarding a revised tariff plan that reduces the proposed 18 percent increase to 9 percent, includes a discount for low-income households, and requires a $60 million loan from the Coastal Infrastructure Bank. The Water Workers Union, led by Samuel Adeyemi, threatens a strike if the plan passes without a guarantee for 200 maintenance positions. The Tenants Alliance, led by Priya Raman, campaigns against shared meters in the Eastside district.\nThe Coastal Infrastructure Bank has provided $60 million for the Kessler Reservoir replacement.\nHarbor Vale Water Authority opposes Harbor Vale Council's tariff revision plan\nTenants Alliance of Harbor Vale opposes Harbor Vale Water Authority's proposed 9% tariff hike\nWater Workers Union opposes Harbor Vale Water Authority's tariff increase without job guarantees\nHarbor Vale Water Authority owns Kessler Reservoir pipeline",
+      "uuid": "90cd12f8-b194-4756-b4e0-babc7e2b2731"
+    },
+    {
+      "attributes": {
+        "org_type": "Water Workers Union",
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Water Workers Union",
+      "summary": "Samuel Adeyemi leads the Water Workers Union.\nThe Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs\nThe Water Workers Union stands ready to strike if the city council votes for the 9 percent tariff plan without a guaranteed guarantee for our 200 maintenance positions.\nWater Workers Union supports renters in the Eastside district and advocates for equitable water pricing and against shared meters.\nThe Water Workers Union opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nThe Tenants Alliance of Harbor Vale supports the Water Workers Union's demand for job guarantees for the 200 maintenance positions.\nThe Tenants Alliance of Harbor Vale supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nPriya Raman supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nWater Workers Union opposes Harbor Vale Water Authority's tariff increase without job guarantees",
+      "uuid": "90c5ccb4-c8a9-4797-b49d-2c714928fcb1"
+    },
+    {
+      "attributes": {
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Eastside district",
+      "summary": "Eastside district is a neighborhood in Harbor Vale where renters pay more per litre of water than homeowners due to old shared meters.\nSamuel Adeyemi opposes shared meters in the Eastside district and demands that the new tariff plan addresses the unfair pricing renters face compared to homeowners.\nThe Eastside district supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.\nThe Eastside district supports Samuel Adeyemi's stance on opposing shared meters and addressing unfair pricing.\nThe Eastside district opposes the 9 percent tariff revision plan proposed by the Harbor Vale Water Authority due to unfair pricing for renters.\nWater Workers Union supports renters in the Eastside district and advocates for equitable water pricing and against shared meters.\nIlse Varga is a community organizer in the Eastside district.\nTenants Alliance of Harbor Vale is associated with Eastside",
+      "uuid": "75383123-7ab8-487d-a37a-a7f3ad38470b"
+    },
+    {
+      "attributes": {
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Coastal Infrastructure Bank",
+      "summary": "Coastal Infrastructure Bank provided a 60 million dollar loan to cover the remaining cost of the revised water tariff plan.\nThe Coastal Infrastructure Bank provided a 60 million dollar loan to Harbor Vale Water Authority.\nThe Coastal Infrastructure Bank provided a 60 million dollar loan to Harbor Vale Water Authority to cover the remaining cost of the tariff rise.\nThe Coastal Infrastructure Bank has provided $60 million for the Kessler Reservoir replacement.\nIlse Varga opposes the use of the $60 million loan from the Coastal Infrastructure Bank to pass costs directly to consumers as taxes.",
+      "uuid": "642aaaa7-e49e-453f-8308-d57c9d37cd59"
+    },
+    {
+      "attributes": {
+        "location": "Harbor Vale Water Authority",
+        "occupation": "reporter"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Lena Fischer",
+      "summary": "Lena Fischer works for The Harbor Vale Courier.\nLena Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.\nLena Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.\nLena Fischer supports the call to publish every contract and demands full accountability before the July 15th vote.\nLena Fischer supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.\nLena Fischer reports on The Harbor Vale Water Authority.\nLena Fischer reports on Samuel Adeyemi's concerns about shared meters in the Eastside district.\nLena Fischer works at Harbor Vale Courier",
+      "uuid": "4ec89115-cb6b-4863-abbe-3e5cc2dfde2b"
+    },
+    {
+      "attributes": {
+        "ownership_type": "MediaOutlet"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "MediaOutlet"
+      ],
+      "name": "The Harbor Vale Courier",
+      "summary": "Lena Fischer works for The Harbor Vale Courier.\nThe Harbor Vale Courier supports the Harbor Vale Water Authority's commitment to transparency and publishing every contract.\nLena Fischer reports on The Harbor Vale Water Authority.\nThe Harbor Vale Courier reports on The Harbor Vale Water Authority.\nThe Tenants Alliance of Harbor Vale supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nPriya Raman supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.",
+      "uuid": "4d868f07-a08e-454c-aaa3-0d1b0746b7f0"
+    },
+    {
+      "attributes": {
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Brightline Consulting",
+      "summary": "Lena Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.\nBrightline Consulting is owned by Marco Reyes.\nLindqvist found that the Brightline contract had broken procurement rules\nThe city council will vote on the 9 percent plan on 15 July\nThe Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs\nHarbor Vale Water Authority has paid $4.2 million to Brightline Consulting for a pipeline study.\nTomas Reyes supports the call for full scrutiny of the $4.2 million contract with Brightline Consulting.\nTomas Reyes opposes Brightline Consulting's involvement in the pipeline study.\nMarco Reyes works for Brightline Consulting.\nBrightline Consulting conducted a pipeline study for Harbor Vale Water Authority.\nGrace Lindqvist audits Brightline Consulting.\nBrightline Consulting opposes the conclusions drawn about its procurement audit without reviewing the full report, in relation to the Harbor Vale Water Authority.\nTenants Alliance of Harbor Vale opposes Brightline Consulting regarding the $4.2 million payment and calls for transparency and an independent investigation.\nDaniel Oyelaran opposes the $4.2 million payment to Brightline Consulting made without proper competitive bidding or compliance checks.\nSamuel Adeyemi works at Brightline Consulting\nDaniel Oyelaran requires immediate, full transparency regarding the $4.2 million payment to Brightline Consulting and cites audit findings from State Auditor Grace Lindqvist.",
+      "uuid": "3e846a6b-f8bb-4a97-94a9-afc0b8155fd8"
+    },
+    {
+      "attributes": {
+        "org_type": "Organization",
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "Tenants Alliance of Harbor Vale",
+      "summary": "Priya Raman leads the Tenants Alliance of Harbor Vale.\nTenants Alliance of Harbor Vale opposes Brightline Consulting regarding the $4.2 million payment and calls for transparency and an independent investigation.\nThe Tenants Alliance of Harbor Vale supports the Water Workers Union's demand for job guarantees for the 200 maintenance positions.\nThe Tenants Alliance of Harbor Vale opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nThe Tenants Alliance of Harbor Vale supports the Water Workers Union on the issue of job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nThe Tenants Alliance of Harbor Vale supports the stance of The Harbor Vale Courier regarding job guarantees and opposing rate hikes that jeopardize essential workers' livelihoods.\nTenants Alliance of Harbor Vale is associated with Eastside\nTenants Alliance of Harbor Vale opposes Harbor Vale Water Authority's proposed 9% tariff hike\nSamuel Adeyemi supports the Tenants Alliance of Harbor Vale's stance that a rate hike jeopardizing essential workers' livelihoods is unacceptable and that job guarantees are a necessity.",
+      "uuid": "20cc0a2e-a5a5-4581-9999-d734c2d2b259"
+    },
+    {
+      "attributes": {
+        "status": "success"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Organization"
+      ],
+      "name": "city council",
+      "summary": "The city council will vote on the 9 percent plan on 15 July\nThe city council opposes the Harbor Vale Water Authority's statement about standing ready to strike without a guaranteed guarantee for 200 maintenance positions.\ncity council opposes The Harbor Vale Water Authority's 9 percent tariff plan without job guarantees.\nDaniel Oyelaran serves as a Council member.\nDaniel Oyelaran opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nThe Water Workers Union opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nThe Tenants Alliance of Harbor Vale opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nHarbor Vale Water Authority opposes Harbor Vale Council's tariff revision plan\nDaniel Oyelaran works at Harbor Vale Council",
+      "uuid": "19bf8e0a-5a7a-4e80-a771-c98ccafe5272"
+    },
+    {
+      "attributes": {
+        "location": "Harbor Vale Water Authority (HVWA) Council Member Office, Harbor Vale, CA, USA",
+        "occupation": "Council member"
+      },
+      "created_at": "2026-11-18",
+      "labels": [
+        "Entity",
+        "Person"
+      ],
+      "name": "Daniel Oyelaran",
+      "summary": "Ilse Varga opposed Daniel Oyelaran regarding the plan to raise household water tariffs by 18 percent to replace the Kessler Reservoir pipeline built in 1961.\nDaniel Oyelaran serves as a Council member.\nDaniel Oyelaran opposes the $4.2 million payment to Brightline Consulting made without proper competitive bidding or compliance checks.\nDaniel Oyelaran opposes the 9 percent tariff plan without job guarantees for the 200 maintenance positions.\nDaniel Oyelaran works at Harbor Vale Council\nDaniel Oyelaran requires immediate, full transparency regarding the $4.2 million payment to Brightline Consulting and cites audit findings from State Auditor Grace Lindqvist.\nDaniel Oyelaran references the audit findings from State Auditor Grace Lindqvist regarding the payment to Brightline Consulting.",
+      "uuid": "0fb750c2-55df-47ac-a79c-53c1748d750c"
+    }
+  ]
+}

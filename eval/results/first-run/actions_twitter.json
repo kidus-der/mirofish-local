@@ -1,0 +1,1157 @@
+[
+  {
+    "action_args": {
+      "content": "🚨 URGENT: The proposed 9% tariff hike threatens to push more Eastside families into crisis. We're calling for an immediate halt to this plan until we have concrete guarantees on job retention and environmental safety. @HarborValeCouncil, the people of Eastside deserve better. #TenantRights #AffordableHousing #EastsideStrong",
+      "post_id": 60
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 14,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 24,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "@user1, the Harbor Vale Water Authority's revised plan lacks binding job guarantees. We need concrete protections for our members before approving any infrastructure. #WaterForPeopleNotProfits",
+      "post_id": 59
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 24,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Water Workers Union reaffirms its commitment to securing job guarantees and fair wages for our members. We will not accept any tariff increase without a binding guarantee on employment. Our members are the backbone of Harbor Vale's infrastructure, and their livelihoods must be protected. #HarborValeWater #UnionStrong #JobGuarantees #FairWages",
+      "post_id": 58
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 24,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The aging Kessler Reservoir pipeline, built in 1961, poses an imminent threat to Harbor Vale's water security. Despite opposition and public pushback, replacing it is a non-negotiable imperative for public safety. We cannot afford to gamble with our community's health. The pipes don't sleep, neither should we. #Infrastructure #PublicSafety #HarborVale",
+      "post_id": 57
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 16,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 24,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 56,
+      "original_author_name": "Marco Reyes",
+      "original_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "quote_content": "@user1, the Harbor Vale Water Authority's revised plan lacks binding job guarantees. We need concrete protections for our members before approving any infrastructure. #WaterForPeopleNotProfits",
+      "quoted_id": 28
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "🚨 URGENT: The proposed 9% tariff hike threatens to push more Eastside families into crisis. We're calling for an immediate halt to this plan until we have concrete guarantees on job retention and environmental safety. @HarborValeCouncil, the people of Eastside deserve better. #TenantRights #AffordableHousing #EastsideStrong",
+      "post_id": 55
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 14,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The water is running out, and so is our patience. The Harbor Vale Water Authority's proposed shared meters in Eastside are a direct attack on low-income families. We've seen the numbers—utility cuts are forcing neighbors to choose between heat and water. Enough is enough! Join the Tenants Alliance of Harbor Vale as we demand accountability and fair utility rates. #EastsideWaterCrisis #TenantsAlliance #HVWA",
+      "post_id": 54
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 5,
+    "agent_name": "Priya Raman",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 14,
+      "post_author_name": "Marco Reyes",
+      "post_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 28
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 13,
+      "post_author_name": "Marco Reyes",
+      "post_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 16
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "🚨 URGENT: The proposed 9% tariff hike threatens to push more Eastside families into crisis. We're calling for an immediate halt to this plan until we have concrete guarantees on job retention and environmental safety. @HarborValeCouncil, the people of Eastside deserve better. #TenantRights #AffordableHousing #EastsideStrong",
+      "post_id": 53
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 14,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members must balance fiscal responsibility with the urgent need for equitable water access. The public deserves transparency in every decision that impacts our community's water future. We are committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability #WaterJustice",
+      "post_id": 52
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The water is running out, and so is our patience. The Harbor Vale Water Authority's proposed shared meters in Eastside are a direct attack on low-income families. We've seen the numbers—utility cuts are forcing neighbors to choose between heat and water. Enough is enough! Join the Tenants Alliance of Harbor Vale as we demand accountability and fair utility rates. #EastsideWaterCrisis #TenantsAlliance #HVWA",
+      "post_id": 51
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 5,
+    "agent_name": "Priya Raman",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Harbor Vale Courier remains committed to its mission: unbiased reporting on the city council's upcoming vote on the 9 percent tariff revision. We will continue to investigate institutional actions and hold power accountable. #HarborValeWater #CivicAccountability",
+      "post_id": 50
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 49,
+      "original_author_name": "Marco Reyes",
+      "original_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "quote_content": "@user1, the Harbor Vale Water Authority's revised plan lacks binding job guarantees. We need concrete protections for our members before approving any infrastructure. #WaterForPeopleNotProfits",
+      "quoted_id": 16
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The water is running out, and so is our patience. The Harbor Vale Water Authority's proposed shared meters in Eastside are a direct attack on low-income families. We've seen the numbers—utility cuts are forcing neighbors to choose between heat and water. Enough is enough! Join the Tenants Alliance of Harbor Vale as we demand accountability and fair utility rates. #EastsideWaterCrisis #TenantsAlliance #HVWA",
+      "post_id": 48
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 5,
+    "agent_name": "Priya Raman",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Water Workers Union stands ready to defend the rights and livelihoods of our members. We demand a binding guarantee on employment before any tariff increase is approved. The integrity of our water system and the trust of the public must come first. #HarborValeWater #UnionStrong #JobGuarantees",
+      "post_id": 47
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 46
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 12,
+      "post_author_name": "Samuel Adeyemi",
+      "post_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 43
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The aging Kessler Reservoir pipeline, built in 1961, poses an imminent threat to Harbor Vale's water security. Despite opposition and public pushback, replacing it is a non-negotiable imperative for public safety. We cannot afford to gamble with our community's health. The pipes don't sleep, neither should we. #Infrastructure #PublicSafety #HarborVale",
+      "post_id": 45
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 16,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Harbor Vale Courier is here to deliver timely, factual, and independent reporting on local governance, water infrastructure, and community impact. Stay tuned for our coverage of the July 15 city council vote. #HarborValeWater #CivicAccountability",
+      "post_id": 44
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 43,
+      "original_author_name": "Marco Reyes",
+      "original_content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "quote_content": "@user1, while I appreciate the mention of job guarantees and social equity, we cannot accept vague promises without binding commitments. The Harbor Vale Water Authority's revised plan lacks the necessary protections for our members. We need a binding job guarantee before any infrastructure projects are approved. #WaterForPeopleNotProfits",
+      "quoted_id": 16
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Harbor Vale Courier remains vigilant. We will continue our unbiased reporting on the upcoming July 15 vote on the 9 percent tariff revision. Our focus is on holding power accountable, especially regarding the Harbor Vale Water Authority (HVWA). #HarborValeWater #CivicAccountability",
+      "post_id": 42
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The aging Kessler Reservoir pipeline, built in 1961, poses an imminent threat to Harbor Vale's water security. Despite opposition and public pushback, replacing it is a non-negotiable imperative for public safety. We cannot afford to gamble with our community's health. The pipes don't sleep, neither should we. #Infrastructure #PublicSafety #HarborVale",
+      "post_id": 41
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 16,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 40
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Eastside renters' concerns about shared meters and unfair pricing are valid. We must ensure equitable access to clean water for all residents. The Harbor Vale Water Authority needs to be transparent and accountable. #WaterJustice #EastsideVoices #CleanWaterForAll",
+      "post_id": 39
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 38,
+      "original_author_name": "Tomas Reyes",
+      "original_content": "Reflecting on the recent events at HVWA. The integrity of our water supply system is paramount, and so is the trust of the public. We must learn from our mistakes and move forward with greater transparency and accountability. The procurement irregularities involving Brightline Consulting have been a stark reminder of the need for stricter oversight. #HarborValeWater #Transparency #CivicAccountability",
+      "quote_content": "@water_workers_union_410 We agree with your stance on transparency and accountability. The procurement irregularities involving Brightline Consulting must be investigated thoroughly to ensure public trust is restored. #HarborValeWater #Transparency",
+      "quoted_id": 24
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The water is running out, and so is our patience. The Harbor Vale Water Authority's proposed shared meters in Eastside are a direct attack on low-income families. We've seen the numbers—utility cuts are forcing neighbors to choose between heat and water. Enough is enough! Join the Tenants Alliance of Harbor Vale as we demand accountability and fair utility rates. #EastsideWaterCrisis #TenantsAlliance #HVWA",
+      "post_id": 37
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 5,
+    "agent_name": "Priya Raman",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 11,
+      "post_author_name": "Ilse Varga",
+      "post_content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 34
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 10,
+      "post_author_name": "Tomas Reyes",
+      "post_content": "Reflecting on the recent events at HVWA. The integrity of our water supply system is paramount, and so is the trust of the public. We must learn from our mistakes and move forward with greater transparency and accountability. The procurement irregularities involving Brightline Consulting have been a stark reminder of the need for stricter oversight. #HarborValeWater #Transparency #CivicAccountability",
+      "post_id": 24
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Water Workers Union",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Eastside community's concerns about shared meters and unfair pricing are not just valid—they are urgent. As we approach the July 15 vote, we must ensure that the Harbor Vale Water Authority remains transparent and accountable to ALL residents, not just the privileged few. #WaterRights #EastsideJustice #TransparencyMatters",
+      "post_id": 36
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Harbor Vale Courier stands ready to report on the July 15 vote on the 9 percent tariff revision. We prioritize factual, independent reporting on local governance and water infrastructure. #HarborValeWater #CivicAccountability",
+      "post_id": 35
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 34
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Following up on the HVWA audit findings: The Brightline Consulting contract was indeed non-compliant with procurement rules. Overcharges of $4.2M were identified, funds not properly allocated for critical pipeline studies. #Transparency #FiscalResponsibility #HoldThemAccountable",
+      "post_id": 33
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 6,
+    "agent_name": "Grace Lindqvist",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "As the Harbor Vale Courier, we are committed to unbiased reporting on the upcoming July 15 vote regarding the 9 percent tariff revision. We will continue to hold power accountable and ensure transparency in the Harbor Vale Water Authority. #HarborValeWater #CivicAccountability",
+      "post_id": 32
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The integrity of our water supply system is paramount, and so is the trust of the public. We must learn from our mistakes and move forward with greater transparency and accountability. The procurement irregularities involving Brightline Consulting have been a stark reminder of the need for stricter oversight. #HarborValeWater #Transparency #CivicAccountability",
+      "post_id": 31
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 3,
+    "agent_name": "Tomas Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Update: As we await the upcoming City Council vote on July 15, we remain dedicated to transparency and community engagement. We are reviewing all feedback regarding the tariff revision, infrastructure needs, and concerns about shared meters. Our door is open for dialogue. #HarborValeWater #CivicAccountability #CommunityFirst",
+      "post_id": 30
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Brightline Consulting remains committed to transparency and regulatory compliance in all engagements. Our technical team continues to deliver high-quality feasibility studies for municipal water authorities. We encourage all stakeholders to focus on data-driven solutions for infrastructure challenges. #InfrastructureIntegrity #ProcurementStandards",
+      "post_id": 29
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 13,
+    "agent_name": "Brightline Consulting",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 28
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 1,
+    "agent_name": "Marco Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We need to talk about the water tariff hike. The Coastal Infrastructure Bank has already provided $60 million for the Kessler Reservoir replacement. Why are we passing the cost to homeowners and renters instead? This is about fiscal responsibility and protecting our families. #NoTaxHike #FiscalResponsibility #HarborValeWater",
+      "post_id": 27
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 26,
+      "original_author_name": "Lena Fischer",
+      "original_content": "Following up on the Eastside renters' concerns about shared meters and unfair pricing. As we approach the July 15 vote, we must ensure the Harbor Vale Water Authority remains transparent and accountable. The public deserves to know the full story behind every decision that affects our water system. #WaterRights #EastsideJustice #TransparencyMatters",
+      "quote_content": "The Harbor Vale Water Authority's commitment to transparency and accountability is essential. As we support the transition to a modern, efficient system, ensuring fair practices for all residents remains a top priority. Our funding initiatives are designed to facilitate necessary upgrades while maintaining fiscal responsibility. #WaterRights #InfrastructureUpgrade #TransparencyMatters",
+      "quoted_id": 13
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 10,
+    "agent_name": "Coastal Infrastructure Bank",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is critical. City council members must balance fiscal responsibility with the urgent need for equitable water access. The public deserves transparency in every decision that impacts our community's water future. We are committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability #WaterJustice",
+      "post_id": 25
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Reflecting on the recent events at HVWA. The integrity of our water supply system is paramount, and so is the trust of the public. We must learn from our mistakes and move forward with greater transparency and accountability. The procurement irregularities involving Brightline Consulting have been a stark reminder of the need for stricter oversight. #HarborValeWater #Transparency #CivicAccountability",
+      "post_id": 24
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 3,
+    "agent_name": "Tomas Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 23
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 1,
+    "agent_name": "Marco Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 22
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is critical. As the Harbor Vale Courier, we remain committed to unbiased reporting and holding power accountable. #HarborValeWater #CivicAccountability",
+      "post_id": 21
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 20,
+      "original_author_name": "Ilse Varga",
+      "original_content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "Brightline Consulting notes the critical nature of the July 15 vote. Our firm remains neutral on the tariff revision but emphasizes the importance of data-driven feasibility studies in informing such decisions. We urge all stakeholders to review the full procurement audit report before drawing conclusions. #HarborValeWater #CivicAccountability",
+      "quoted_id": 11
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 13,
+    "agent_name": "Brightline Consulting",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Eastside renters have a valid point. Shared meters and unfair pricing need to be addressed head-on. The Harbor Vale Water Authority must prioritize equitable access to clean water for all residents, not just those who can afford it. We need a transparent, data-driven approach to this crisis. #WaterJustice #EastsideVoices #CleanWaterForAll",
+      "post_id": 19
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 18
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "As we move forward with the Harbor Vale Water Authority, transparency is paramount. The recent procurement irregularities involving Brightline Consulting must be thoroughly investigated. My commitment to public accountability remains unwavering. #HarborValeWater #Transparency #CivicAccountability",
+      "post_id": 17
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 3,
+    "agent_name": "Tomas Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over water tariffs and infrastructure is critical. At Brightline Consulting, we believe in efficiency over bureaucracy, but we also recognize the importance of community stability and fair economic policies. Job guarantees for workers are not just a moral imperative—they're essential for maintaining a thriving local economy. Let's find solutions that balance fiscal responsibility with social equity. #HarborValeWater #Infrastructure #JobGuarantees #Transparency",
+      "post_id": 16
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 1,
+    "agent_name": "Marco Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 9,
+      "post_author_name": "The Harbor Vale Courier",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 4,
+    "agent_name": "Nadia Okafor",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 15,
+      "original_author_name": "The Harbor Vale Courier",
+      "original_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "The debate over the 9 percent tariff revision is critical. As a business owner, I believe in efficiency over bureaucracy, but fiscal responsibility must also be prioritized. However, job guarantees for workers are essential to maintain community stability. The Eastside renters' concerns about shared meters need to be addressed fairly, balancing homeowner and renter interests. #HarborValeWater #BusinessEfficiency #FairPricing #JobGuarantees",
+      "quoted_id": 4
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 1,
+    "agent_name": "Marco Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 8,
+      "post_author_name": "Lena Fischer",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 7
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 14,
+      "original_author_name": "The Harbor Vale Courier",
+      "original_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "We acknowledge the critical nature of the July 15 vote. While we are committed to fiscal responsibility, we must also ensure that the voices of all residents, including Eastside renters, are heard and addressed in our decision-making process. #HarborValeWater #CivicAccountability",
+      "quoted_id": 4
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Following up on the Eastside renters' concerns about shared meters and unfair pricing. As we approach the July 15 vote, we must ensure the Harbor Vale Water Authority remains transparent and accountable. The public deserves to know the full story behind every decision that affects our water system. #WaterRights #EastsideJustice #TransparencyMatters",
+      "post_id": 13
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The 9% tariff revision debate is critical for our community. We cannot accept unfair pricing for renters while homeowners get better deals. The July 15 vote must prioritize tenant rights and infrastructure equity. Let's demand transparency from the Harbor Vale Water Authority. #EastsideDistrict #FairWaterRates #TenantRights",
+      "post_id": 12
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 9,
+    "agent_name": "Eastside district",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 11
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 10,
+      "original_author_name": "Samuel Adeyemi",
+      "original_content": "Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough.",
+      "quote_content": "I agree. The Eastside community's concerns about shared meters and unfair pricing are valid. These issues need to be addressed transparently, not swept under the rug. We must ensure all residents have fair access to clean water at reasonable rates. #WaterRights #EastsideJustice. Original Content: Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough.",
+      "quoted_id": 3
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 4,
+    "agent_name": "Nadia Okafor",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Update: The debate over the 9 percent tariff revision continues. As the Harbor Vale Courier, we are committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 9
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 7,
+      "post_author_name": "The Harbor Vale Courier",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 2,
+    "agent_name": "Ilse Varga",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 6,
+      "post_author_name": "The Harbor Vale Courier",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 8,
+      "original_author_name": "The Harbor Vale Courier",
+      "original_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "The procurement irregularities involving Brightline Consulting must be addressed transparently before any tariff revision is considered. Accountability is not optional. #HarborValeWater #CivicAccountability",
+      "quoted_id": 4
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 3,
+    "agent_name": "Tomas Reyes",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 5,
+      "post_author_name": "The Harbor Vale Courier",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 9,
+    "agent_name": "Eastside district",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 4,
+      "post_author_name": "city council",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 6
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 3,
+      "post_author_name": "city council",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 6
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 2,
+      "post_author_name": "The Harbor Vale Courier",
+      "post_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 7,
+      "original_author_name": "The Harbor Vale Courier",
+      "original_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "Our commitment to unbiased reporting on the July 15 vote is unwavering. The Eastside renters' concerns about shared meters and unfair pricing must be at the center of this debate. We will hold power accountable and ensure every resident has a voice in their water future. #WaterJustice #EastsideVoices",
+      "quoted_id": 4
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 1,
+      "post_author_name": "Samuel Adeyemi",
+      "post_content": "Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough.",
+      "post_id": 3
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 6,
+      "original_author_name": "The Harbor Vale Courier",
+      "original_content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "quote_content": "We acknowledge the gravity of the July 15 vote. The Council remains committed to fiscal responsibility while ensuring equitable treatment for all residents. Our process is transparent and data-driven. #HarborValeWater #CivicAccountability",
+      "quoted_id": 4
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 15,
+    "agent_name": "city council",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "new_post_id": 5,
+      "original_author_name": "Samuel Adeyemi",
+      "original_content": "Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough.",
+      "quote_content": "The Eastside community's concerns about shared meters and unfair pricing are valid. These issues need to be addressed transparently, not swept under the rug. We must ensure all residents have fair access to clean water at reasonable rates. #WaterRights #EastsideJustice",
+      "quoted_id": 3
+    },
+    "action_type": "QUOTE_POST",
+    "agent_id": 11,
+    "agent_name": "Lena Fischer",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Critical update: The debate over the 9 percent tariff revision is heating up. City council members are weighing job guarantees against fiscal responsibility to avoid a potential bankruptcy. Meanwhile, Eastside renters push back against shared meters, citing unfair pricing compared to homeowners. As the Harbor Vale Courier, we remain committed to unbiased reporting on this pivotal July 15 vote. #HarborValeWater #CivicAccountability",
+      "post_id": 4
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough.",
+      "post_id": 3
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Breaking: Despite the scandal, some council members are leaning towards supporting the 9 percent plan to avoid a rate hike that could bankrupt the city. The debate over job guarantees vs. fiscal responsibility is intensifying as the vote nears.",
+      "post_id": 2
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We have paid $4.2 million to Brightline Consulting for a pipeline study. Our Acting CEO, Nadia Okafor, will publish every contract to restore public trust. Transparency is our only path forward as we prepare for the July 15th vote.",
+      "post_id": 1
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Renters in the Eastside district are not happy. We oppose shared meters and demand that the new tariff plan addresses the unfair pricing we face compared to homeowners. The discount for low-income households is a start, but not enough."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Breaking: Despite the scandal, some council members are leaning towards supporting the 9 percent plan to avoid a rate hike that could bankrupt the city. The debate over job guarantees vs. fiscal responsibility is intensifying as the vote nears."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 12,
+    "agent_name": "The Harbor Vale Courier",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We have paid $4.2 million to Brightline Consulting for a pipeline study. Our Acting CEO, Nadia Okafor, will publish every contract to restore public trust. Transparency is our only path forward as we prepare for the July 15th vote."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Water Workers Union stands ready to strike if the city council votes for the 9 percent tariff plan without a guaranteed guarantee for our 200 maintenance positions. The revised plan is not just about rates; it is about the survival of our jobs and the integrity of our workforce."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 7,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "twitter",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  }
+]
