@@ -688,11 +688,28 @@ watch(() => props.systemLogs?.length, () => {
   })
 })
 
-onMounted(() => {
+// This page force-starts by design, so a refresh must not restart a run already in progress.
+const ACTIVE_RUN_STATES = ['starting', 'running', 'paused', 'stopping']
+
+onMounted(async () => {
   addLog(t('log.step3Init'))
-  if (props.simulationId) {
-    doStartSimulation()
+  if (!props.simulationId) return
+  try {
+    const res = await getRunStatus(props.simulationId)
+    if (res.success && ACTIVE_RUN_STATES.includes(res.data?.runner_status)) {
+      phase.value = 1
+      runStatus.value = res.data
+      emit('update-status', 'processing')
+      startStatusPolling()
+      startDetailPolling()
+      return
+    }
+  } catch (err) {
+    startError.value = err.message  // unknown state: never risk restarting a live run
+    emit('update-status', 'error')
+    return
   }
+  doStartSimulation()
 })
 
 onUnmounted(() => {
