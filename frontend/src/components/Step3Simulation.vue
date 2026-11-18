@@ -1,288 +1,234 @@
 <template>
-  <div class="simulation-panel">
-    <!-- Top Control Bar -->
-    <div class="control-bar">
-      <div class="status-group">
-        <!-- Twitter 平台进度 -->
-        <div class="platform-status twitter" :class="{ active: runStatus.twitter_running, completed: runStatus.twitter_completed }">
-          <div class="platform-header">
-            <svg class="platform-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span class="platform-name">Info Plaza</span>
-            <span v-if="runStatus.twitter_completed" class="status-badge">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </div>
-          <div class="platform-stats">
-            <span class="stat">
-              <span class="stat-label">ROUND</span>
-              <span class="stat-value mono">{{ runStatus.twitter_current_round || 0 }}<span class="stat-total">/{{ runStatus.total_rounds || maxRounds || '-' }}</span></span>
-            </span>
-            <span class="stat">
-              <span class="stat-label">TIME</span>
-              <span class="stat-value mono">{{ twitterElapsedTime }}</span>
-            </span>
-            <span class="stat">
-              <span class="stat-label">ACTS</span>
-              <span class="stat-value mono">{{ runStatus.twitter_actions_count || 0 }}</span>
-            </span>
-          </div>
-          <!-- 可用动作提示 -->
-          <div class="actions-tooltip">
-            <div class="tooltip-title">Available Actions</div>
-            <div class="tooltip-actions">
-              <span class="tooltip-action">POST</span>
-              <span class="tooltip-action">LIKE</span>
-              <span class="tooltip-action">REPOST</span>
-              <span class="tooltip-action">QUOTE</span>
-              <span class="tooltip-action">FOLLOW</span>
-              <span class="tooltip-action">IDLE</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Reddit 平台进度 -->
-        <div class="platform-status reddit" :class="{ active: runStatus.reddit_running, completed: runStatus.reddit_completed }">
-          <div class="platform-header">
-            <svg class="platform-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            <span class="platform-name">Topic Community</span>
-            <span v-if="runStatus.reddit_completed" class="status-badge">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </div>
-          <div class="platform-stats">
-            <span class="stat">
-              <span class="stat-label">ROUND</span>
-              <span class="stat-value mono">{{ runStatus.reddit_current_round || 0 }}<span class="stat-total">/{{ runStatus.total_rounds || maxRounds || '-' }}</span></span>
-            </span>
-            <span class="stat">
-              <span class="stat-label">TIME</span>
-              <span class="stat-value mono">{{ redditElapsedTime }}</span>
-            </span>
-            <span class="stat">
-              <span class="stat-label">ACTS</span>
-              <span class="stat-value mono">{{ runStatus.reddit_actions_count || 0 }}</span>
-            </span>
-          </div>
-          <!-- 可用动作提示 -->
-          <div class="actions-tooltip">
-            <div class="tooltip-title">Available Actions</div>
-            <div class="tooltip-actions">
-              <span class="tooltip-action">POST</span>
-              <span class="tooltip-action">COMMENT</span>
-              <span class="tooltip-action">LIKE</span>
-              <span class="tooltip-action">DISLIKE</span>
-              <span class="tooltip-action">SEARCH</span>
-              <span class="tooltip-action">TREND</span>
-              <span class="tooltip-action">FOLLOW</span>
-              <span class="tooltip-action">MUTE</span>
-              <span class="tooltip-action">REFRESH</span>
-              <span class="tooltip-action">IDLE</span>
-            </div>
-          </div>
-        </div>
+  <section class="simulation-panel" aria-labelledby="sim-run-title">
+    <!-- Run progress and the one action on this screen -->
+    <header class="run-band hb-surface-water">
+      <h2 id="sim-run-title" class="run-title">{{ projectData?.name || $tm('main.stepNames')[2] }}</h2>
+      <span class="hb-status" :class="`hb-status--${STATE_VIEW[runState].mark}`" role="status">
+        {{ $t(STATE_VIEW[runState].label) }}
+      </span>
+      <div class="run-progress">
+        <span class="hb-tabular">{{ roundsLabel }}</span>
+        <progress v-if="totalRounds" :max="totalRounds" :value="currentRound" :aria-label="roundsLabel"></progress>
       </div>
+      <button
+        type="button"
+        class="hb-btn hb-btn--action"
+        :disabled="phase !== 2 || isGeneratingReport"
+        :aria-busy="isGeneratingReport"
+        @click="handleNextStep"
+      >
+        {{ isGeneratingReport ? $t('step3.generatingReportBtn') : $t('step3.startGenerateReportBtn') }}
+      </button>
+      <p v-if="runError" class="run-alert" role="alert">
+        <span class="hb-status hb-status--failed">{{ $t('common.error') }}</span>
+        {{ runError }}
+      </p>
+    </header>
 
-      <div class="action-controls">
-        <button 
-          class="action-btn primary"
-          :disabled="phase !== 2 || isGeneratingReport"
-          @click="handleNextStep"
-        >
-          <span v-if="isGeneratingReport" class="loading-spinner-small"></span>
-          {{ isGeneratingReport ? $t('step3.generatingReportBtn') : $t('step3.startGenerateReportBtn') }}
-          <span v-if="!isGeneratingReport" class="arrow-icon">→</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Main Content: Dual Timeline -->
-    <div class="main-content-area" ref="scrollContainer">
-      <!-- Timeline Header -->
-      <div class="timeline-header" v-if="allActions.length > 0">
-        <div class="timeline-stats">
-          <span class="total-count">TOTAL EVENTS: <span class="mono">{{ allActions.length }}</span></span>
-          <span class="platform-breakdown">
-            <span class="breakdown-item twitter">
-              <svg class="mini-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              <span class="mono">{{ twitterActionsCount }}</span>
-            </span>
-            <span class="breakdown-divider">/</span>
-            <span class="breakdown-item reddit">
-              <svg class="mini-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              <span class="mono">{{ redditActionsCount }}</span>
-            </span>
-          </span>
-        </div>
-      </div>
-      
-      <!-- Timeline Feed -->
-      <div class="timeline-feed">
-        <div class="timeline-axis"></div>
-        
-        <TransitionGroup name="timeline-item">
-          <div 
-            v-for="action in chronologicalActions" 
-            :key="action._uniqueId || action.id || `${action.timestamp}-${action.agent_id}`" 
-            class="timeline-item"
-            :class="action.platform"
-          >
-            <div class="timeline-marker">
-              <div class="marker-dot"></div>
+    <div class="work">
+      <div class="rail hb-surface-land-soft">
+        <!-- Platform status -->
+        <ul class="platforms hb-list">
+          <li v-for="platform in platformCards" :key="platform.id" class="platform">
+            <div class="hb-section-head">
+              <h3 class="hb-subheading">{{ platform.name }}</h3>
+              <span class="hb-status hb-small" :class="`hb-status--${STATE_VIEW[platform.state].mark}`">
+                {{ $t(STATE_VIEW[platform.state].label) }}
+              </span>
             </div>
-            
-            <div class="timeline-card">
-              <div class="card-header">
-                <div class="agent-info">
-                  <div class="avatar-placeholder">{{ (action.agent_name || 'A')[0] }}</div>
-                  <span class="agent-name">{{ action.agent_name }}</span>
-                </div>
-                
-                <div class="header-meta">
-                  <div class="platform-indicator">
-                    <svg v-if="action.platform === 'twitter'" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    <svg v-else viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                  </div>
-                  <div class="action-badge" :class="getActionTypeClass(action.action_type)">
-                    {{ getActionTypeLabel(action.action_type) }}
-                  </div>
-                </div>
+            <dl class="platform-stats">
+              <div>
+                <dt>Round</dt>
+                <dd class="hb-tabular">{{ platform.round }}<span class="hb-soft">/{{ totalRounds || '-' }}</span></dd>
               </div>
-              
-              <div class="card-body">
+              <div>
+                <dt>Time</dt>
+                <dd class="hb-tabular">{{ platform.elapsed }}</dd>
+              </div>
+              <div>
+                <dt>Acts</dt>
+                <dd class="hb-tabular">{{ platform.count }}</dd>
+              </div>
+            </dl>
+            <details class="platform-actions">
+              <summary>Available Actions</summary>
+              <p>{{ platform.actions.join(' · ') }}</p>
+            </details>
+          </li>
+        </ul>
+
+        <!-- Agent activity, rolled up from the action feed -->
+        <div class="ledger" tabindex="0" role="region" aria-labelledby="sim-agents-title">
+          <div class="hb-section-head">
+            <h3 id="sim-agents-title" class="hb-subheading">Agents</h3>
+            <span class="hb-soft hb-small">{{ $t('history.agentsCount', { count: agentActivity.length }) }}</span>
+          </div>
+          <ul v-if="agentActivity.length" class="agents hb-list">
+            <li
+              v-for="agent in agentActivity"
+              :key="agent.name"
+              class="agent"
+              :class="{ 'is-latest hb-surface-land': agent.latest }"
+            >
+              <span class="agent-name">{{ agent.name }}</span>
+              <span class="agent-count hb-tabular">{{ agent.count }}</span>
+              <span class="agent-last hb-soft hb-tabular">{{ agent.lastAction }} · R{{ agent.lastRound }}</span>
+              <span v-if="agent.latest" class="hb-vh">Latest round</span>
+            </li>
+          </ul>
+          <p v-else class="rail-empty hb-soft hb-small">{{ $t('common.noData') }}</p>
+
+          <h3 id="sim-activity-title" class="hb-subheading activity-title">Activity</h3>
+          <table v-if="activityRows.length" class="activity hb-tabular" aria-labelledby="sim-activity-title">
+            <thead>
+              <tr>
+                <th scope="col">Action</th>
+                <th v-for="platform in platformCards" :key="platform.id" scope="col">{{ platform.name }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in activityRows" :key="row.label">
+                <th scope="row">{{ row.label }}</th>
+                <td v-for="platform in platformCards" :key="platform.id">{{ row[platform.id] || '–' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p v-else class="rail-empty hb-soft hb-small">{{ $t('common.noData') }}</p>
+        </div>
+      </div>
+
+      <!-- Agent actions and posts, newest first -->
+      <section class="feed" aria-labelledby="sim-feed-title">
+        <header class="feed-head">
+          <h3 id="sim-feed-title" class="hb-heading">Agent actions</h3>
+          <span v-if="allActions.length" class="feed-counts hb-small hb-tabular">
+            Total events <b>{{ allActions.length }}</b>
+            <span class="hb-soft">Info Plaza <b>{{ twitterActionsCount }}</b></span>
+            <span class="hb-soft">Topic Community <b>{{ redditActionsCount }}</b></span>
+          </span>
+          <span v-if="latestActionCount" class="hb-unseen hb-tabular">{{ latestActionCount }} in latest round</span>
+          <p class="feed-note hb-origin--simulated hb-small">Written by simulated agents, not real people</p>
+        </header>
+
+        <div ref="scrollContainer" class="feed-scroll" tabindex="0" role="region" aria-labelledby="sim-feed-title">
+          <TransitionGroup v-if="allActions.length" name="timeline-item" tag="ol" class="hb-list">
+            <li
+              v-for="action in feedActions"
+              :key="action._uniqueId || action.id || `${action.timestamp}-${action.agent_id}`"
+              class="feed-item hb-row--simulated"
+              :class="[action.platform, getActionTypeClass(action.action_type), { 'is-latest hb-surface-land-soft': isLatestAction(action) }]"
+            >
+              <p class="item-meta">
+                <span class="agent-name">{{ action.agent_name }}</span>
+                <span>{{ platformName(action.platform) }}</span>
+                <span class="hb-tag">{{ getActionTypeLabel(action.action_type) }}</span>
+                <span class="hb-origin hb-origin--simulated">Simulated</span>
+                <span v-if="isLatestAction(action)" class="hb-unseen">Latest round</span>
+                <span class="item-time hb-tabular">R{{ action.round_num }} · {{ formatActionTime(action.timestamp) }}</span>
+              </p>
+
+              <div class="item-body">
                 <!-- CREATE_POST: 发布帖子 -->
-                <div v-if="action.action_type === 'CREATE_POST' && action.action_args?.content" class="content-text main-text">
+                <p v-if="action.action_type === 'CREATE_POST' && action.action_args?.content" class="content-text">
                   {{ action.action_args.content }}
-                </div>
+                </p>
 
                 <!-- QUOTE_POST: 引用帖子 -->
                 <template v-if="action.action_type === 'QUOTE_POST'">
-                  <div v-if="action.action_args?.quote_content" class="content-text">
+                  <p v-if="action.action_args?.quote_content" class="content-text">
                     {{ action.action_args.quote_content }}
-                  </div>
-                  <div v-if="action.action_args?.original_content" class="quoted-block">
-                    <div class="quote-header">
-                      <svg class="icon-small" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                      <span class="quote-label">@{{ action.action_args.original_author_name || 'User' }}</span>
-                    </div>
-                    <div class="quote-text">
-                      {{ truncateContent(action.action_args.original_content, 150) }}
-                    </div>
-                  </div>
+                  </p>
+                  <blockquote v-if="action.action_args?.original_content" class="quoted">
+                    <p class="item-note">@{{ action.action_args.original_author_name || 'User' }}</p>
+                    <p>{{ truncateContent(action.action_args.original_content, 150) }}</p>
+                  </blockquote>
                 </template>
 
                 <!-- REPOST: 转发帖子 -->
                 <template v-if="action.action_type === 'REPOST'">
-                  <div class="repost-info">
-                    <svg class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
-                    <span class="repost-label">Reposted from @{{ action.action_args?.original_author_name || 'User' }}</span>
-                  </div>
-                  <div v-if="action.action_args?.original_content" class="repost-content">
+                  <p class="item-note">Reposted from @{{ action.action_args?.original_author_name || 'User' }}</p>
+                  <blockquote v-if="action.action_args?.original_content" class="quoted">
                     {{ truncateContent(action.action_args.original_content, 200) }}
-                  </div>
+                  </blockquote>
                 </template>
 
                 <!-- LIKE_POST: 点赞帖子 -->
                 <template v-if="action.action_type === 'LIKE_POST'">
-                  <div class="like-info">
-                    <svg class="icon-small filled" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    <span class="like-label">Liked @{{ action.action_args?.post_author_name || 'User' }}'s post</span>
-                  </div>
-                  <div v-if="action.action_args?.post_content" class="liked-content">
+                  <p class="item-note">Liked @{{ action.action_args?.post_author_name || 'User' }}'s post</p>
+                  <p v-if="action.action_args?.post_content" class="item-excerpt">
                     "{{ truncateContent(action.action_args.post_content, 120) }}"
-                  </div>
+                  </p>
                 </template>
 
                 <!-- CREATE_COMMENT: 发表评论 -->
                 <template v-if="action.action_type === 'CREATE_COMMENT'">
-                  <div v-if="action.action_args?.content" class="content-text">
+                  <p v-if="action.action_args?.content" class="content-text">
                     {{ action.action_args.content }}
-                  </div>
-                  <div v-if="action.action_args?.post_id" class="comment-context">
-                    <svg class="icon-small" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    <span>Reply to post #{{ action.action_args.post_id }}</span>
-                  </div>
+                  </p>
+                  <p v-if="action.action_args?.post_id" class="item-note">Reply to post #{{ action.action_args.post_id }}</p>
                 </template>
 
                 <!-- SEARCH_POSTS: 搜索帖子 -->
-                <template v-if="action.action_type === 'SEARCH_POSTS'">
-                  <div class="search-info">
-                    <svg class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <span class="search-label">Search Query:</span>
-                    <span class="search-query">"{{ action.action_args?.query || '' }}"</span>
-                  </div>
-                </template>
+                <p v-if="action.action_type === 'SEARCH_POSTS'" class="item-note">
+                  Search Query: <b>"{{ action.action_args?.query || '' }}"</b>
+                </p>
 
                 <!-- FOLLOW: 关注用户 -->
-                <template v-if="action.action_type === 'FOLLOW'">
-                  <div class="follow-info">
-                    <svg class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                    <span class="follow-label">Followed @{{ action.action_args?.target_user || action.action_args?.user_id || 'User' }}</span>
-                  </div>
-                </template>
+                <p v-if="action.action_type === 'FOLLOW'" class="item-note">
+                  Followed @{{ action.action_args?.target_user || action.action_args?.user_id || 'User' }}
+                </p>
 
                 <!-- UPVOTE / DOWNVOTE -->
                 <template v-if="action.action_type === 'UPVOTE_POST' || action.action_type === 'DOWNVOTE_POST'">
-                  <div class="vote-info">
-                    <svg v-if="action.action_type === 'UPVOTE_POST'" class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                    <svg v-else class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    <span class="vote-label">{{ action.action_type === 'UPVOTE_POST' ? 'Upvoted' : 'Downvoted' }} Post</span>
-                  </div>
-                  <div v-if="action.action_args?.post_content" class="voted-content">
+                  <p class="item-note">{{ action.action_type === 'UPVOTE_POST' ? 'Upvoted' : 'Downvoted' }} Post</p>
+                  <p v-if="action.action_args?.post_content" class="item-excerpt">
                     "{{ truncateContent(action.action_args.post_content, 120) }}"
-                  </div>
+                  </p>
                 </template>
 
                 <!-- DO_NOTHING: 无操作（静默） -->
-                <template v-if="action.action_type === 'DO_NOTHING'">
-                  <div class="idle-info">
-                    <svg class="icon-small" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                    <span class="idle-label">Action Skipped</span>
-                  </div>
-                </template>
+                <p v-if="action.action_type === 'DO_NOTHING'" class="item-note">Action Skipped</p>
 
                 <!-- 通用回退：未知类型或有 content 但未被上述处理 -->
-                <div v-if="!['CREATE_POST', 'QUOTE_POST', 'REPOST', 'LIKE_POST', 'CREATE_COMMENT', 'SEARCH_POSTS', 'FOLLOW', 'UPVOTE_POST', 'DOWNVOTE_POST', 'DO_NOTHING'].includes(action.action_type) && action.action_args?.content" class="content-text">
+                <p
+                  v-if="!['CREATE_POST', 'QUOTE_POST', 'REPOST', 'LIKE_POST', 'CREATE_COMMENT', 'SEARCH_POSTS', 'FOLLOW', 'UPVOTE_POST', 'DOWNVOTE_POST', 'DO_NOTHING'].includes(action.action_type) && action.action_args?.content"
+                  class="content-text"
+                >
                   {{ action.action_args.content }}
-                </div>
+                </p>
               </div>
+            </li>
+          </TransitionGroup>
 
-              <div class="card-footer">
-                <span class="time-tag">R{{ action.round_num }} • {{ formatActionTime(action.timestamp) }}</span>
-                <!-- Platform tag removed as it is in header now -->
-              </div>
-            </div>
-          </div>
-        </TransitionGroup>
-
-        <div v-if="allActions.length === 0" class="waiting-state">
-          <div class="pulse-ring"></div>
-          <span>Waiting for agent actions...</span>
+          <p v-else class="feed-empty hb-soft">
+            {{ phase < 2 && !runError ? $t('step3.waitingForActions') : $t('common.noData') }}
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- Bottom Info / Logs -->
-    <div class="system-logs">
-      <div class="log-header">
-        <span class="log-title">SIMULATION MONITOR</span>
-        <span class="log-id">{{ simulationId || 'NO_SIMULATION' }}</span>
-      </div>
-      <div class="log-content" ref="logContent">
-        <div class="log-line" v-for="(log, idx) in systemLogs" :key="idx">
-          <span class="log-time">{{ log.time }}</span>
-          <span class="log-msg">{{ log.msg }}</span>
+      <!-- Run logs -->
+      <section class="logs" aria-labelledby="sim-logs-title">
+        <header class="hb-section-head logs-head">
+          <h3 id="sim-logs-title" class="hb-subheading">Simulation monitor</h3>
+          <span class="log-id hb-soft hb-small">{{ simulationId || 'NO_SIMULATION' }}</span>
+        </header>
+        <div ref="logContent" class="log-content" role="log" tabindex="0" aria-labelledby="sim-logs-title">
+          <ol class="hb-list">
+            <li
+              v-for="(log, idx) in systemLogs"
+              :key="idx"
+              class="log-line"
+              :class="{ 'is-latest hb-surface-land-soft': idx === systemLogs.length - 1 }"
+            >
+              <span class="log-time hb-soft hb-tabular">{{ log.time }}</span>
+              <span class="log-msg">{{ log.msg }}</span>
+              <span v-if="idx === systemLogs.length - 1" class="hb-unseen">Latest</span>
+            </li>
+          </ol>
         </div>
-      </div>
+      </section>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -358,6 +304,122 @@ const twitterElapsedTime = computed(() => {
 // Reddit平台的模拟流逝时间
 const redditElapsedTime = computed(() => {
   return formatElapsedTime(runStatus.value.reddit_current_round || 0)
+})
+
+// Harbor Chart view model: read-only projections of the run state, no side effects.
+const PLATFORMS = [
+  {
+    id: 'twitter',
+    name: 'Info Plaza',
+    elapsed: twitterElapsedTime,
+    actions: ['POST', 'LIKE', 'REPOST', 'QUOTE', 'FOLLOW', 'IDLE']
+  },
+  {
+    id: 'reddit',
+    name: 'Topic Community',
+    elapsed: redditElapsedTime,
+    actions: ['POST', 'COMMENT', 'LIKE', 'DISLIKE', 'SEARCH', 'TREND', 'FOLLOW', 'MUTE', 'REFRESH', 'IDLE']
+  }
+]
+
+const STATE_VIEW = {
+  idle: { label: 'common.pending', mark: 'idle' },
+  running: { label: 'common.running', mark: 'running' },
+  completed: { label: 'common.completed', mark: 'completed' },
+  stopped: { label: 'history.stopped', mark: 'stopped' },
+  failed: { label: 'common.failed', mark: 'failed' },
+  // A failed status check says nothing about the run itself, so it is not shown as "Failed".
+  error: { label: 'common.error', mark: 'failed' }
+}
+
+const platformName = (id) => PLATFORMS.find(platform => platform.id === id)?.name || id
+
+const runError = computed(() => startError.value || runStatus.value.error || null)
+
+const runState = computed(() => {
+  if (startError.value) return 'error'
+  const status = runStatus.value.runner_status
+  if (status === 'failed' || status === 'stopped' || status === 'completed') return status
+  if (phase.value === 2) return 'stopped'
+  return phase.value === 1 ? 'running' : 'idle'
+})
+
+const totalRounds = computed(() => runStatus.value.total_rounds || props.maxRounds || 0)
+
+const currentRound = computed(() => {
+  const { current_round, twitter_current_round, reddit_current_round } = runStatus.value
+  const round = Math.max(current_round || 0, twitter_current_round || 0, reddit_current_round || 0)
+  return totalRounds.value ? Math.min(round, totalRounds.value) : round
+})
+
+const roundsLabel = computed(() => t('history.roundsProgress', {
+  current: currentRound.value,
+  total: totalRounds.value || '-'
+}))
+
+const platformCards = computed(() => PLATFORMS.map(({ id, name, elapsed, actions }) => {
+  const status = runStatus.value
+  let state = status[`${id}_running`] ? 'running' : 'idle'
+  if (status[`${id}_completed`]) state = 'completed'
+  else if (phase.value === 2) state = runState.value // a stopped or failed run leaves platforms unfinished
+  return {
+    id,
+    name,
+    actions,
+    state,
+    elapsed: elapsed.value,
+    round: status[`${id}_current_round`] || 0,
+    count: status[`${id}_actions_count`] || 0
+  }
+}))
+
+// The API returns each poll newest-first, so arrival order alternates; sort for display only.
+const feedActions = computed(() => [...chronologicalActions.value].sort(
+  (a, b) => (Date.parse(b.timestamp) || 0) - (Date.parse(a.timestamp) || 0)
+))
+
+// Taken from the actions, not runStatus: platform rounds only advance at round_end,
+// and this also survives a page refresh, when every action arrives in one poll.
+const latestRounds = computed(() => {
+  const rounds = {}
+  allActions.value.forEach(({ platform, round_num }) => {
+    rounds[platform] = Math.max(rounds[platform] ?? 0, round_num || 0)
+  })
+  return rounds
+})
+
+const isLatestAction = (action) => action.round_num === latestRounds.value[action.platform]
+
+const latestActionCount = computed(() => allActions.value.filter(isLatestAction).length)
+
+const agentActivity = computed(() => {
+  const agents = new Map()
+  feedActions.value.forEach(action => {
+    const name = action.agent_name || String(action.agent_id)
+    if (!agents.has(name)) {
+      agents.set(name, {
+        name,
+        count: 0,
+        latest: false,
+        lastRound: action.round_num,
+        lastAction: getActionTypeLabel(action.action_type)
+      })
+    }
+    const agent = agents.get(name)
+    agent.count++
+    agent.latest ||= isLatestAction(action)
+  })
+  return [...agents.values()]
+})
+
+const activityRows = computed(() => {
+  const rows = new Map()
+  allActions.value.forEach(({ action_type, platform }) => {
+    const label = getActionTypeLabel(action_type)
+    if (!rows.has(label)) rows.set(label, { label, twitter: 0, reddit: 0 })
+    if (platform === 'twitter' || platform === 'reddit') rows.get(label)[platform]++
+  })
+  return [...rows.values()].sort((a, b) => (b.twitter + b.reddit) - (a.twitter + a.reddit))
 })
 
 // Methods
@@ -719,567 +781,430 @@ onUnmounted(() => {
 
 <style scoped>
 .simulation-panel {
+  container: simulation / inline-size;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #FFFFFF;
-  font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
   overflow: hidden;
+  color: var(--hb-navy);
+  background: var(--hb-paper);
+  font-family: var(--hb-font-sans);
+  font-variant-numeric: lining-nums;
 }
 
-/* --- Control Bar --- */
-.control-bar {
-  background: #FFF;
-  padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #EAEAEA;
-  z-index: 10;
-  height: 64px;
+h2,
+h3 {
+  margin: 0;
 }
 
-.status-group {
-  display: flex;
-  gap: 12px;
-}
-
-/* Platform Status Cards */
-.platform-status {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 6px 12px;
-  border-radius: 4px;
-  background: #FAFAFA;
-  border: 1px solid #EAEAEA;
-  opacity: 0.7;
-  transition: all 0.3s;
-  min-width: 140px;
-  position: relative;
-  cursor: pointer;
-}
-
-.platform-status.active {
-  opacity: 1;
-  border-color: #333;
-  background: #FFF;
-}
-
-.platform-status.completed {
-  opacity: 1;
-  border-color: #1A936F;
-  background: #F2FAF6;
-}
-
-/* Actions Tooltip */
-.actions-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 8px;
-  padding: 10px 14px;
-  background: #000;
-  color: #FFF;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
-  z-index: 100;
-  min-width: 180px;
-  pointer-events: none;
-}
-
-.actions-tooltip::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #000;
-}
-
-.platform-status:hover .actions-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.tooltip-title {
-  font-size: 10px;
-  font-weight: 600;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-}
-
-.tooltip-actions {
+/* Run band */
+.run-band {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  align-items: center;
+  gap: var(--hb-space-2) var(--hb-space-4);
+  padding: var(--hb-space-2) var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-navy);
 }
 
-.tooltip-action {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 8px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
-  color: #FFF;
-  letter-spacing: 0.03em;
+.run-title {
+  min-width: 0;
+  font: 700 var(--hb-text-xl) / 1.2 var(--hb-font-serif);
+  overflow-wrap: anywhere;
 }
 
-.platform-header {
+.run-band > .hb-status {
+  font-size: var(--hb-text-sm);
+  white-space: nowrap;
+}
+
+.run-progress {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 2px;
+  gap: var(--hb-space-2);
+  margin-left: auto;
+  font-size: var(--hb-text-sm);
+  white-space: nowrap;
 }
 
-.platform-name {
-  font-size: 11px;
-  font-weight: 700;
-  color: #000;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+progress {
+  appearance: none;
+  width: 5rem;
+  height: 8px;
+  background: var(--hb-paper);
+  border: 1px solid var(--hb-navy);
 }
 
-.platform-status.twitter .platform-icon { color: #000; }
-.platform-status.reddit .platform-icon { color: #000; }
+progress::-webkit-progress-bar {
+  background: var(--hb-paper);
+}
+
+progress::-webkit-progress-value {
+  background: var(--hb-navy);
+}
+
+progress::-moz-progress-bar {
+  background: var(--hb-navy);
+}
+
+.run-alert {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--hb-space-1) var(--hb-space-2);
+  padding: var(--hb-space-1) var(--hb-space-2);
+  background: var(--hb-paper);
+  border: 1px solid var(--hb-navy);
+  font-size: var(--hb-text-sm);
+  overflow-wrap: anywhere;
+}
+
+/* Work areas: stacked in the split view, side by side when the panel has room */
+.work {
+  display: grid;
+  grid-template-rows: auto minmax(18rem, 1fr) 9rem;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.rail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  border-bottom: 1px solid var(--hb-navy);
+}
+
+.platforms {
+  padding: var(--hb-space-2) var(--hb-space-4);
+}
+
+.platform + .platform {
+  margin-top: var(--hb-space-2);
+  padding-top: var(--hb-space-2);
+  border-top: 1px solid var(--hb-rule);
+}
 
 .platform-stats {
-  display: flex;
-  gap: 10px;
-}
-
-.stat {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-}
-
-.stat-label {
-  font-size: 8px;
-  color: #999;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-value {
-  font-size: 11px;
-  font-weight: 600;
-  color: #333;
-}
-
-.stat-total, .stat-unit {
-  font-size: 9px;
-  color: #999;
-  font-weight: 400;
-}
-
-.status-badge {
-  margin-left: auto;
-  color: #1A936F;
-  display: flex;
-  align-items: center;
-}
-
-/* Action Button */
-.action-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.action-btn.primary {
-  background: #000;
-  color: #FFF;
-}
-
-.action-btn.primary:hover:not(:disabled) {
-  background: #333;
-}
-
-.action-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* --- Main Content Area --- */
-.main-content-area {
-  flex: 1;
-  overflow-y: auto;
-  position: relative;
-  background: #FFF;
-}
-
-/* Timeline Header */
-.timeline-header {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  padding: 12px 24px;
-  border-bottom: 1px solid #EAEAEA;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-}
-
-.timeline-stats {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 11px;
-  color: #666;
-  background: #F5F5F5;
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-
-.total-count {
-  font-weight: 600;
-  color: #333;
-}
-
-.platform-breakdown {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.breakdown-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.breakdown-divider { color: #DDD; }
-.breakdown-item.twitter { color: #000; }
-.breakdown-item.reddit { color: #000; }
-
-/* --- Timeline Feed --- */
-.timeline-feed {
-  padding: 24px 0;
-  position: relative;
-  min-height: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.timeline-axis {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: #EAEAEA; /* Cleaner line */
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-  position: relative;
-  width: 100%;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: 50%;
-  top: 24px;
-  width: 10px;
-  height: 10px;
-  background: #FFF;
-  border: 1px solid #CCC;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.marker-dot {
-  width: 4px;
-  height: 4px;
-  background: #CCC;
-  border-radius: 50%;
-}
-
-.timeline-item.twitter .marker-dot { background: #000; }
-.timeline-item.reddit .marker-dot { background: #000; }
-.timeline-item.twitter .timeline-marker { border-color: #000; }
-.timeline-item.reddit .timeline-marker { border-color: #000; }
-
-/* Card Layout */
-.timeline-card {
-  width: calc(100% - 48px);
-  background: #FFF;
-  border-radius: 2px;
-  padding: 16px 20px;
-  border: 1px solid #EAEAEA;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-  position: relative;
-  transition: all 0.2s;
-}
-
-.timeline-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border-color: #DDD;
-}
-
-/* Left side (Twitter) */
-.timeline-item.twitter {
-  justify-content: flex-start;
-  padding-right: 50%;
-}
-.timeline-item.twitter .timeline-card {
-  margin-left: auto;
-  margin-right: 32px; /* Gap from axis */
-}
-
-/* Right side (Reddit) */
-.timeline-item.reddit {
-  justify-content: flex-end;
-  padding-left: 50%;
-}
-.timeline-item.reddit .timeline-card {
-  margin-right: auto;
-  margin-left: 32px; /* Gap from axis */
-}
-
-/* Card Content Styles */
-.card-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #F5F5F5;
+  gap: var(--hb-space-3);
+  margin-top: var(--hb-space-1);
 }
 
-.agent-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.platform-stats dt {
+  color: var(--hb-navy-soft);
+  font: 500 var(--hb-text-xs) / 1.2 var(--hb-font-sc);
 }
 
-.avatar-placeholder {
-  width: 24px;
-  height: 24px;
-  background: #000;
-  color: #FFF;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
+.platform-stats dd {
   font-weight: 700;
-  text-transform: uppercase;
+}
+
+.platform-actions {
+  margin-top: var(--hb-space-1);
+  font-size: var(--hb-text-xs);
+}
+
+.platform-actions summary {
+  min-height: 24px;
+  color: var(--hb-navy-soft);
+  font-family: var(--hb-font-sc);
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.platform-actions p {
+  font-family: var(--hb-font-sc);
+}
+
+.ledger {
+  max-height: 11rem;
+  padding: var(--hb-space-2) var(--hb-space-4) var(--hb-space-3);
+  overflow-y: auto;
+  border-top: 1px solid var(--hb-rule);
+}
+
+.ledger:focus-visible,
+.feed-scroll:focus-visible,
+.log-content:focus-visible {
+  outline-offset: -2px;
+}
+
+.agents {
+  margin-top: var(--hb-space-1);
+  border-top: 1px solid var(--hb-navy);
+}
+
+.agent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--hb-space-2);
+  padding: 3px var(--hb-space-1);
+  border-bottom: 1px solid var(--hb-rule);
+  font-size: var(--hb-text-sm);
 }
 
 .agent-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: #000;
+  font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
-.header-meta {
+.agent.is-latest .agent-name,
+.agent-count {
+  font-weight: 700;
+}
+
+.agent-last {
+  grid-column: 1 / -1;
+  font-size: var(--hb-text-xs);
+}
+
+.activity-title {
+  margin-top: var(--hb-space-4);
+}
+
+.rail-empty {
+  padding-top: var(--hb-space-1);
+}
+
+.activity {
+  width: 100%;
+  margin-top: var(--hb-space-1);
+  border-collapse: collapse;
+  font-size: var(--hb-text-sm);
+}
+
+.activity th,
+.activity td {
+  padding: 2px 0 2px var(--hb-space-2);
+  border-bottom: 1px solid var(--hb-rule);
+  font-weight: 400;
+  text-align: right;
+}
+
+.activity th:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.activity thead th {
+  border-block: 1px solid var(--hb-navy);
+  font: 700 var(--hb-text-xs) / 1.15 var(--hb-font-sc);
+  vertical-align: bottom;
+}
+
+.activity tbody th {
+  font-family: var(--hb-font-sc);
+}
+
+.activity td {
+  font-weight: 700;
+}
+
+/* Feed */
+.feed {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+}
+
+.feed-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: var(--hb-space-1) var(--hb-space-3);
+  padding: var(--hb-space-2) var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-navy);
 }
 
-.platform-indicator {
-  color: #999;
+.feed-counts {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 var(--hb-space-2);
+}
+
+.feed-note {
+  flex: 1 0 100%;
+}
+
+.feed-scroll {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.feed-item {
+  padding: var(--hb-space-2) var(--hb-space-4) var(--hb-space-3);
+}
+
+.feed-item:first-child {
+  border-top: 0;
+}
+
+.item-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: var(--hb-space-1) var(--hb-space-2);
+  color: var(--hb-navy-soft);
+  font-size: var(--hb-text-sm);
 }
 
-.action-badge {
-  font-size: 9px;
-  padding: 2px 6px;
-  border-radius: 2px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid transparent;
+.item-meta .agent-name {
+  color: var(--hb-navy);
+  font-size: var(--hb-text-md);
+  font-weight: 700;
 }
 
-/* Monochromatic Badges */
-.badge-post { background: #F0F0F0; color: #333; border-color: #E0E0E0; }
-.badge-comment { background: #F0F0F0; color: #666; border-color: #E0E0E0; }
-.badge-action { background: #FFF; color: #666; border: 1px solid #E0E0E0; }
-.badge-meta { background: #FAFAFA; color: #999; border: 1px dashed #DDD; }
-.badge-idle { opacity: 0.5; }
+.item-time {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.item-body {
+  display: grid;
+  gap: var(--hb-space-1);
+  margin-top: var(--hb-space-1);
+  overflow-wrap: anywhere;
+}
+
+.item-body:empty {
+  display: none;
+}
 
 .content-text {
-  font-size: 13px;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 10px;
+  max-width: 68ch;
+  line-height: 1.3;
+  text-wrap: pretty;
 }
 
-.content-text.main-text {
-  font-size: 14px;
-  color: #000;
+.item-note,
+.item-excerpt {
+  max-width: 68ch;
+  color: var(--hb-navy-soft);
+  font-size: var(--hb-text-sm);
 }
 
-/* Info Blocks (Quote, Repost, etc) */
-.quoted-block, .repost-content {
-  background: #F9F9F9;
-  border: 1px solid #EEE;
-  padding: 10px 12px;
-  border-radius: 2px;
-  margin-top: 8px;
-  font-size: 12px;
-  color: #555;
+.item-note b {
+  color: var(--hb-navy);
 }
 
-.quote-header, .repost-info, .like-info, .search-info, .follow-info, .vote-info, .idle-info, .comment-context {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-  font-size: 11px;
-  color: #666;
+.quoted {
+  max-width: 68ch;
+  padding: var(--hb-space-1) var(--hb-space-2);
+  border: 1px solid var(--hb-rule);
+  border-radius: var(--hb-radius);
+  font-size: var(--hb-text-sm);
 }
 
-.icon-small {
-  color: #999;
-}
-.icon-small.filled {
-  color: #999; /* Keep icons neutral unless highlighted */
+.feed-empty {
+  padding: var(--hb-space-6) var(--hb-space-4);
+  text-align: center;
 }
 
-.search-query {
-  font-family: 'JetBrains Mono', monospace;
-  background: #F0F0F0;
-  padding: 0 4px;
-  border-radius: 2px;
-}
-
-.card-footer {
-  margin-top: 12px;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 10px;
-  color: #BBB;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Waiting State */
-.waiting-state {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  color: #CCC;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.pulse-ring {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #EAEAEA;
-  animation: ripple 2s infinite;
-}
-
-@keyframes ripple {
-  0% { transform: scale(0.8); opacity: 1; border-color: #CCC; }
-  100% { transform: scale(2.5); opacity: 0; border-color: #EAEAEA; }
-}
-
-/* Animation */
-.timeline-item-enter-active,
-.timeline-item-leave-active {
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+/* New rows arrive on chart-land and settle into their resting tone */
+.timeline-item-enter-active {
+  transition: background-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .timeline-item-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.timeline-item-leave-to {
-  opacity: 0;
+  background-color: var(--hb-land);
 }
 
 /* Logs */
-.system-logs {
-  background: #000;
-  color: #DDD;
-  padding: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  border-top: 1px solid #222;
-  flex-shrink: 0;
+.logs {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  border-top: 1px solid var(--hb-navy);
 }
 
-.log-header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-  font-size: 10px;
-  color: #666;
+.logs-head {
+  padding: var(--hb-space-1) var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-rule);
+}
+
+.log-id {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 .log-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  height: 100px;
+  min-height: 0;
+  padding-bottom: var(--hb-space-1);
   overflow-y: auto;
-  padding-right: 4px;
+  font-size: var(--hb-text-sm);
 }
-
-.log-content::-webkit-scrollbar { width: 4px; }
-.log-content::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
 .log-line {
-  font-size: 11px;
-  display: flex;
-  gap: 12px;
-  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: var(--hb-space-2);
+  padding: 2px var(--hb-space-4);
+  border-bottom: 1px solid var(--hb-rule);
 }
 
-.log-time { color: #555; min-width: 75px; }
-.log-msg { color: #BBB; word-break: break-all; }
-.mono { font-family: 'JetBrains Mono', monospace; }
+.log-msg {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
 
-/* Loading spinner for button */
-.loading-spinner-small {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #FFF;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-right: 6px;
+@container simulation (min-width: 34rem) {
+  .rail {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ledger {
+    border-top: 0;
+    border-left: 1px solid var(--hb-rule);
+  }
+}
+
+@container simulation (min-width: 48rem) {
+  .work {
+    grid-template-rows: minmax(0, 1fr) 11rem;
+    grid-template-columns: 18rem minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  .rail {
+    display: flex;
+    grid-row: 1 / -1;
+    flex-direction: column;
+    border-right: 1px solid var(--hb-navy);
+    border-bottom: 0;
+  }
+
+  .ledger {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    border-top: 1px solid var(--hb-navy);
+    border-left: 0;
+  }
+
+  .feed-note {
+    flex: 0 1 auto;
+    margin-left: auto;
+  }
+}
+
+@container simulation (min-width: 75rem) {
+  .work {
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: 18rem minmax(0, 1fr) 22rem;
+  }
+
+  .logs {
+    border-top: 0;
+    border-left: 1px solid var(--hb-navy);
+  }
 }
 </style>
