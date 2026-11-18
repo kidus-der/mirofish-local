@@ -1533,7 +1533,7 @@ const InterviewDisplay = {
                     class: ['qa-text', 'answer-text', { 'placeholder-text': isPlaceholder }],
                     innerHTML: isPlaceholder
                       ? answerText
-                      : formatAnswer(answerText, isExpanded)
+                      : escapeLt(formatAnswer(answerText, isExpanded))
                           .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
                           .replace(/\n/g, '<br>')
                   }),
@@ -1871,8 +1871,11 @@ const truncateText = (text, maxLen) => {
   return text.substring(0, maxLen) + '...'
 }
 
+const escapeLt = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;') // LLM/user text must not inject HTML
+
 const renderMarkdown = (content) => {
   if (!content) return ''
+  content = escapeLt(content)
   
   // 去掉开头的二级标题（## xxx），因为章节标题已在外层显示
   let processedContent = content.replace(/^##\s+.+\n+/, '')

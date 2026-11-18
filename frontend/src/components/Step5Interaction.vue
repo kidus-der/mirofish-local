@@ -554,8 +554,11 @@ const formatTime = (timestamp) => {
   }
 }
 
+const escapeLt = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;') // LLM/user text must not inject HTML
+
 const renderMarkdown = (content) => {
   if (!content) return ''
+  content = escapeLt(content)
   
   let processedContent = content.replace(/^##\s+.+\n+/, '')
   let html = processedContent.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
