@@ -728,9 +728,9 @@ SECTION_SYSTEM_PROMPT_TEMPLATE = """\
 
 选项A - 调用工具：
 输出你的思考，然后用以下格式调用一个工具：
-<tool_call>
+<use_tool>
 {{"name": "工具名称", "parameters": {{"参数名": "参数值"}}}}
-</tool_call>
+</use_tool>
 系统会执行工具并把结果返回给你。你不需要也不能自己编写工具返回结果。
 
 选项B - 输出最终内容：
@@ -851,9 +851,9 @@ CHAT_SYSTEM_PROMPT_TEMPLATE = """\
 {tools_description}
 
 【工具调用格式】
-<tool_call>
+<use_tool>
 {{"name": "工具名称", "parameters": {{"参数名": "参数值"}}}}
-</tool_call>
+</use_tool>
 
 【回答风格】
 - 简洁直接，不要长篇大论
@@ -1075,13 +1075,14 @@ class ReportAgent:
         从LLM响应中解析工具调用
 
         支持的格式（按优先级）：
-        1. <tool_call>{"name": "tool_name", "parameters": {...}}</tool_call>
+        1. <use_tool>{"name": "tool_name", "parameters": {...}}</use_tool>
         2. 裸 JSON（响应整体或单行就是一个工具调用 JSON）
         """
         tool_calls = []
 
         # 格式1: XML风格（标准格式）
-        xml_pattern = r'<tool_call>\s*(\{.*?\})\s*</tool_call>'
+        # Not <tool_call>: Ollama's Qwen parser claims that tag and answers HTTP 500 on this JSON form.
+        xml_pattern = r'<use_tool>\s*(\{.*?\})\s*</use_tool>'
         for match in re.finditer(xml_pattern, response, re.DOTALL):
             try:
                 call_data = json.loads(match.group(1))
@@ -1092,7 +1093,7 @@ class ReportAgent:
         if tool_calls:
             return tool_calls
 
-        # 格式2: 兜底 - LLM 直接输出裸 JSON（没包 <tool_call> 标签）
+        # 格式2: 兜底 - LLM 直接输出裸 JSON（没包 <use_tool> 标签）
         # 只在格式1未匹配时尝试，避免误匹配正文中的 JSON
         stripped = response.strip()
         if stripped.startswith('{') and stripped.endswith('}'):
@@ -1144,7 +1145,7 @@ class ReportAgent:
     def _strip_fake_tool_results(response: str) -> str:
         """Strip any <tool_result> blocks the LLM fabricated in its response.
 
-        When the LLM generates a <tool_call> block and then continues to generate
+        When the LLM generates a <use_tool> block and then continues to generate
         a <tool_result> block in the same response, we must strip the fake result
         before appending to message history. The real tool result will be injected
         separately by the system.
@@ -1381,8 +1382,8 @@ class ReportAgent:
                         "content": (
                             "【格式错误】你在一次回复中同时包含了工具调用和 Final Answer，这是不允许的。\n"
                             "每次回复只能做以下两件事之一：\n"
-                            "- 调用一个工具（输出一个 <tool_call> 块，不要写 Final Answer）\n"
-                            "- 输出最终内容（以 'Final Answer:' 开头，不要包含 <tool_call>）\n"
+                            "- 调用一个工具（输出一个 <use_tool> 块，不要写 Final Answer）\n"
+                            "- 输出最终内容（以 'Final Answer:' 开头，不要包含 <use_tool>）\n"
                             "请重新回复，只做其中一件事。"
                         ),
                     })
@@ -1392,9 +1393,9 @@ class ReportAgent:
                     logger.warning(
                         t('report.sectionConflictDowngrade', title=section.title, conflictCount=conflict_retries)
                     )
-                    first_tool_end = response.find('</tool_call>')
+                    first_tool_end = response.find('</use_tool>')
                     if first_tool_end != -1:
-                        response = response[:first_tool_end + len('</tool_call>')]
+                        response = response[:first_tool_end + len('</use_tool>')]
                         tool_calls = self._parse_tool_calls(response)
                         has_tool_calls = bool(tool_calls)
                     has_final_answer = False
@@ -1879,7 +1880,7 @@ class ReportAgent:
             
             if not tool_calls:
                 # 没有工具调用，直接返回响应
-                clean_response = re.sub(r'<tool_call>.*?</tool_call>', '', response, flags=re.DOTALL)
+                clean_response = re.sub(r'<use_tool>.*?</use_tool>', '', response, flags=re.DOTALL)
                 clean_response = re.sub(r'\[TOOL_CALL\].*?\)', '', clean_response)
                 clean_response = ReportAgent._strip_fake_tool_results(clean_response)
                 
@@ -1917,7 +1918,7 @@ class ReportAgent:
         )
         
         # 清理响应
-        clean_response = re.sub(r'<tool_call>.*?</tool_call>', '', final_response, flags=re.DOTALL)
+        clean_response = re.sub(r'<use_tool>.*?</use_tool>', '', final_response, flags=re.DOTALL)
         clean_response = re.sub(r'\[TOOL_CALL\].*?\)', '', clean_response)
         clean_response = ReportAgent._strip_fake_tool_results(clean_response)
         
