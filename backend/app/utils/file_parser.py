@@ -191,13 +191,25 @@ def split_text_into_chunks(
                 if last_sep != -1 and last_sep > chunk_size * 0.3:
                     end = start + last_sep + len(sep)
                     break
+            else:
+                # No sentence end: at least do not cut a word (or a name) in half.
+                last_space = text[start:end].rfind(' ')
+                if last_space > chunk_size * 0.3:
+                    end = start + last_space + 1
         
         chunk = text[start:end].strip()
         if chunk:
             chunks.append(chunk)
         
         # 下一个块从重叠位置开始
-        start = end - overlap if end < len(text) else len(text)
+        if end >= len(text):
+            break
+        start = max(end - overlap, start + 1)
+        # Begin the overlap on a word boundary so names stay whole.
+        if text[start - 1].isalnum() and text[start].isalnum() and text[start].isascii():
+            next_space = text.find(' ', start, end)
+            if next_space != -1:
+                start = next_space + 1
     
     return chunks
 
