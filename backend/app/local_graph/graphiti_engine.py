@@ -10,6 +10,7 @@ import asyncio
 import atexit
 import json
 import os
+import re
 import threading
 from datetime import datetime, timezone
 from types import SimpleNamespace
@@ -97,6 +98,54 @@ def _model(name: str, spec: dict):
     fields = {("attr_" + k if k in _RESERVED else k): (Optional[str], Field(default=None, description=d or k))
               for k, d in (spec.get("attributes") or {}).items()}
     return create_model(name, __doc__=spec.get("description") or name, **fields)
+
+
+_TITLE = re.compile(r"^(the|mr|mrs|ms|dr|mayor|president|ceo|chair|council member|councillor|senator|minister)\.?\s+", re.I)
+
+
+def _plain(name: str) -> str:
+    n = (name or "").strip()
+    while True:
+        m = _TITLE.sub("", n)
+        if m == n:
+            return n.lower()
+        n = m
+
+
+def alias_merges(nodes: list[dict]) -> dict[str, str]:
+    """Map duplicate node uuid -> canonical uuid, using only unambiguous name evidence.
+
+    Graphiti's LLM dedupe misses these on a small model: "HVWA" for "Harbor Vale Water Authority",
+    "Okafor" for "Nadia Okafor", "The Courier" for "Harbor Vale Courier". A short name matching two
+    candidates ("Reyes" with Tomas and Marco) is left alone.
+    """
+    def types(n):
+        return {x for x in n["labels"] if x not in ("Entity", "Node")}
+
+    def compatible(a, b):
+        return not types(a) or not types(b) or bool(types(a) & types(b))
+
+    out: dict[str, str] = {}
+    by_len = sorted(nodes, key=lambda n: -len(_plain(n["name"])))
+    for short in nodes:
+        s = _plain(short["name"])
+        words = s.split()
+        if not s:
+            continue
+        hits = []
+        for long in by_len:
+            if long["uuid"] == short["uuid"] or long["uuid"] in out or not compatible(short, long):
+                continue
+            lw = _plain(long["name"]).split()
+            same = lw == words and len(short["name"]) > len(long["name"])  # "The X" -> "X"
+            acronym = len(words) == 1 and short["name"].isupper() and len(s) >= 3 and s == "".join(w[0] for w in lw if w not in ("of", "and", "for"))
+            part = bool(types(short) & types(long)) and len(lw) > len(words) \
+                and (lw[-len(words):] == words or lw[:len(words)] == words)
+            if same or acronym or part:
+                hits.append(long)
+        if len(hits) == 1 and short["uuid"] not in {out.get(hits[0]["uuid"])}:
+            out[short["uuid"]] = hits[0]["uuid"]
+    return out
 
 
 def _iso(v: Any) -> Optional[str]:
@@ -189,6 +238,30 @@ class GraphitiEngine(Engine):
         )
         for n in res.nodes:
             self._node_graph[n.uuid] = ep["graph_id"]
+        await self._merge_aliases(g, ep["graph_id"])
+
+    async def _merge_aliases(self, g: Graphiti, graph_id: str) -> None:
+        found = await EntityNode.get_by_group_ids(g.driver, [graph_id])
+        by_id = {n.uuid: n for n in found}
+        for dup_id, keep_id in alias_merges([self._node_dict(n) for n in found]).items():
+            dup, keep = by_id[dup_id], by_id[keep_id]
+            for e in await EntityEdge.get_by_node_uuid(g.driver, dup_id):
+                await e.delete(g.driver)
+                e.source_node_uuid = keep_id if e.source_node_uuid == dup_id else e.source_node_uuid
+                e.target_node_uuid = keep_id if e.target_node_uuid == dup_id else e.target_node_uuid
+                if e.source_node_uuid != e.target_node_uuid:  # a merge can turn an edge into a self-loop
+                    await e.generate_embedding(self._g_embedder)
+                    await e.save(g.driver)
+            if dup.summary and dup.summary not in (keep.summary or ""):
+                keep.summary = f"{keep.summary or ''} {dup.summary}".strip()
+            keep.labels = list(dict.fromkeys([*keep.labels, *dup.labels]))
+            keep.attributes = {**dup.attributes, **keep.attributes}
+            if keep.name_embedding is None:
+                await keep.generate_name_embedding(self._g_embedder)
+            await keep.save(g.driver)
+            await dup.delete(g.driver)
+            self._node_graph.pop(dup_id, None)
+            logger.info("merged alias %r into %r", dup.name, keep.name)
 
     # ---------- reads ----------
     @staticmethod
