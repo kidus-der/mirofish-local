@@ -97,6 +97,9 @@ You should see `All local-only checks passed.`
 | Search reranking | Zep Cloud | `BAAI/bge-reranker-v2-m3` |
 | Network access | Open | macOS sandbox, Python guard and loopback-only services |
 | Web fonts | Google Fonts | Bundled with the app |
+| Interface | MiroFish design | Harbor Chart, an original design for private research runs |
+
+The Harbor Chart interface keeps the five-stage workflow and puts the graph beside the work. Source facts appear as solid lines, and simulated facts appear as dashed magenta lines.
 
 The fork also fixes problems found during testing. Opening posts now go to the right speaker, personas read the source text, simulated facts are labelled, reports use recorded agent posts, and refreshing an active run no longer restarts it.
 
