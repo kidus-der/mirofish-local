@@ -464,6 +464,9 @@ class RedditSimulationRunner:
         return ModelFactory.create(
             model_platform=ModelPlatformType.OPENAI,
             model_type=llm_model,
+            # Local Qwen thinks by default, which would multiply the time of every agent action.
+            model_config_dict={"reasoning_effort": os.environ.get("LLM_REASONING_EFFORT", "none")},
+            timeout=float(os.environ.get("MODEL_TIMEOUT", "1800")),
         )
     
     def _get_active_agents_for_round(
@@ -578,7 +581,7 @@ class RedditSimulationRunner:
             agent_graph=self.agent_graph,
             platform=oasis.DefaultPlatformType.REDDIT,
             database_path=db_path,
-            semaphore=30,  # 限制最大并发 LLM 请求数，防止 API 过载
+            semaphore=int(os.environ.get("SIM_LLM_CONCURRENCY", "2")),  # matches the local model's request slots
         )
         
         await self.env.reset()
