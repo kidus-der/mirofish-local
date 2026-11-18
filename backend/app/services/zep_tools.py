@@ -8,6 +8,8 @@ Zep检索工具服务
 3. QuickSearch（简单搜索）- 快速检索
 """
 
+import os
+import sqlite3
 import time
 import json
 from typing import Dict, Any, List, Optional
@@ -401,6 +403,28 @@ class InterviewResult:
         text_parts.append(self.summary or "（无摘要）")
 
         return "\n".join(text_parts)
+
+
+def recorded_agent_statements(sim_dir: str, agent_id: int, limit: int = 8) -> List[str]:
+    """Distinct posts, quote posts and comments one agent wrote, oldest first."""
+    out: List[str] = []
+    for platform in ("twitter", "reddit"):
+        path = os.path.join(sim_dir, f"{platform}_simulation.db")
+        if not os.path.exists(path):
+            continue
+        conn = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+        try:
+            rows = conn.execute(
+                "SELECT CASE WHEN p.original_post_id IS NULL THEN p.content ELSE p.quote_content END "
+                "FROM post p JOIN user u ON u.user_id = p.user_id WHERE u.agent_id = ? ORDER BY p.post_id",
+                (agent_id,)).fetchall()
+            rows += conn.execute(
+                "SELECT c.content FROM comment c JOIN user u ON u.user_id = c.user_id "
+                "WHERE u.agent_id = ? ORDER BY c.comment_id", (agent_id,)).fetchall()
+        finally:
+            conn.close()
+        out += [f"[{platform}] {r[0].strip()}" for r in rows if r[0] and r[0].strip()]
+    return list(dict.fromkeys(out))[:limit]
 
 
 class ZepToolsService:
@@ -1267,6 +1291,19 @@ class ZepToolsService:
         logger.info(t("console.quickSearchComplete", count=result.total_count))
         return result
     
+    def _recorded_statements(self, simulation_id, agents, indices, question) -> List[AgentInterview]:
+        sim_dir = os.path.join(Config.OASIS_SIMULATION_DATA_DIR, simulation_id)
+        found = []
+        for agent, agent_id in zip(agents, indices):
+            said = recorded_agent_statements(sim_dir, agent_id)
+            if said:
+                found.append(AgentInterview(
+                    agent_name=agent.get("realname", agent.get("username", f"Agent_{agent_id}")),
+                    agent_role=agent.get("profession", "未知"), agent_bio=agent.get("bio", ""),
+                    question=question, response="\n".join(said),
+                    key_quotes=[s.split("] ", 1)[1] for s in said[:3]]))
+        return found
+
     def interview_agents(
         self,
         simulation_id: str,
@@ -1460,7 +1497,14 @@ class ZepToolsService:
         except ValueError as e:
             # 模拟环境未运行
             logger.warning(t("console.interviewApiCallFailed", error=e))
-            result.summary = f"采访失败：{str(e)}。模拟环境可能已关闭，请确保OASIS环境正在运行。"
+            # Reports may only start after the run has closed, so live interviews are normally gone.
+            result.interviews = self._recorded_statements(
+                simulation_id, selected_agents, selected_indices, combined_prompt)
+            result.interviewed_count = len(result.interviews)
+            result.summary = (
+                "The simulation has closed, so no new answers were collected. The entries above are these "
+                "agents' verbatim simulated posts and comments, not answers to the questions."
+                if result.interviews else f"采访失败：{str(e)}。模拟环境可能已关闭，请确保OASIS环境正在运行。")
             return result
         except Exception as e:
             logger.error(t("console.interviewApiCallException", error=e))
