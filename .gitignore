@@ -58,3 +58,9 @@ backend/uploads/
 
 # Docker 数据
 data/
+# Offline model caches (scripts/bootstrap-offline.py)
+backend/.models/
+# Raw local runs may hold machine paths and clock times. Publish only sanitized copies in eval/results.
+eval/private/
+eval/results/e2e-*/
+mirofish-notes/
