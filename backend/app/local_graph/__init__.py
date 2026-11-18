@@ -46,6 +46,14 @@ def _obj(d: dict) -> SimpleNamespace:
     return o
 
 
+def _edge(d: dict) -> SimpleNamespace:
+    """Facts learned from simulated agents stay labelled wherever the app reads them."""
+    o = _obj(d)
+    if (d.get("attributes") or {}).get("origin") == "simulation":
+        o.fact = f"[SIMULATED] {o.fact}"
+    return o
+
+
 def _guard(fn):
     def wrapper(*a, **kw):
         try:
@@ -58,12 +66,12 @@ def _guard(fn):
 class _Raw:
     """Mimics `.with_raw_response.get_by_graph_id`: a page with .data and .headers (no next cursor)."""
 
-    def __init__(self, listing):
-        self._listing = listing
+    def __init__(self, listing, wrap=_obj):
+        self._listing, self._wrap = listing, wrap
 
     @_guard
     def get_by_graph_id(self, graph_id: str, limit: int = 100, cursor: Optional[str] = None, **_):
-        return SimpleNamespace(data=[_obj(d) for d in self._listing(graph_id)], headers={})
+        return SimpleNamespace(data=[self._wrap(d) for d in self._listing(graph_id)], headers={})
 
 
 class _Node:
@@ -77,12 +85,12 @@ class _Node:
 
     @_guard
     def get_edges(self, node_uuid: str):
-        return [_obj(d) for d in self._e.node_edges(node_uuid)]
+        return [_edge(d) for d in self._e.node_edges(node_uuid)]
 
 
 class _Edge:
     def __init__(self, e: Engine):
-        self.with_raw_response = _Raw(e.edges)
+        self.with_raw_response = _Raw(e.edges, _edge)
 
 
 class _Episode:
@@ -127,7 +135,8 @@ class _Graph:
     @_guard
     def search(self, graph_id: str, query: str, limit: int = 10, scope: str = "edges",
                reranker: Optional[str] = None, **_):
-        hits = [_obj(d) for d in self._e.search(graph_id, query, scope, limit, reranker)]
+        wrap = _edge if scope == "edges" else _obj
+        hits = [wrap(d) for d in self._e.search(graph_id, query, scope, limit, reranker)]
         return SimpleNamespace(edges=hits if scope == "edges" else [], nodes=hits if scope == "nodes" else [])
 
 

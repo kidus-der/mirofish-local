@@ -34,7 +34,7 @@ from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig  
 from graphiti_core.errors import NodeNotFoundError  # noqa: E402
 from graphiti_core.llm_client.config import LLMConfig  # noqa: E402
 from graphiti_core.llm_client.openai_generic_client import OpenAIGenericClient  # noqa: E402
-from graphiti_core.nodes import EntityNode, EpisodeType  # noqa: E402
+from graphiti_core.nodes import EntityNode, EpisodeType, EpisodicNode  # noqa: E402
 from graphiti_core.search.search_config_recipes import (  # noqa: E402
     EDGE_HYBRID_SEARCH_CROSS_ENCODER,
     EDGE_HYBRID_SEARCH_RRF,
@@ -154,6 +154,23 @@ def alias_merges(nodes: list[dict]) -> dict[str, str]:
     return out
 
 
+async def tag_origins(driver, embedder, edges, episode_uuid: str, source: str) -> None:
+    """Record where each fact first came from. Graphiti clears attributes when a later episode re-confirms a fact."""
+    for e in edges:
+        if "origin" in (e.attributes or {}):
+            continue
+        first = e.episodes[0] if e.episodes else episode_uuid
+        if first != episode_uuid:
+            found = await EpisodicNode.get_by_uuids(driver, [first])
+            source_of_first = found[0].source_description if found else source
+        else:
+            source_of_first = source
+        e.attributes = {**(e.attributes or {}), "origin": "simulation" if source_of_first == "mirofish_simulation" else "document"}
+        if e.fact_embedding is None:
+            await e.generate_embedding(embedder)
+        await e.save(driver)
+
+
 def _iso(v: Any) -> Optional[str]:
     return v.isoformat() if hasattr(v, "isoformat") else (str(v) if v else None)
 
@@ -244,6 +261,7 @@ class GraphitiEngine(Engine):
         )
         for n in res.nodes:
             self._node_graph[n.uuid] = ep["graph_id"]
+        await tag_origins(g.driver, self._g_embedder, res.edges, res.episode.uuid, source)
         await self._merge_aliases(g, ep["graph_id"])
 
     async def _merge_aliases(self, g: Graphiti, graph_id: str) -> None:
