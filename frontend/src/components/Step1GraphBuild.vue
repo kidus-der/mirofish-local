@@ -1,188 +1,196 @@
 <template>
-  <div class="workbench-panel">
-    <div class="scroll-container">
-      <!-- Step 01: Ontology -->
-      <div class="step-card" :class="{ 'active': currentPhase === 0, 'completed': currentPhase > 0 }">
-        <div class="card-header">
-          <div class="step-info">
-            <span class="step-num">01</span>
-            <span class="step-title">{{ $t('step1.ontologyGeneration') }}</span>
-          </div>
-          <div class="step-status">
-            <span v-if="currentPhase > 0" class="badge success">{{ $t('step1.ontologyCompleted') }}</span>
-            <span v-else-if="currentPhase === 0" class="badge processing">{{ $t('step1.ontologyGenerating') }}</span>
-            <span v-else class="badge pending">{{ $t('step1.ontologyPending') }}</span>
-          </div>
+  <div class="work">
+    <header class="now hb-surface-water">
+      <div class="now-main">
+        <div class="now-state">
+          <span class="now-title" role="status">
+            <span class="hb-status" :class="`hb-status--${now.state}`">{{ now.label }}</span>
+            <span class="hb-heading">{{ now.stage }}</span>
+          </span>
+          <span v-if="currentPhase === 1" class="now-progress hb-small hb-tabular">
+            <progress max="100" :value="buildProgress?.progress || 0" :aria-label="now.stage"></progress>
+            <span>{{ buildProgress?.progress || 0 }}%</span>
+          </span>
         </div>
-        
-        <div class="card-content">
-          <p class="api-note">POST /api/graph/ontology/generate</p>
-          <p class="description">
-            {{ $t('step1.ontologyDesc') }}
-          </p>
-
-          <!-- Loading / Progress -->
-          <div v-if="currentPhase === 0 && ontologyProgress" class="progress-section">
-            <div class="spinner-sm"></div>
-            <span>{{ ontologyProgress.message || $t('step1.analyzingDocs') }}</span>
-          </div>
-
-          <!-- Detail Overlay -->
-          <div v-if="selectedOntologyItem" class="ontology-detail-overlay">
-            <div class="detail-header">
-               <div class="detail-title-group">
-                  <span class="detail-type-badge">{{ selectedOntologyItem.itemType === 'entity' ? 'ENTITY' : 'RELATION' }}</span>
-                  <span class="detail-name">{{ selectedOntologyItem.name }}</span>
-               </div>
-               <button class="close-btn" @click="selectedOntologyItem = null">×</button>
-            </div>
-            <div class="detail-body">
-               <div class="detail-desc">{{ selectedOntologyItem.description }}</div>
-               
-               <!-- Attributes -->
-               <div class="detail-section" v-if="selectedOntologyItem.attributes?.length">
-                  <span class="section-label">ATTRIBUTES</span>
-                  <div class="attr-list">
-                     <div v-for="attr in selectedOntologyItem.attributes" :key="attr.name" class="attr-item">
-                        <span class="attr-name">{{ attr.name }}</span>
-                        <span class="attr-type">({{ attr.type }})</span>
-                        <span class="attr-desc">{{ attr.description }}</span>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Examples (Entity) -->
-               <div class="detail-section" v-if="selectedOntologyItem.examples?.length">
-                  <span class="section-label">EXAMPLES</span>
-                  <div class="example-list">
-                     <span v-for="ex in selectedOntologyItem.examples" :key="ex" class="example-tag">{{ ex }}</span>
-                  </div>
-               </div>
-
-               <!-- Source/Target (Relation) -->
-               <div class="detail-section" v-if="selectedOntologyItem.source_targets?.length">
-                  <span class="section-label">CONNECTIONS</span>
-                  <div class="conn-list">
-                     <div v-for="(conn, idx) in selectedOntologyItem.source_targets" :key="idx" class="conn-item">
-                        <span class="conn-node">{{ conn.source }}</span>
-                        <span class="conn-arrow">→</span>
-                        <span class="conn-node">{{ conn.target }}</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-          </div>
-
-          <!-- Generated Entity Tags -->
-          <div v-if="projectData?.ontology?.entity_types" class="tags-container" :class="{ 'dimmed': selectedOntologyItem }">
-            <span class="tag-label">GENERATED ENTITY TYPES</span>
-            <div class="tags-list">
-              <span 
-                v-for="entity in projectData.ontology.entity_types" 
-                :key="entity.name" 
-                class="entity-tag clickable"
-                @click="selectOntologyItem(entity, 'entity')"
-              >
-                {{ entity.name }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Generated Relation Tags -->
-          <div v-if="projectData?.ontology?.edge_types" class="tags-container" :class="{ 'dimmed': selectedOntologyItem }">
-            <span class="tag-label">GENERATED RELATION TYPES</span>
-            <div class="tags-list">
-              <span 
-                v-for="rel in projectData.ontology.edge_types" 
-                :key="rel.name" 
-                class="entity-tag clickable"
-                @click="selectOntologyItem(rel, 'relation')"
-              >
-                {{ rel.name }}
-              </span>
-            </div>
-          </div>
-        </div>
+        <p v-if="latestLog" class="now-log hb-small">
+          <span class="hb-soft hb-tabular">{{ latestLog.time }}</span>
+          <span class="now-log-msg" :title="latestLog.msg">{{ latestLog.msg }}</span>
+        </p>
       </div>
+      <div class="now-actions">
+        <button
+          class="hb-btn hb-btn--action"
+          type="button"
+          :disabled="currentPhase < 2 || creatingSimulation"
+          @click="handleEnterEnvSetup"
+        >
+          {{ creatingSimulation ? $t('step1.creating') : $t('step1.enterEnvSetup') }}
+        </button>
+      </div>
+    </header>
+
+    <ol class="hb-list stages" tabindex="0" :aria-label="$t('main.stepNames[0]')">
+      <!-- Step 01: Ontology -->
+      <li class="stage" :class="{ 'active': currentPhase === 0, 'completed': currentPhase > 0 }">
+        <span class="stage-num hb-sounding" aria-hidden="true">1</span>
+        <div class="stage-head">
+          <h2 class="hb-heading">{{ $t('step1.ontologyGeneration') }}</h2>
+          <span v-if="currentPhase > 0" class="hb-status hb-status--completed">{{ $t('step1.ontologyCompleted') }}</span>
+          <span v-else-if="currentPhase === 0" class="hb-status hb-status--running">{{ $t('step1.ontologyGenerating') }}</span>
+          <span v-else class="hb-status hb-status--idle">{{ $t('step1.ontologyPending') }}</span>
+        </div>
+
+        <p class="stage-desc hb-small">{{ $t('step1.ontologyDesc') }}</p>
+        <p class="stage-api hb-small hb-soft">POST /api/graph/ontology/generate</p>
+
+        <p v-if="currentPhase === 0 && ontologyProgress" class="stage-message hb-small">
+          {{ ontologyProgress.message || $t('step1.analyzingDocs') }}
+        </p>
+
+        <!-- Generated Entity Tags -->
+        <div v-if="projectData?.ontology?.entity_types" class="block">
+          <h3 class="hb-subheading">Generated entity types</h3>
+          <div class="tags">
+            <button
+              v-for="entity in projectData.ontology.entity_types"
+              :key="entity.name"
+              class="hb-tag chip"
+              type="button"
+              :aria-pressed="isSelectedItem(entity, 'entity')"
+              @click="selectOntologyItem(entity, 'entity')"
+            >
+              {{ entity.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Generated Relation Tags -->
+        <div v-if="projectData?.ontology?.edge_types" class="block">
+          <h3 class="hb-subheading">Generated relation types</h3>
+          <div class="tags">
+            <button
+              v-for="rel in projectData.ontology.edge_types"
+              :key="rel.name"
+              class="hb-tag chip"
+              type="button"
+              :aria-pressed="isSelectedItem(rel, 'relation')"
+              @click="selectOntologyItem(rel, 'relation')"
+            >
+              {{ rel.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Detail: below the tags so choosing one never moves them -->
+        <section
+          v-if="selectedOntologyItem"
+          class="ontology-detail hb-surface-land-soft"
+          :aria-label="selectedOntologyItem.name"
+        >
+          <div class="detail-head">
+            <div class="detail-title">
+              <span class="hb-tag">{{ selectedOntologyItem.itemType === 'entity' ? 'Entity' : 'Relation' }}</span>
+              <strong class="detail-name">{{ selectedOntologyItem.name }}</strong>
+            </div>
+            <button class="hb-btn icon-btn" type="button" :aria-label="$t('common.close')" @click="selectedOntologyItem = null">
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+            </button>
+          </div>
+          <p class="detail-desc hb-small">{{ selectedOntologyItem.description }}</p>
+
+          <!-- Attributes -->
+          <div v-if="selectedOntologyItem.attributes?.length" class="detail-section">
+            <h4 class="hb-subheading">Attributes</h4>
+            <ul class="hb-list detail-list">
+              <li v-for="attr in selectedOntologyItem.attributes" :key="attr.name">
+                <strong>{{ attr.name }}</strong>
+                <span class="hb-soft"> ({{ attr.type }})</span>
+                <span> {{ attr.description }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Examples (Entity) -->
+          <div v-if="selectedOntologyItem.examples?.length" class="detail-section">
+            <h4 class="hb-subheading">Examples</h4>
+            <div class="tags">
+              <span v-for="ex in selectedOntologyItem.examples" :key="ex" class="hb-tag wrap-tag">{{ ex }}</span>
+            </div>
+          </div>
+
+          <!-- Source/Target (Relation) -->
+          <div v-if="selectedOntologyItem.source_targets?.length" class="detail-section">
+            <h4 class="hb-subheading">Connections</h4>
+            <ul class="hb-list detail-list">
+              <li v-for="(conn, idx) in selectedOntologyItem.source_targets" :key="idx" class="connection">
+                <span>{{ conn.source }}</span>
+                <svg width="16" height="8" viewBox="0 0 16 8" aria-hidden="true"><path d="M0 4h14M11 1l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.2" /></svg>
+                <span>{{ conn.target }}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </li>
 
       <!-- Step 02: Graph Build -->
-      <div class="step-card" :class="{ 'active': currentPhase === 1, 'completed': currentPhase > 1 }">
-        <div class="card-header">
-          <div class="step-info">
-            <span class="step-num">02</span>
-            <span class="step-title">{{ $t('step1.graphRagBuild') }}</span>
-          </div>
-          <div class="step-status">
-            <span v-if="currentPhase > 1" class="badge success">{{ $t('step1.ontologyCompleted') }}</span>
-            <span v-else-if="currentPhase === 1" class="badge processing">{{ buildProgress?.progress || 0 }}%</span>
-            <span v-else class="badge pending">{{ $t('step1.ontologyPending') }}</span>
-          </div>
+      <li class="stage" :class="{ 'active': currentPhase === 1, 'completed': currentPhase > 1 }">
+        <span class="stage-num hb-sounding" aria-hidden="true">2</span>
+        <div class="stage-head">
+          <h2 class="hb-heading">{{ $t('step1.graphRagBuild') }}</h2>
+          <span v-if="currentPhase > 1" class="hb-status hb-status--completed">{{ $t('step1.ontologyCompleted') }}</span>
+          <span v-else-if="currentPhase === 1" class="hb-status hb-status--running hb-tabular">{{ buildProgress?.progress || 0 }}%</span>
+          <span v-else class="hb-status hb-status--idle">{{ $t('step1.ontologyPending') }}</span>
         </div>
 
-        <div class="card-content">
-          <p class="api-note">POST /api/graph/build</p>
-          <p class="description">
-            {{ $t('step1.graphRagDesc') }}
-          </p>
-          
-          <!-- Stats Cards -->
-          <div class="stats-grid">
-            <div class="stat-card">
-              <span class="stat-value">{{ graphStats.nodes }}</span>
-              <span class="stat-label">{{ $t('step1.entityNodes') }}</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">{{ graphStats.edges }}</span>
-              <span class="stat-label">{{ $t('step1.relationEdges') }}</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">{{ graphStats.types }}</span>
-              <span class="stat-label">{{ $t('step1.schemaTypes') }}</span>
-            </div>
+        <p class="stage-desc hb-small">{{ $t('step1.graphRagDesc') }}</p>
+        <p class="stage-api hb-small hb-soft">POST /api/graph/build</p>
+
+        <p v-if="currentPhase === 1 && buildProgress?.message" class="stage-message hb-small">{{ buildProgress.message }}</p>
+
+        <dl class="readout hb-tabular">
+          <div>
+            <dt>{{ $t('step1.entityNodes') }}</dt>
+            <dd>{{ graphStats.nodes }}</dd>
           </div>
-        </div>
-      </div>
+          <div>
+            <dt>{{ $t('step1.relationEdges') }}</dt>
+            <dd>{{ graphStats.edges }}</dd>
+          </div>
+          <div>
+            <dt>{{ $t('step1.schemaTypes') }}</dt>
+            <dd>{{ graphStats.types }}</dd>
+          </div>
+        </dl>
+      </li>
 
       <!-- Step 03: Complete -->
-      <div class="step-card" :class="{ 'active': currentPhase === 2, 'completed': currentPhase >= 2 }">
-        <div class="card-header">
-          <div class="step-info">
-            <span class="step-num">03</span>
-            <span class="step-title">{{ $t('step1.buildComplete') }}</span>
-          </div>
-          <div class="step-status">
-            <span v-if="currentPhase >= 2" class="badge accent">{{ $t('step1.inProgress') }}</span>
-          </div>
+      <li class="stage" :class="{ 'active': currentPhase === 2, 'completed': currentPhase >= 2 }">
+        <span class="stage-num hb-sounding" aria-hidden="true">3</span>
+        <div class="stage-head">
+          <h2 class="hb-heading">{{ $t('step1.buildComplete') }}</h2>
+          <span v-if="currentPhase >= 2" class="hb-status hb-status--running">{{ $t('step1.inProgress') }}</span>
         </div>
-        
-        <div class="card-content">
-          <p class="api-note">POST /api/simulation/create</p>
-          <p class="description">{{ $t('step1.buildCompleteDesc') }}</p>
-          <button 
-            class="action-btn" 
-            :disabled="currentPhase < 2 || creatingSimulation"
-            @click="handleEnterEnvSetup"
-          >
-            <span v-if="creatingSimulation" class="spinner-sm"></span>
-            {{ creatingSimulation ? $t('step1.creating') : $t('step1.enterEnvSetup') + ' ➝' }}
-          </button>
-        </div>
-      </div>
-    </div>
+
+        <p class="stage-desc hb-small">{{ $t('step1.buildCompleteDesc') }}</p>
+        <p class="stage-api hb-small hb-soft">POST /api/simulation/create</p>
+      </li>
+    </ol>
 
     <!-- Bottom Info / Logs -->
-    <div class="system-logs">
-      <div class="log-header">
-        <span class="log-title">SYSTEM DASHBOARD</span>
-        <span class="log-id">{{ projectData?.project_id || 'NO_PROJECT' }}</span>
-      </div>
-      <div class="log-content" ref="logContent">
+    <details class="logs hb-surface-land-soft" open>
+      <summary class="logs-head">
+        <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" /></svg>
+        <span class="hb-subheading">System dashboard</span>
+        <span class="logs-id hb-small hb-soft hb-tabular">{{ projectData?.project_id || $t('common.none') }}</span>
+      </summary>
+      <div class="log-content" ref="logContent" role="log" tabindex="0" aria-label="System dashboard">
+        <p v-if="!systemLogs.length" class="hb-soft">{{ $t('common.noData') }}</p>
         <div class="log-line" v-for="(log, idx) in systemLogs" :key="idx">
-          <span class="log-time">{{ log.time }}</span>
+          <span class="log-time hb-soft hb-tabular">{{ log.time }}</span>
           <span class="log-msg">{{ log.msg }}</span>
         </div>
       </div>
-    </div>
+    </details>
   </div>
 </template>
 
@@ -201,7 +209,8 @@ const props = defineProps({
   ontologyProgress: Object,
   buildProgress: Object,
   graphData: Object,
-  systemLogs: { type: Array, default: () => [] }
+  systemLogs: { type: Array, default: () => [] },
+  error: { type: String, default: '' }
 })
 
 defineEmits(['next-step'])
@@ -249,6 +258,20 @@ const selectOntologyItem = (item, type) => {
   selectedOntologyItem.value = { ...item, itemType: type }
 }
 
+const isSelectedItem = (item, type) =>
+  selectedOntologyItem.value?.name === item.name && selectedOntologyItem.value?.itemType === type
+
+// What a returning researcher reads first, before scanning the stages.
+const now = computed(() => {
+  if (props.error) return { state: 'failed', label: t('common.failed'), stage: props.error }
+  if (props.currentPhase >= 2) return { state: 'completed', label: t('common.ready'), stage: t('step1.buildComplete') }
+  if (props.currentPhase === 1) return { state: 'running', label: t('step1.inProgress'), stage: t('step1.graphRagBuild') }
+  if (props.currentPhase === 0) return { state: 'running', label: t('step1.ontologyGenerating'), stage: t('step1.ontologyGeneration') }
+  return { state: 'idle', label: t('step1.ontologyPending'), stage: t('step1.ontologyGeneration') }
+})
+
+const latestLog = computed(() => props.systemLogs.at(-1))
+
 const graphStats = computed(() => {
   const nodes = props.graphData?.node_count || props.graphData?.nodes?.length || 0
   const edges = props.graphData?.edge_count || props.graphData?.edges?.length || 0
@@ -273,428 +296,380 @@ watch(() => props.systemLogs.length, () => {
 </script>
 
 <style scoped>
-.workbench-panel {
+.work {
+  --pad: var(--hb-space-4);
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background-color: #FAFAFA;
+  min-height: 0;
+  color: var(--hb-navy);
+  background: var(--hb-paper);
+}
+
+.now {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-}
-
-.scroll-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.step-card {
-  background: #FFF;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border: 1px solid #EAEAEA;
-  transition: all 0.3s ease;
-  position: relative; /* For absolute overlay */
-}
-
-.step-card.active {
-  border-color: #FF5722;
-  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.08);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
+  flex: none;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 16px;
+  gap: var(--hb-space-2) var(--hb-space-4);
+  padding: 9px var(--pad);
+  border-bottom: 1px solid var(--hb-navy);
 }
 
-.step-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.now-main {
+  flex: 1 1 20rem;
+  min-width: 0;
 }
 
-.step-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 20px;
-  font-weight: 700;
-  color: #E0E0E0;
-}
-
-.step-card.active .step-num,
-.step-card.completed .step-num {
-  color: #000;
-}
-
-.step-title {
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-}
-
-.badge {
-  font-size: 10px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.badge.success { background: #E8F5E9; color: #2E7D32; }
-.badge.processing { background: #FF5722; color: #FFF; }
-.badge.accent { background: #FF5722; color: #FFF; }
-.badge.pending { background: #F5F5F5; color: #999; }
-
-.api-note {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: #999;
-  margin-bottom: 8px;
-}
-
-.description {
-  font-size: 12px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-/* Step 01 Tags */
-.tags-container {
-  margin-top: 12px;
-  transition: opacity 0.3s;
-}
-
-.tags-container.dimmed {
-    opacity: 0.3;
-    pointer-events: none;
-}
-
-.tag-label {
-  display: block;
-  font-size: 10px;
-  color: #AAA;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.tags-list {
+.now-state {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 2px var(--hb-space-3);
 }
 
-.entity-tag {
-  background: #F5F5F5;
-  border: 1px solid #EEE;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 11px;
-  color: #333;
-  font-family: 'JetBrains Mono', monospace;
-  transition: all 0.2s;
+.now-title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  min-width: 0;
 }
 
-.entity-tag.clickable {
-    cursor: pointer;
+.now-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hb-space-2);
+  margin-left: auto;
+  white-space: nowrap;
 }
 
-.entity-tag.clickable:hover {
-    background: #E0E0E0;
-    border-color: #CCC;
+.now-log {
+  display: flex;
+  gap: var(--hb-space-2);
+  margin-top: 2px;
 }
 
-/* Ontology Detail Overlay */
-.ontology-detail-overlay {
-    position: absolute;
-    top: 60px; /* Below header roughly */
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(4px);
-    z-index: 10;
-    border: 1px solid #EAEAEA;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: fadeIn 0.2s ease-out;
+.now-log-msg {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-.detail-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    border-bottom: 1px solid #EAEAEA;
-    background: #FAFAFA;
+.now-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hb-space-2);
+  max-width: 100%;
 }
 
-.detail-title-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.now-actions .hb-btn {
+  max-width: 100%;
+  padding-block: 4px;
+  line-height: 1.1;
+  white-space: normal;
 }
 
-.detail-type-badge {
-    font-size: 9px;
-    font-weight: 700;
-    color: #FFF;
-    background: #000;
-    padding: 2px 6px;
-    border-radius: 2px;
-    text-transform: uppercase;
+progress {
+  appearance: none;
+  width: 72px;
+  height: 8px;
+  background: var(--hb-paper);
+  border: 1px solid var(--hb-navy);
 }
 
-.detail-name {
-    font-size: 14px;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
+progress::-webkit-progress-bar {
+  background: var(--hb-paper);
 }
 
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #999;
-    cursor: pointer;
-    line-height: 1;
+progress::-webkit-progress-value {
+  background: var(--hb-navy);
 }
 
-.close-btn:hover {
-    color: #333;
+progress::-moz-progress-bar {
+  background: var(--hb-navy);
 }
 
-.detail-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
+.stages {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
-.detail-desc {
-    font-size: 12px;
-    color: #444;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px dashed #EAEAEA;
+.stages:focus-visible,
+.log-content:focus-visible,
+.scroll-list:focus-visible {
+  outline-offset: -2px;
 }
 
-.detail-section {
-    margin-bottom: 16px;
+.stage {
+  position: relative;
+  padding: var(--hb-space-3) var(--pad) var(--hb-space-4) calc(var(--pad) + 28px);
+  border-bottom: 1px solid var(--hb-rule);
 }
 
-.section-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 600;
-    color: #AAA;
-    margin-bottom: 8px;
+.stage:last-child {
+  border-bottom: 0;
 }
 
-.attr-list, .conn-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.stage.active {
+  background: var(--hb-water-soft);
 }
 
-.attr-item {
-    font-size: 11px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    align-items: baseline;
-    padding: 4px;
-    background: #F9F9F9;
-    border-radius: 4px;
+.stage::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  bottom: -10px;
+  left: calc(var(--pad) + 7px);
+  border-left: 1px dotted var(--hb-navy-soft);
 }
 
-.attr-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    color: #000;
+.stage.completed::before {
+  border-left: 1px solid var(--hb-navy);
 }
 
-.attr-type {
-    color: #999;
-    font-size: 10px;
+.stage:last-child::before {
+  display: none;
 }
 
-.attr-desc {
-    color: #555;
-    flex: 1;
-    min-width: 150px;
-}
-
-.example-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.example-tag {
-    font-size: 11px;
-    background: #FFF;
-    border: 1px solid #E0E0E0;
-    padding: 3px 8px;
-    border-radius: 12px;
-    color: #555;
-}
-
-.conn-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    padding: 6px;
-    background: #F5F5F5;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.conn-node {
-    font-weight: 600;
-    color: #333;
-}
-
-.conn-arrow {
-    color: #BBB;
-}
-
-/* Step 02 Stats */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  background: #F9F9F9;
-  padding: 16px;
-  border-radius: 6px;
-}
-
-.stat-card {
+.stage-num {
+  position: absolute;
+  top: 10px;
+  left: var(--pad);
+  width: 16px;
+  font-size: var(--hb-text-xl);
+  line-height: 1.3;
   text-align: center;
 }
 
-.stat-value {
-  display: block;
-  font-size: 20px;
+.stage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px var(--hb-space-3);
+}
+
+.stage-head .hb-status {
+  font-size: var(--hb-text-sm);
+  white-space: nowrap;
+}
+
+.stage-desc {
+  max-width: 72ch;
+  margin-top: 3px;
+  text-wrap: pretty;
+}
+
+.stage-api {
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+.block {
+  margin-top: var(--hb-space-4);
+}
+
+.block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px var(--hb-space-3);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--hb-navy);
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: var(--hb-space-1) var(--hb-space-4);
+  margin-top: var(--hb-space-3);
+  padding-top: 7px;
+  border-top: 1px solid var(--hb-navy);
+}
+
+.readout dt {
+  color: var(--hb-navy-soft);
+  font-size: var(--hb-text-sm);
+}
+
+.readout dd {
+  font-size: var(--hb-text-xl);
   font-weight: 700;
-  color: #000;
-  font-family: 'JetBrains Mono', monospace;
+  overflow-wrap: anywhere;
 }
 
-.stat-label {
-  font-size: 9px;
-  color: #999;
-  text-transform: uppercase;
-  margin-top: 4px;
-  display: block;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
 }
 
-/* Step 03 Button */
-.action-btn {
-  width: 100%;
-  background: #000;
-  color: #FFF;
-  border: none;
-  padding: 14px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
+.icon-btn {
+  flex: none;
+  width: var(--hb-control);
+  padding: 0;
 }
 
-.action-btn:hover:not(:disabled) {
-  opacity: 0.8;
+.logs {
+  flex: none;
+  border-top: 1px solid var(--hb-navy);
 }
 
-.action-btn:disabled {
-  background: #CCC;
-  cursor: not-allowed;
-}
-
-.progress-section {
+.logs-head {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: #FF5722;
-  margin-bottom: 12px;
+  gap: var(--hb-space-2);
+  min-height: var(--hb-control);
+  padding: 0 var(--pad);
+  list-style: none;
+  cursor: pointer;
 }
 
-.spinner-sm {
-  width: 14px;
-  height: 14px;
-  border: 2px solid #FFCCBC;
-  border-top-color: #FF5722;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.logs-head::-webkit-details-marker {
+  display: none;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* System Logs */
-.system-logs {
-  background: #000;
-  color: #DDD;
-  padding: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  border-top: 1px solid #222;
-  flex-shrink: 0;
+.logs-head svg {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transform: rotate(-90deg);
 }
 
-.log-header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-  font-size: 10px;
-  color: #888;
+.logs[open] .logs-head svg {
+  transform: none;
+}
+
+.logs-id {
+  min-width: 0;
+  margin-left: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .log-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  height: 80px; /* Approx 4 lines visible */
+  height: 7.25rem;
+  padding: 0 var(--pad) var(--hb-space-2);
   overflow-y: auto;
-  padding-right: 4px;
-}
-
-.log-content::-webkit-scrollbar {
-  width: 4px;
-}
-
-.log-content::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+  font-size: var(--hb-text-sm);
 }
 
 .log-line {
-  font-size: 11px;
-  display: flex;
-  gap: 12px;
-  line-height: 1.5;
-}
-
-.log-time {
-  color: #666;
-  min-width: 75px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--hb-space-3);
+  padding: 2px 0;
+  border-top: 1px solid var(--hb-rule);
 }
 
 .log-msg {
-  color: #CCC;
-  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+@media (max-height: 680px) {
+  .log-content {
+    height: 4.25rem;
+  }
+}
+
+.stage-message {
+  margin-top: var(--hb-space-2);
+  font-weight: 500;
+}
+
+.chip {
+  max-width: 100%;
+  min-height: 26px;
+  overflow: hidden;
+  color: var(--hb-navy);
+  background: var(--hb-paper);
+  line-height: 24px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background-color var(--hb-motion-fast) ease-out;
+}
+
+.chip:hover {
+  background: var(--hb-water-soft);
+}
+
+.chip[aria-pressed='true'] {
+  color: var(--hb-paper);
+  background: var(--hb-navy);
+}
+
+.wrap-tag {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.ontology-detail {
+  margin-top: var(--hb-space-4);
+  padding: var(--hb-space-3);
+  border: 1px solid var(--hb-navy);
+}
+
+.detail-head,
+.detail-title {
+  display: flex;
+  align-items: center;
+  gap: var(--hb-space-2);
+}
+
+.detail-head {
+  justify-content: space-between;
+}
+
+.detail-title {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.detail-name {
+  font-size: var(--hb-text-lg);
+  overflow-wrap: anywhere;
+}
+
+.detail-desc {
+  max-width: 72ch;
+  margin-top: var(--hb-space-1);
+}
+
+.detail-section {
+  margin-top: var(--hb-space-3);
+}
+
+.detail-list {
+  margin-top: var(--hb-space-1);
+  font-size: var(--hb-text-sm);
+}
+
+.detail-list li {
+  padding: 4px 0;
+  border-top: 1px solid var(--hb-rule);
+  overflow-wrap: anywhere;
+}
+
+.detail-list .connection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--hb-space-2);
+}
+
+@media (pointer: coarse) {
+  .chip {
+    min-height: var(--hb-control);
+    line-height: calc(var(--hb-control) - 2px);
+  }
 }
 </style>
