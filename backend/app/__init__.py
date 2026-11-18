@@ -74,9 +74,7 @@ def create_app(config_class=Config):
     @app.before_request
     def log_request():
         logger = get_logger('mirofish.request')
-        logger.debug(f"请求: {request.method} {request.path}")
-        if request.content_type and 'json' in request.content_type:
-            logger.debug(f"请求体: {request.get_json(silent=True)}")
+        logger.debug(f"请求: {request.method} {request.path}")  # never log bodies: they hold prompts
     
     @app.after_request
     def log_response(response):
