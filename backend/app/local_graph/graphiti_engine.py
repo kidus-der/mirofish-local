@@ -47,6 +47,7 @@ from redislite.async_falkordb_client import AsyncFalkorDB  # noqa: E402
 logger = get_logger("mirofish.graphiti")
 
 EPISODE_TIMEOUT_S = int(os.environ.get("GRAPH_EPISODE_TIMEOUT_SECONDS", "1800"))
+MAX_OUTPUT_TOKENS = int(os.environ.get("GRAPH_MAX_OUTPUT_TOKENS", "4096"))
 RERANK_MODEL = os.environ.get("RERANK_MODEL_NAME", "BAAI/bge-reranker-v2-m3")
 # Small models need this spelled out: short names and acronyms otherwise become separate entities.
 EXTRACTION_HINT = os.environ.get("GRAPH_EXTRACTION_HINT", (
@@ -62,12 +63,17 @@ _RESERVED = {"uuid", "name", "group_id", "labels", "created_at", "summary", "att
 
 
 class _NoThinkChat:
-    """Adds reasoning_effort to every completion: Graphiti has no setting for it."""
+    """Adds reasoning_effort to every completion and enforces the output cap.
 
-    def __init__(self, client: AsyncOpenAI, effort: str):
+    Graphiti hard-codes 16384 tokens for edge extraction, so one looping generation
+    would otherwise fill the whole context window (about 13 minutes per attempt here).
+    """
+
+    def __init__(self, client: AsyncOpenAI, effort: str, max_tokens: int = 4096):
         async def create(**kw: Any):
             if effort:
                 kw.setdefault("reasoning_effort", effort)
+            kw["max_tokens"] = min(kw.get("max_tokens") or max_tokens, max_tokens)
             return await client.chat.completions.create(**kw)
 
         self.chat = SimpleNamespace(completions=SimpleNamespace(create=create))
@@ -166,8 +172,8 @@ class GraphitiEngine(Engine):
         self._llm = OpenAIGenericClient(
             config=LLMConfig(api_key=Config.LLM_API_KEY, base_url=Config.LLM_BASE_URL, model=Config.LLM_MODEL_NAME,
                              small_model=Config.LLM_MODEL_NAME, temperature=0.1),
-            client=_NoThinkChat(client, os.environ.get("LLM_REASONING_EFFORT", "none")),
-            max_tokens=4096, structured_output_mode=os.environ.get("GRAPH_STRUCTURED_MODE", "json_schema"),
+            client=_NoThinkChat(client, os.environ.get("LLM_REASONING_EFFORT", "none"), MAX_OUTPUT_TOKENS),
+            max_tokens=MAX_OUTPUT_TOKENS, structured_output_mode=os.environ.get("GRAPH_STRUCTURED_MODE", "json_schema"),
         )
         self._g_embedder = OpenAIEmbedder(OpenAIEmbedderConfig(
             api_key=Config.LLM_API_KEY, base_url=base,
