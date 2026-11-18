@@ -48,7 +48,7 @@ class Project:
     
     # 配置
     simulation_requirement: Optional[str] = None
-    chunk_size: int = 500
+    chunk_size: int = 800  # matches Config.DEFAULT_CHUNK_SIZE; best value in eval/
     chunk_overlap: int = 50
     
     # 错误信息
@@ -98,7 +98,7 @@ class Project:
             zep_batch_id=data.get('zep_batch_id'),
             zep_batch_operation_id=data.get('zep_batch_operation_id'),
             simulation_requirement=data.get('simulation_requirement'),
-            chunk_size=data.get('chunk_size', 500),
+            chunk_size=data.get('chunk_size', 800),
             chunk_overlap=data.get('chunk_overlap', 50),
             error=data.get('error')
         )
