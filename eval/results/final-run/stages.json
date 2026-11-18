@@ -1,0 +1,84 @@
+{
+ "run": "final-run",
+ "requirement": "Forecast how residents, officials, the union and the press will react during the two weeks before the 15 July council vote on the 9 percent water tariff plan. Will the plan pass, will the union strike, and which arguments will dominate public debate?",
+ "max_rounds": 24,
+ "platform": "parallel",
+ "graph_memory": true,
+ "stages": [
+  {
+   "name": "health",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "ontology",
+   "status": "ok",
+   "seconds": 92.3
+  },
+  {
+   "name": "graph_build",
+   "status": "ok",
+   "seconds": 390.5
+  },
+  {
+   "name": "entities",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "create_simulation",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "prepare",
+   "status": "ok",
+   "seconds": 650.6
+  },
+  {
+   "name": "start",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "simulation_run",
+   "status": "ok",
+   "seconds": 1413.6
+  },
+  {
+   "name": "interviews",
+   "status": "ok",
+   "seconds": 83.2
+  },
+  {
+   "name": "close_env",
+   "status": "ok",
+   "seconds": 1702.4
+  },
+  {
+   "name": "pull_data",
+   "status": "ok",
+   "seconds": 0.1
+  },
+  {
+   "name": "copy_files",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "report_generate",
+   "status": "ok",
+   "seconds": 510.6
+  },
+  {
+   "name": "report_fetch",
+   "status": "ok",
+   "seconds": 0.0
+  },
+  {
+   "name": "report_chat",
+   "status": "ok",
+   "seconds": 18.8
+  }
+ ]
+}

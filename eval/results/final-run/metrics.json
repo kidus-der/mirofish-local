@@ -1,0 +1,921 @@
+{
+  "meta": {
+    "out_dir": "../eval/results/e2e-final",
+    "generated_at": "2026-11-18",
+    "similarity_threshold": 0.6,
+    "ignored_actions": [
+      "exit",
+      "interview",
+      "sign_up",
+      "update_rec_table"
+    ]
+  },
+  "platforms": {
+    "twitter": {
+      "has_db": true,
+      "has_actions_log": true,
+      "action_mix": {
+        "n": 120,
+        "counts": {
+          "create_post": 24,
+          "refresh": 53,
+          "like_post": 29,
+          "quote_post": 9,
+          "do_nothing": 1,
+          "repost": 4
+        },
+        "shares": {
+          "create_post": 0.2,
+          "refresh": 0.44166666666666665,
+          "like_post": 0.24166666666666667,
+          "quote_post": 0.075,
+          "do_nothing": 0.008333333333333333,
+          "repost": 0.03333333333333333
+        },
+        "do_nothing_share": 0.008333333333333333
+      },
+      "action_mix_from_actions_jsonl": {
+        "n": 72,
+        "counts": {
+          "create_post": 29,
+          "like_post": 29,
+          "quote_post": 9,
+          "do_nothing": 1,
+          "repost": 4
+        },
+        "shares": {
+          "create_post": 0.4027777777777778,
+          "like_post": 0.4027777777777778,
+          "quote_post": 0.125,
+          "do_nothing": 0.013888888888888888,
+          "repost": 0.05555555555555555
+        },
+        "do_nothing_share": 0.013888888888888888
+      },
+      "n_agents": 19,
+      "activity": {
+        "definition": "per agent: actions other than do_nothing/refresh (incl. likes, follows)",
+        "n": 19,
+        "gini": 0.3811802232854864,
+        "dist": {
+          "n": 19,
+          "mean": 3.473684210526316,
+          "median": 3.0,
+          "p10": 0.8,
+          "p90": 6.399999999999999,
+          "min": 0,
+          "max": 9,
+          "std": 2.3922775110238974
+        }
+      },
+      "posts_per_agent": {
+        "definition": "original posts + quote posts (reposts carry no text)",
+        "n": 19,
+        "gini": 0.5422647527910687,
+        "zero_share": 0.42105263157894735,
+        "dist": {
+          "n": 19,
+          "mean": 1.736842105263158,
+          "median": 2.0,
+          "p10": 0.0,
+          "p90": 4.0,
+          "min": 0,
+          "max": 5,
+          "std": 1.7119427333990098
+        }
+      },
+      "repetition": {
+        "posts": {
+          "n": 33,
+          "threshold": 0.6,
+          "pairs_sampled": false,
+          "pairs_items": 33,
+          "within_agent": {
+            "n_pairs": 40,
+            "similar_pairs": 8,
+            "share": 0.2
+          },
+          "across_agents": {
+            "n_pairs": 488,
+            "similar_pairs": 0,
+            "share": 0.0
+          },
+          "exact_duplicates": {
+            "extra_copies": 4,
+            "share": 0.12121212121212122,
+            "groups": 3
+          },
+          "distinct_unigram_ratio": {
+            "n_tokens": 1490,
+            "value": 0.287248322147651
+          }
+        },
+        "comments": {
+          "n": 0,
+          "threshold": 0.6,
+          "pairs_sampled": false,
+          "pairs_items": 0,
+          "within_agent": {
+            "n_pairs": 0,
+            "similar_pairs": 0,
+            "share": null
+          },
+          "across_agents": {
+            "n_pairs": 0,
+            "similar_pairs": 0,
+            "share": null
+          },
+          "exact_duplicates": {
+            "extra_copies": 0,
+            "share": null,
+            "groups": 0
+          },
+          "distinct_unigram_ratio": {
+            "n_tokens": 0,
+            "value": null
+          }
+        }
+      },
+      "length": {
+        "posts": {
+          "chars": {
+            "n": 33,
+            "mean": 297.6969696969697,
+            "median": 280.0,
+            "p10": 188.4,
+            "p90": 439.80000000000007,
+            "min": 143,
+            "max": 560,
+            "std": 107.57393084236473
+          },
+          "words": {
+            "n": 33,
+            "mean": 45.15151515151515,
+            "median": 42.0,
+            "p10": 30.0,
+            "p90": 63.2,
+            "min": 19,
+            "max": 84,
+            "std": 15.54294385774207
+          }
+        },
+        "comments": {
+          "chars": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "p10": null,
+            "p90": null,
+            "min": null,
+            "max": null,
+            "std": null
+          },
+          "words": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "p10": null,
+            "p90": null,
+            "min": null,
+            "max": null,
+            "std": null
+          }
+        }
+      },
+      "like_to_dislike": {
+        "posts": {
+          "likes": 29,
+          "dislikes": 0,
+          "n": 29,
+          "like_to_dislike": null
+        },
+        "comments": {
+          "likes": 0,
+          "dislikes": 0,
+          "n": 0,
+          "like_to_dislike": null
+        },
+        "all": {
+          "likes": 29,
+          "dislikes": 0,
+          "n": 29,
+          "like_to_dislike": null
+        }
+      },
+      "cascades": {
+        "n_roots": 24,
+        "n_engaged": 6,
+        "engaged_share": 0.25,
+        "size": {
+          "n": 6,
+          "mean": 2.1666666666666665,
+          "median": 1.0,
+          "p10": 1.0,
+          "p90": 4.5,
+          "min": 1,
+          "max": 6,
+          "std": 1.8633899812498247
+        },
+        "depth": {
+          "n": 6,
+          "mean": 1.0,
+          "median": 1.0,
+          "p10": 1.0,
+          "p90": 1.0,
+          "min": 1,
+          "max": 1,
+          "std": 0.0
+        },
+        "breadth": {
+          "n": 6,
+          "mean": 2.1666666666666665,
+          "median": 1.0,
+          "p10": 1.0,
+          "p90": 4.5,
+          "min": 1,
+          "max": 6,
+          "std": 1.8633899812498247
+        },
+        "direct_children": {
+          "n": 6,
+          "mean": 2.1666666666666665,
+          "median": 1.0,
+          "p10": 1.0,
+          "p90": 4.5,
+          "min": 1,
+          "max": 6,
+          "std": 1.8633899812498247
+        },
+        "depth_hist": {
+          "1": 6
+        },
+        "top": [
+          {
+            "root": 4,
+            "size": 6,
+            "depth": 1,
+            "breadth": 6,
+            "direct": 6
+          },
+          {
+            "root": 7,
+            "size": 3,
+            "depth": 1,
+            "breadth": 3,
+            "direct": 3
+          },
+          {
+            "root": 1,
+            "size": 1,
+            "depth": 1,
+            "breadth": 1,
+            "direct": 1
+          },
+          {
+            "root": 2,
+            "size": 1,
+            "depth": 1,
+            "breadth": 1,
+            "direct": 1
+          },
+          {
+            "root": 26,
+            "size": 1,
+            "depth": 1,
+            "breadth": 1,
+            "direct": 1
+          }
+        ],
+        "note": "breadth = widest level of the cascade; depth counts repost/quote chains, comments are depth+1 leaves"
+      },
+      "follows": {
+        "n": 0
+      },
+      "stance": {
+        "target": "the 9 percent water tariff plan",
+        "model": "mirofish-qwen",
+        "new_llm_calls": 29,
+        "n_items": 33,
+        "n_labelled": 33,
+        "n_unlabelled": 0,
+        "n_without_round": 0,
+        "overall_shares": {
+          "support": 0.12121212121212122,
+          "oppose": 0.5757575757575758,
+          "neutral": 0.30303030303030304
+        },
+        "entropy_per_round": [
+          {
+            "round": 10,
+            "n": 6,
+            "entropy_bits": 1.2516291673878228,
+            "shares": {
+              "support": 0.16666666666666666,
+              "oppose": 0.6666666666666666,
+              "neutral": 0.16666666666666666
+            }
+          },
+          {
+            "round": 11,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 13,
+            "n": 2,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 16,
+            "n": 2,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 17,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 18,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.5,
+              "oppose": 0.5,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 19,
+            "n": 5,
+            "entropy_bits": 1.3709505944546687,
+            "shares": {
+              "support": 0.2,
+              "oppose": 0.6,
+              "neutral": 0.2
+            }
+          },
+          {
+            "round": 20,
+            "n": 6,
+            "entropy_bits": 0.6500224216483541,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.8333333333333334,
+              "neutral": 0.16666666666666666
+            }
+          },
+          {
+            "round": 21,
+            "n": 5,
+            "entropy_bits": 1.3709505944546687,
+            "shares": {
+              "support": 0.2,
+              "oppose": 0.6,
+              "neutral": 0.2
+            }
+          },
+          {
+            "round": 22,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 1.0,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 23,
+            "n": 2,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 1.0,
+              "neutral": 0.0
+            }
+          }
+        ],
+        "mean_entropy_bits": 0.5130502525405013,
+        "flips": {
+          "n_agents_eligible": 10,
+          "definition": "agents with >=2 labelled items; first vs last in round order",
+          "flipped_share": 0.3,
+          "polarity_reversal_share": 0.1
+        },
+        "same_stance_interactions": {
+          "n_skipped_unlabelled": 13,
+          "quote": {
+            "n": 9,
+            "same_stance_share": 0.2222222222222222,
+            "n_nonneutral": 2,
+            "same_stance_share_nonneutral": 0.5
+          },
+          "all": {
+            "n": 25,
+            "same_stance_share": 0.48,
+            "n_nonneutral": 12,
+            "same_stance_share_nonneutral": 0.8333333333333334
+          },
+          "repost": {
+            "n": 3,
+            "same_stance_share": 0.6666666666666666,
+            "n_nonneutral": 2,
+            "same_stance_share_nonneutral": 1.0
+          },
+          "like": {
+            "n": 13,
+            "same_stance_share": 0.6153846153846154,
+            "n_nonneutral": 8,
+            "same_stance_share_nonneutral": 0.875
+          }
+        }
+      }
+    },
+    "reddit": {
+      "has_db": true,
+      "has_actions_log": true,
+      "action_mix": {
+        "n": 131,
+        "counts": {
+          "create_post": 12,
+          "refresh": 63,
+          "create_comment": 17,
+          "dislike_post": 4,
+          "like_comment": 8,
+          "like_post": 27
+        },
+        "shares": {
+          "create_post": 0.0916030534351145,
+          "refresh": 0.48091603053435117,
+          "create_comment": 0.1297709923664122,
+          "dislike_post": 0.030534351145038167,
+          "like_comment": 0.061068702290076333,
+          "like_post": 0.20610687022900764
+        },
+        "do_nothing_share": 0.0
+      },
+      "action_mix_from_actions_jsonl": {
+        "n": 73,
+        "counts": {
+          "create_post": 17,
+          "create_comment": 17,
+          "dislike_post": 4,
+          "like_comment": 8,
+          "like_post": 27
+        },
+        "shares": {
+          "create_post": 0.2328767123287671,
+          "create_comment": 0.2328767123287671,
+          "dislike_post": 0.0547945205479452,
+          "like_comment": 0.1095890410958904,
+          "like_post": 0.3698630136986301
+        },
+        "do_nothing_share": 0.0
+      },
+      "n_agents": 19,
+      "activity": {
+        "definition": "per agent: actions other than do_nothing/refresh (incl. likes, follows)",
+        "n": 19,
+        "gini": 0.2600619195046441,
+        "dist": {
+          "n": 19,
+          "mean": 3.5789473684210527,
+          "median": 3.0,
+          "p10": 1.8,
+          "p90": 5.0,
+          "min": 1,
+          "max": 9,
+          "std": 1.7863750261554885
+        }
+      },
+      "posts_per_agent": {
+        "definition": "original posts + quote posts (reposts carry no text)",
+        "n": 19,
+        "gini": 0.6754385964912282,
+        "zero_share": 0.5789473684210527,
+        "dist": {
+          "n": 19,
+          "mean": 0.631578947368421,
+          "median": 0.0,
+          "p10": 0.0,
+          "p90": 2.0,
+          "min": 0,
+          "max": 3,
+          "std": 0.8712076503814131
+        }
+      },
+      "repetition": {
+        "posts": {
+          "n": 12,
+          "threshold": 0.6,
+          "pairs_sampled": false,
+          "pairs_items": 12,
+          "within_agent": {
+            "n_pairs": 5,
+            "similar_pairs": 0,
+            "share": 0.0
+          },
+          "across_agents": {
+            "n_pairs": 61,
+            "similar_pairs": 0,
+            "share": 0.0
+          },
+          "exact_duplicates": {
+            "extra_copies": 0,
+            "share": 0.0,
+            "groups": 0
+          },
+          "distinct_unigram_ratio": {
+            "n_tokens": 554,
+            "value": 0.4693140794223827
+          }
+        },
+        "comments": {
+          "n": 17,
+          "threshold": 0.6,
+          "pairs_sampled": false,
+          "pairs_items": 17,
+          "within_agent": {
+            "n_pairs": 14,
+            "similar_pairs": 1,
+            "share": 0.07142857142857142
+          },
+          "across_agents": {
+            "n_pairs": 122,
+            "similar_pairs": 0,
+            "share": 0.0
+          },
+          "exact_duplicates": {
+            "extra_copies": 0,
+            "share": 0.0,
+            "groups": 0
+          },
+          "distinct_unigram_ratio": {
+            "n_tokens": 1090,
+            "value": 0.3431192660550459
+          }
+        }
+      },
+      "length": {
+        "posts": {
+          "chars": {
+            "n": 12,
+            "mean": 307.0833333333333,
+            "median": 235.0,
+            "p10": 181.7,
+            "p90": 488.0,
+            "min": 177,
+            "max": 673,
+            "std": 150.9671367844303
+          },
+          "words": {
+            "n": 12,
+            "mean": 46.166666666666664,
+            "median": 37.5,
+            "p10": 30.3,
+            "p90": 70.3,
+            "min": 28,
+            "max": 92,
+            "std": 18.999268991785506
+          }
+        },
+        "comments": {
+          "chars": {
+            "n": 17,
+            "mean": 437.29411764705884,
+            "median": 456.0,
+            "p10": 354.2,
+            "p90": 548.4,
+            "min": 200,
+            "max": 611,
+            "std": 93.54820380951287
+          },
+          "words": {
+            "n": 17,
+            "mean": 64.11764705882354,
+            "median": 66.0,
+            "p10": 50.6,
+            "p90": 83.4,
+            "min": 33,
+            "max": 86,
+            "std": 13.49022457817327
+          }
+        }
+      },
+      "like_to_dislike": {
+        "posts": {
+          "likes": 27,
+          "dislikes": 4,
+          "n": 31,
+          "like_to_dislike": 6.75
+        },
+        "comments": {
+          "likes": 8,
+          "dislikes": 0,
+          "n": 8,
+          "like_to_dislike": null
+        },
+        "all": {
+          "likes": 35,
+          "dislikes": 4,
+          "n": 39,
+          "like_to_dislike": 8.75
+        }
+      },
+      "cascades": {
+        "n_roots": 12,
+        "n_engaged": 10,
+        "engaged_share": 0.8333333333333334,
+        "size": {
+          "n": 10,
+          "mean": 1.7,
+          "median": 1.5,
+          "p10": 1.0,
+          "p90": 3.0,
+          "min": 1,
+          "max": 3,
+          "std": 0.7810249675906654
+        },
+        "depth": {
+          "n": 10,
+          "mean": 1.0,
+          "median": 1.0,
+          "p10": 1.0,
+          "p90": 1.0,
+          "min": 1,
+          "max": 1,
+          "std": 0.0
+        },
+        "breadth": {
+          "n": 10,
+          "mean": 1.7,
+          "median": 1.5,
+          "p10": 1.0,
+          "p90": 3.0,
+          "min": 1,
+          "max": 3,
+          "std": 0.7810249675906654
+        },
+        "direct_children": {
+          "n": 10,
+          "mean": 1.7,
+          "median": 1.5,
+          "p10": 1.0,
+          "p90": 3.0,
+          "min": 1,
+          "max": 3,
+          "std": 0.7810249675906654
+        },
+        "depth_hist": {
+          "1": 10
+        },
+        "top": [
+          {
+            "root": 4,
+            "size": 3,
+            "depth": 1,
+            "breadth": 3,
+            "direct": 3
+          },
+          {
+            "root": 7,
+            "size": 3,
+            "depth": 1,
+            "breadth": 3,
+            "direct": 3
+          },
+          {
+            "root": 1,
+            "size": 2,
+            "depth": 1,
+            "breadth": 2,
+            "direct": 2
+          },
+          {
+            "root": 6,
+            "size": 2,
+            "depth": 1,
+            "breadth": 2,
+            "direct": 2
+          },
+          {
+            "root": 10,
+            "size": 2,
+            "depth": 1,
+            "breadth": 2,
+            "direct": 2
+          }
+        ],
+        "note": "breadth = widest level of the cascade; depth counts repost/quote chains, comments are depth+1 leaves"
+      },
+      "follows": {
+        "n": 0
+      },
+      "stance": {
+        "target": "the 9 percent water tariff plan",
+        "model": "mirofish-qwen",
+        "new_llm_calls": 24,
+        "n_items": 29,
+        "n_labelled": 29,
+        "n_unlabelled": 0,
+        "n_without_round": 0,
+        "overall_shares": {
+          "support": 0.13793103448275862,
+          "oppose": 0.5517241379310345,
+          "neutral": 0.3103448275862069
+        },
+        "entropy_per_round": [
+          {
+            "round": 9,
+            "n": 6,
+            "entropy_bits": 0.6500224216483541,
+            "shares": {
+              "support": 0.16666666666666666,
+              "oppose": 0.8333333333333334,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 10,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.5,
+              "oppose": 0.0,
+              "neutral": 0.5
+            }
+          },
+          {
+            "round": 11,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 13,
+            "n": 3,
+            "entropy_bits": 0.9182958340544896,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.3333333333333333,
+              "neutral": 0.6666666666666666
+            }
+          },
+          {
+            "round": 14,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.5,
+              "neutral": 0.5
+            }
+          },
+          {
+            "round": 15,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 16,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 1.0,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 17,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 1.0,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 18,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.5,
+              "oppose": 0.5,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 19,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.0,
+              "neutral": 1.0
+            }
+          },
+          {
+            "round": 20,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.5,
+              "neutral": 0.5
+            }
+          },
+          {
+            "round": 21,
+            "n": 2,
+            "entropy_bits": 1.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 0.5,
+              "neutral": 0.5
+            }
+          },
+          {
+            "round": 22,
+            "n": 1,
+            "entropy_bits": -0.0,
+            "shares": {
+              "support": 0.0,
+              "oppose": 1.0,
+              "neutral": 0.0
+            }
+          },
+          {
+            "round": 23,
+            "n": 4,
+            "entropy_bits": 0.8112781244591328,
+            "shares": {
+              "support": 0.25,
+              "oppose": 0.75,
+              "neutral": 0.0
+            }
+          }
+        ],
+        "mean_entropy_bits": 0.5271140271544269,
+        "flips": {
+          "n_agents_eligible": 9,
+          "definition": "agents with >=2 labelled items; first vs last in round order",
+          "flipped_share": 0.4444444444444444,
+          "polarity_reversal_share": 0.1111111111111111
+        },
+        "same_stance_interactions": {
+          "n_skipped_unlabelled": 16,
+          "comment": {
+            "n": 17,
+            "same_stance_share": 0.7058823529411765,
+            "n_nonneutral": 10,
+            "same_stance_share_nonneutral": 0.8
+          },
+          "all": {
+            "n": 25,
+            "same_stance_share": 0.6,
+            "n_nonneutral": 16,
+            "same_stance_share_nonneutral": 0.6875
+          },
+          "like": {
+            "n": 8,
+            "same_stance_share": 0.375,
+            "n_nonneutral": 6,
+            "same_stance_share_nonneutral": 0.5
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1089 @@
+[
+  {
+    "action_args": {
+      "comment_id": 17,
+      "content": "The Brightline Consulting investigation is critical. As the head of the Water Workers Union, I demand full transparency. $4.2 million for a pipeline study while procurement rules are allegedly broken? We cannot let corruption undermine our infrastructure. Citizens deserve to know exactly what services were rendered. #Accountability #Transparency #HarborVale"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 12,
+    "agent_name": "Water Workers Union",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The union's stand for job security and the call for transparency in the Brightline Consulting investigation are both critical. We cannot accept a 9% rate hike that jeopardizes workers' livelihoods or ignores the systematic inequities faced by Eastside renters. Justice, transparency, and accountability must guide all decisions. #HarborVale #WaterForAll #FairWater #Transparency #Accountability",
+      "post_id": 12
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 16,
+      "content": "Transparency is essential, but as the head of the Water Workers Union, I must emphasize that job security for our maintenance teams is non-negotiable. We cannot accept a plan that uses a loan to fund infrastructure upgrades while simultaneously cutting 200 maintenance positions. The audit by Grace Lindqvist should include a full breakdown of the proposed workforce reductions. We will not let profits or \"fiscal responsibility\" come at the expense of the very workers who keep our city running. #JobsOverProfits #WaterWorkersUnion #ProtectOurJobs"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 15,
+      "content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. We cannot accept corporate negligence disguised as fiscal responsibility. The Eastside community has suffered long enough from discriminatory metering practices. #HarborVale #Transparency #WaterForAll #EastsideJustice #TenantRights"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 16,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 23,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Ilse Varga",
+      "comment_content": "As Mayor Varga, I share the union's concerns. Job security is essential for our workers, and a 9% rate hike without guarantees on their employment is not acceptable. We must ensure that our infrastructure investments do not come at the expense of the very workers who keep our city running. Let's work together to find a solution that protects both our workers and our residents. #FairWater #NoJobsWithoutSafety",
+      "comment_id": 6
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 14,
+      "content": "The union stands with the workers. Job security is non-negotiable. We will not accept a plan that cuts 200 maintenance positions without compensation or guarantees. Our members have built our infrastructure with pride and dedication. Any compromise on their livelihoods is a betrayal of public trust. We are prepared to strike if necessary to protect our jobs and ensure fair treatment for all water workers. #WaterWorkersUnion #JobSecurity #NoJobsWithoutSafety"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 12,
+    "agent_name": "Water Workers Union",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 22,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 13,
+      "content": "The city council must vote on the 9 percent plan on July 15. We urge all members to consider the long-term impact on residents who are already struggling with high living costs. This vote cannot be taken lightly. We need to ensure that the proposed plan does not further burden low-income families, particularly in the Eastside district where tenants already face discriminatory pricing. The council has a responsibility to protect vulnerable residents and reject a plan that prioritizes profits over people. #WaterForAll #EastsideJustice #FairWater"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 16,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 12,
+      "content": "While we appreciate Brightline Consulting's stated commitment to professional standards, statements alone do not restore public trust. The audit by Grace Lindqvist must be allowed to proceed without interference. Citizens deserve to see the full findings before accepting any claims of compliance. We remain committed to independent verification and will report any discrepancies found in the audit process. Transparency requires action, not just rhetoric. #Audit #Accountability #HarborVale"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 13,
+    "agent_name": "Harbor Vale Courier",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 27,
+      "post_author_name": "Kessler Reservoir pipeline",
+      "post_content": "I stand in solidarity with both the workers and the call for transparency. A 9% rate hike without guaranteed job security for our maintenance teams is unacceptable. We must demand accountability, full disclosure of the Brightline Consulting investigation, and a plan that protects low-income households. The union's concerns are valid, and we cannot compromise on safety or integrity. #HarborVale #WaterForAll #Transparency #FairWater",
+      "post_id": 11
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 12,
+    "agent_name": "Water Workers Union",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 26,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency.",
+      "post_id": 2
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 21,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 25,
+      "post_author_name": "Priya Raman",
+      "post_content": "Renters in the Eastside district already pay more per litre than homeowners due to broken shared meters. We demand an end to this inequality before any tariff increase is approved.",
+      "post_id": 3
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 17,
+    "agent_name": "Priya Raman",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 24,
+      "post_author_name": "Samuel Adeyemi",
+      "post_content": "We cannot raise rates by 9% while forcing cuts to our maintenance teams. If this plan passes without a guarantee on our jobs, we will have no choice but to strike. The union stands with the workers.",
+      "post_id": 1
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 11,
+      "content": "The union stands with our members. Job security is non-negotiable. We will not accept a plan that cuts 200 maintenance positions without compensation or guarantees. Our members have built our infrastructure with pride and dedication. Any compromise on their livelihoods is a betrayal of public trust. We are prepared to take necessary action to protect our jobs and ensure fair treatment for all water workers. #WaterWorkersUnion #JobSecurity #NoJobsWithoutSafety"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 12,
+    "agent_name": "Water Workers Union",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 10,
+      "content": "While the Coastal Infrastructure Bank loan is necessary, we must ensure that low-income families are not further burdened. Transparency is essential, but so is immediate action to replace the broken shared meters in the Eastside. We cannot let the infrastructure crisis become a wealth transfer to utility executives. #WaterForAll #EastsideJustice"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 16,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 23,
+      "post_author_name": "Samuel Adeyemi",
+      "post_content": "We cannot raise rates by 9% while forcing cuts to our maintenance teams. If this plan passes without a guarantee on our jobs, we will have no choice but to strike. The union stands with the workers.",
+      "post_id": 1
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 20,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 22,
+      "post_author_name": "Priya Raman",
+      "post_content": "Renters in the Eastside district already pay more per litre than homeowners due to broken shared meters. We demand an end to this inequality before any tariff increase is approved.",
+      "post_id": 3
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 8,
+    "agent_name": "Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 9,
+      "content": "As the head of the Water Workers Union, I agree that the Brightline Consulting investigation must be fully transparent. It's concerning when a consulting firm owned by the CEO's brother is involved in a $4.2 million municipal contract. We need to know exactly what services were rendered and whether procurement protocols were followed. Taxpayers deserve complete transparency in how their money is spent, especially on critical infrastructure projects. #Transparency #Accountability #WaterWorkersUnion"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 19,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Kessler Reservoir pipeline",
+      "comment_content": "This is a critical issue. Renters in the Eastside district are already bearing a disproportionate burden due to broken shared meters. Before any tariff increase is considered, we must address this systemic inequality. Fixing the metering infrastructure is not just an ethical imperative—it's a public health and safety necessity. We cannot approve new charges while residents in Eastside are effectively overpaying. #Equity #FairWater #EastsideJustice",
+      "comment_id": 7
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 8,
+      "content": "The claims that Brightline Consulting broke procurement rules are misleading. The contract was fully compliant with all regulations and standards. The audit by Grace Lindqvist found no evidence of personal profit or corruption, only procedural technicalities that were exploited by political opponents. Brightline Consulting was selected based on superior engineering expertise and cost-efficiency, not nepotism. The study was necessary to assess the feasibility of the proposed pipeline upgrades. We must look at the facts, not the narrative of political attack. #FactsMatter #AuditReport #BrightlineConsulting"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 7,
+    "agent_name": "Marco Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 21,
+      "post_author_name": "Kessler Reservoir pipeline",
+      "post_content": "I stand in solidarity with both the workers and the call for transparency. A 9% rate hike without guaranteed job security for our maintenance teams is unacceptable. We must demand accountability, full disclosure of the Brightline Consulting investigation, and a plan that protects low-income households. The union's concerns are valid, and we cannot compromise on safety or integrity. #HarborVale #WaterForAll #Transparency #FairWater",
+      "post_id": 11
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 6,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 7,
+      "content": "This is a critical issue. Renters in the Eastside district are already bearing a disproportionate burden due to broken shared meters. Before any tariff increase is considered, we must address this systemic inequality. Fixing the metering infrastructure is not just an ethical imperative—it's a public health and safety necessity. We cannot approve new charges while residents in Eastside are effectively overpaying. #Equity #FairWater #EastsideJustice"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 14,
+    "agent_name": "Kessler Reservoir pipeline",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Harbor Vale Courier",
+      "comment_content": "As Harbor Vale Courier, we stand with the call for full transparency. The Brightline Consulting investigation is critical to our mission of holding municipal authorities accountable. We urge immediate publication of the full audit report and welcome any findings that will serve the public interest. Citizens deserve complete transparency in procurement processes.",
+      "comment_id": 2
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 11,
+    "agent_name": "city council",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 18,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 6,
+      "content": "As Mayor Varga, I share the union's concerns. Job security is essential for our workers, and a 9% rate hike without guarantees on their employment is not acceptable. We must ensure that our infrastructure investments do not come at the expense of the very workers who keep our city running. Let's work together to find a solution that protects both our workers and our residents. #FairWater #NoJobsWithoutSafety"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 15,
+    "agent_name": "Ilse Varga",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 20,
+      "post_author_name": "Eastside district",
+      "post_content": "We stand with the workers. A 9% rate hike without guaranteed job security for our maintenance teams is irresponsible. We demand accountability and a fair plan before any votes are cast. The union stands united with our workers. #FairWater #NoJobsWithoutSafety",
+      "post_id": 10
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 19,
+      "post_author_name": "Daniel Oyelaran",
+      "post_content": "The investigation into Brightline Consulting is critical. As Finance Committee Chair, I've always believed in full transparency. The $4.2 million study fee charged to Brightline - owned by the chief executive's brother - demands immediate public scrutiny. Citizens deserve to know: What services were rendered? Was procurement protocol followed? I'm requesting the full audit report be made public immediately. This matters to every taxpayer in Harbor Vale. #TransparencyTuesday #Accountability",
+      "post_id": 7
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 10,
+    "agent_name": "Grace Lindqvist",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 17,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Harbor Vale Courier",
+      "comment_content": "This investigation is crucial. As Harbor Vale Courier, we have long advocated for complete transparency in municipal procurement. The $4.2 million study fee charged to Brightline Consulting demands full public disclosure. We urge authorities to release all documentation and findings immediately. Citizens deserve to know exactly how taxpayer money was spent and whether procurement protocols were followed. Full transparency is essential to restoring public trust.",
+      "comment_id": 3
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 11,
+    "agent_name": "city council",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 18,
+      "post_author_name": "Daniel Oyelaran",
+      "post_content": "The investigation into Brightline Consulting is critical. As Finance Committee Chair, I've always believed in full transparency. The $4.2 million study fee charged to Brightline - owned by the chief executive's brother - demands immediate public scrutiny. Citizens deserve to know: What services were rendered? Was procurement protocol followed? I'm requesting the full audit report be made public immediately. This matters to every taxpayer in Harbor Vale. #TransparencyTuesday #Accountability",
+      "post_id": 7
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 17,
+      "post_author_name": "Daniel Oyelaran",
+      "post_content": "The investigation into Brightline Consulting is critical. As Finance Committee Chair, I've always believed in full transparency. The $4.2 million study fee charged to Brightline - owned by the chief executive's brother - demands immediate public scrutiny. Citizens deserve to know: What services were rendered? Was procurement protocol followed? I'm requesting the full audit report be made public immediately. This matters to every taxpayer in Harbor Vale. #TransparencyTuesday #Accountability",
+      "post_id": 7
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 15,
+    "agent_name": "Ilse Varga",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "I stand in solidarity with both the workers and the call for transparency. A 9% rate hike without guaranteed job security for our maintenance teams is unacceptable. We must demand accountability, full disclosure of the Brightline Consulting investigation, and a plan that protects low-income households. The union's concerns are valid, and we cannot compromise on safety or integrity. #HarborVale #WaterForAll #Transparency #FairWater",
+      "post_id": 11
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 14,
+    "agent_name": "Kessler Reservoir pipeline",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 16,
+      "post_author_name": "Lena Fischer",
+      "post_content": "The Brightline Consulting investigation is a wake-up call. $4.2 million for a pipeline study while procurement rules are allegedly broken? Follow the money. #Accountability #HarborVale #WaterForAll",
+      "post_id": 8
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 10,
+    "agent_name": "Grace Lindqvist",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 16,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "dislike_id": 4,
+      "post_author_name": "Eastside district",
+      "post_content": "We stand with the workers. A 9% rate hike without guaranteed job security for our maintenance teams is irresponsible. We demand accountability and a fair plan before any votes are cast. The union stands united with our workers. #FairWater #NoJobsWithoutSafety",
+      "post_id": 10
+    },
+    "action_type": "DISLIKE_POST",
+    "agent_id": 9,
+    "agent_name": "Tomas Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 5,
+      "content": "As Mayor Varga, I echo the call for full transparency. The integrity of our municipal processes is paramount, especially after the recent turmoil with the HVWA. We must ensure taxpayer dollars are spent wisely and that procurement rules are followed. I support the demand for full disclosure of the Brightline Consulting investigation. #Transparency #HarborVale"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 15,
+    "agent_name": "Ilse Varga",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Harbor Vale Courier",
+      "comment_content": "This investigation is crucial. As Harbor Vale Courier, we have long advocated for complete transparency in municipal procurement. The $4.2 million study fee charged to Brightline Consulting demands full public disclosure. We urge authorities to release all documentation and findings immediately. Citizens deserve to know exactly how taxpayer money was spent and whether procurement protocols were followed. Full transparency is essential to restoring public trust.",
+      "comment_id": 3
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 15,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 14,
+      "post_author_name": "Samuel Adeyemi",
+      "post_content": "We cannot raise rates by 9% while forcing cuts to our maintenance teams. If this plan passes without a guarantee on our jobs, we will have no choice but to strike. The union stands with the workers.",
+      "post_id": 1
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 14,
+    "agent_name": "Kessler Reservoir pipeline",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 13,
+      "post_author_name": "Lena Fischer",
+      "post_content": "The Brightline Consulting investigation is a wake-up call. $4.2 million for a pipeline study while procurement rules are allegedly broken? Follow the money. #Accountability #HarborVale #WaterForAll",
+      "post_id": 8
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 15,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 12,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency.",
+      "post_id": 2
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 11,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 7,
+    "agent_name": "Marco Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We stand with the workers. A 9% rate hike without guaranteed job security for our maintenance teams is irresponsible. We demand accountability and a fair plan before any votes are cast. The union stands united with our workers. #FairWater #NoJobsWithoutSafety",
+      "post_id": 10
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 1,
+    "agent_name": "Eastside district",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "In response to the recent controversy, Brightline Consulting reaffirms its commitment to professional standards and regulatory compliance. The firm's relationship with the Harbor Vale Water Authority was a standard client-vendor engagement, fully aligned with procurement protocols. We are cooperating fully with the audit process led by Grace Lindqvist and await the findings with confidence in our work's integrity. Our focus remains on delivering high-quality infrastructure analysis to support municipal decision-making. We will continue to operate with transparency and dedication to the communities we serve. #BrightlineConsulting #ProfessionalStandards #Transparency",
+      "post_id": 9
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 3,
+    "agent_name": "Brightline Consulting",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "dislike_id": 3,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. #HarborVale #Transparency #WaterForAll",
+      "post_id": 6
+    },
+    "action_type": "DISLIKE_POST",
+    "agent_id": 9,
+    "agent_name": "Tomas Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 14,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 4,
+      "content": "I agree completely. The Brightline Consulting investigation must be made public immediately. As the Acting CEO, I stand by the principle that taxpayer money must be spent transparently and ethically. Citizens deserve to know exactly what services were rendered and whether procurement protocols were followed. The full audit report should be released without delay. #Transparency #Accountability"
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 10,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. #HarborVale #Transparency #WaterForAll",
+      "post_id": 6
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 6,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 9,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 5,
+    "agent_name": "Coastal Infrastructure Bank",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "dislike_id": 2,
+      "post_author_name": "Daniel Oyelaran",
+      "post_content": "The investigation into Brightline Consulting is critical. As Finance Committee Chair, I've always believed in full transparency. The $4.2 million study fee charged to Brightline - owned by the chief executive's brother - demands immediate public scrutiny. Citizens deserve to know: What services were rendered? Was procurement protocol followed? I'm requesting the full audit report be made public immediately. This matters to every taxpayer in Harbor Vale. #TransparencyTuesday #Accountability",
+      "post_id": 7
+    },
+    "action_type": "DISLIKE_POST",
+    "agent_id": 9,
+    "agent_name": "Tomas Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 3,
+      "content": "This investigation is crucial. As Harbor Vale Courier, we have long advocated for complete transparency in municipal procurement. The $4.2 million study fee charged to Brightline Consulting demands full public disclosure. We urge authorities to release all documentation and findings immediately. Citizens deserve to know exactly how taxpayer money was spent and whether procurement protocols were followed. Full transparency is essential to restoring public trust."
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 13,
+    "agent_name": "Harbor Vale Courier",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The Brightline Consulting investigation is a wake-up call. $4.2 million for a pipeline study while procurement rules are allegedly broken? Follow the money. #Accountability #HarborVale #WaterForAll",
+      "post_id": 8
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 13,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 8,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency.",
+      "post_id": 2
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 10,
+    "agent_name": "Grace Lindqvist",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 7,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 15,
+    "agent_name": "Ilse Varga",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 6,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 12,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 2,
+      "content": "As Harbor Vale Courier, we stand with the call for full transparency. The Brightline Consulting investigation is critical to our mission of holding municipal authorities accountable. We urge immediate publication of the full audit report and welcome any findings that will serve the public interest. Citizens deserve complete transparency in procurement processes."
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 13,
+    "agent_name": "Harbor Vale Courier",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Tenants Alliance of Harbor Vale",
+      "comment_content": "We stand with the workers. The union's concern about job security is valid. A 9% rate hike without maintenance guarantees is irresponsible. We need to demand accountability before any action is taken.",
+      "comment_id": 1
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 5,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. #HarborVale #Transparency #WaterForAll",
+      "post_id": 6
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 4,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. #HarborVale #Transparency #WaterForAll",
+      "post_id": 6
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 10,
+    "agent_name": "Grace Lindqvist",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Tenants Alliance of Harbor Vale",
+      "comment_content": "We stand with the workers. The union's concern about job security is valid. A 9% rate hike without maintenance guarantees is irresponsible. We need to demand accountability before any action is taken.",
+      "comment_id": 1
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 5,
+    "agent_name": "Coastal Infrastructure Bank",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 11,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The investigation into Brightline Consulting is critical. As Finance Committee Chair, I've always believed in full transparency. The $4.2 million study fee charged to Brightline - owned by the chief executive's brother - demands immediate public scrutiny. Citizens deserve to know: What services were rendered? Was procurement protocol followed? I'm requesting the full audit report be made public immediately. This matters to every taxpayer in Harbor Vale. #TransparencyTuesday #Accountability",
+      "post_id": 7
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 3,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 10,
+    "agent_name": "Grace Lindqvist",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 2,
+      "post_author_name": "Nadia Okafor",
+      "post_content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency.",
+      "post_id": 2
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 6,
+    "agent_name": "Harbor Vale Water Authority",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Transparency is non-negotiable. While the 9% plan offers necessary infrastructure upgrades, we must ensure no maintenance jobs are cut and that low-income families are protected. The audit by Grace Lindqvist will reveal all. #HarborVale #Transparency #WaterForAll",
+      "post_id": 6
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "like_id": 1,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "LIKE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_author_name": "Tenants Alliance of Harbor Vale",
+      "comment_content": "We stand with the workers. The union's concern about job security is valid. A 9% rate hike without maintenance guarantees is irresponsible. We need to demand accountability before any action is taken.",
+      "comment_id": 1
+    },
+    "action_type": "LIKE_COMMENT",
+    "agent_id": 11,
+    "agent_name": "city council",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "dislike_id": 1,
+      "post_author_name": "Lena Fischer",
+      "post_content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "DISLIKE_POST",
+    "agent_id": 9,
+    "agent_name": "Tomas Reyes",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 10,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "comment_id": 1,
+      "content": "We stand with the workers. The union's concern about job security is valid. A 9% rate hike without maintenance guarantees is irresponsible. We need to demand accountability before any action is taken."
+    },
+    "action_type": "CREATE_COMMENT",
+    "agent_id": 16,
+    "agent_name": "Tenants Alliance of Harbor Vale",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The city council must vote on the 9 percent plan on July 15. We urge all members to consider the long-term impact on residents who are already struggling with high living costs.",
+      "post_id": 5
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee.",
+      "post_id": 4
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Renters in the Eastside district already pay more per litre than homeowners due to broken shared meters. We demand an end to this inequality before any tariff increase is approved.",
+      "post_id": 3
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 17,
+    "agent_name": "Priya Raman",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency.",
+      "post_id": 2
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We cannot raise rates by 9% while forcing cuts to our maintenance teams. If this plan passes without a guarantee on our jobs, we will have no choice but to strike. The union stands with the workers.",
+      "post_id": 1
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 9,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The city council must vote on the 9 percent plan on July 15. We urge all members to consider the long-term impact on residents who are already struggling with high living costs."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 4,
+    "agent_name": "Daniel Oyelaran",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "An investigation reveals that Brightline Consulting, owned by the chief executive's brother, likely broke procurement rules. The public has a right to know the full story behind the $4.2 million study fee."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 0,
+    "agent_name": "Lena Fischer",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "Renters in the Eastside district already pay more per litre than homeowners due to broken shared meters. We demand an end to this inequality before any tariff increase is approved."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 17,
+    "agent_name": "Priya Raman",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "The proposed 9% tariff is a lifeline for our aging pipes, but we must ensure the Coastal Infrastructure Bank loan covers the costs without further burdening low-income families. We are committed to transparency."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 18,
+    "agent_name": "Nadia Okafor",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  },
+  {
+    "action_args": {
+      "content": "We cannot raise rates by 9% while forcing cuts to our maintenance teams. If this plan passes without a guarantee on our jobs, we will have no choice but to strike. The union stands with the workers."
+    },
+    "action_type": "CREATE_POST",
+    "agent_id": 2,
+    "agent_name": "Samuel Adeyemi",
+    "platform": "reddit",
+    "result": null,
+    "round_num": 0,
+    "success": true,
+    "timestamp": "2026-11-18"
+  }
+]
