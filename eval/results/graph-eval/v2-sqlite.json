@@ -1,0 +1,783 @@
+{
+ "metrics": {
+  "entity_recall": 1.0,
+  "entities_found": 15,
+  "entities_total": 15,
+  "duplicate_entities": {
+   "Harbor Vale Water Authority": [
+    "Harbor Vale Water Authority",
+    "HVWA"
+   ],
+   "Ilse Varga": [
+    "Ilse Varga",
+    "Varga"
+   ],
+   "Daniel Oyelaran": [
+    "Daniel Oyelaran",
+    "Oyelaran"
+   ],
+   "Tenants Alliance of Harbor Vale": [
+    "Tenants Alliance of Harbor Vale",
+    "Tenants Alliance"
+   ],
+   "Brightline Consulting": [
+    "Brightline Consulting",
+    "Brightline"
+   ],
+   "Grace Lindqvist": [
+    "Grace Lindqvist",
+    "Lindqvist"
+   ]
+  },
+  "extra_nodes": [
+   "city council"
+  ],
+  "node_count": 22,
+  "edge_count": 17,
+  "fact_recall": 0.6923076923076923,
+  "facts": {
+   "f1": true,
+   "f2": true,
+   "f3": false,
+   "f4": true,
+   "f5": true,
+   "f6": true,
+   "f7": true,
+   "f8": false,
+   "f9": true,
+   "f10": false,
+   "f11": true,
+   "f12": true,
+   "f13": false
+  },
+  "fact_recall_loose": 0.7692307692307693,
+  "facts_loose": {
+   "f1": true,
+   "f2": true,
+   "f3": false,
+   "f4": true,
+   "f5": true,
+   "f6": true,
+   "f7": true,
+   "f8": false,
+   "f9": true,
+   "f10": false,
+   "f11": true,
+   "f12": true,
+   "f13": true
+  },
+  "temporal_recall": 0.0,
+  "temporal": {
+   "t1": false,
+   "t2": false,
+   "t3": false
+  },
+  "search_hit_at_5": 0.8,
+  "search_mrr": 0.6083333333333333,
+  "label": "v2-sqlite",
+  "note": "improved simple engine with embeddings",
+  "chunk_size": 800,
+  "backend": "sqlite",
+  "chunks": 5,
+  "search_seconds_each": 0.05,
+  "build_error": null,
+  "model": "mirofish-qwen",
+  "llm_calls": 5,
+  "prompt_tokens": 2310,
+  "completion_tokens": 1291,
+  "embed_calls": 11
+ },
+ "searches": [
+  {
+   "q": "Who is running the water utility now?",
+   "rank": null,
+   "top": [
+    "Samuel Adeyemi leads the Water Workers Union.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "Mayor Ilse Varga backed the plan to raise water tariffs."
+   ]
+  },
+  {
+   "q": "Which relative of the former boss benefited from a consulting deal?",
+   "rank": 2,
+   "top": [
+    "Tomas Reyes resigned as chief executive of the Authority.",
+    "Brightline Consulting is owned by Marco Reyes.",
+    "Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study."
+   ]
+  },
+  {
+   "q": "Who is looking into the procurement irregularities?",
+   "rank": 1,
+   "top": [
+    "The audit by Lindqvist found in June that the Brightline contract had broken procurement rules",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "Brightline Consulting is owned by Marco Reyes."
+   ]
+  },
+  {
+   "q": "Where is the extra money for the pipe replacement coming from?",
+   "rank": null,
+   "top": [
+    "Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.",
+    "Mayor Ilse Varga backed the plan to raise water tariffs.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs."
+   ]
+  },
+  {
+   "q": "Which journalist exposed the consultancy payment?",
+   "rank": 1,
+   "top": [
+    "The Harbor Vale Courier, the city's largest newspaper, published an investigation by reporter Lena Fischer.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "The Tenants Alliance of Harbor Vale, led by organizer Priya Raman, started a petition against the tariff in February."
+   ]
+  },
+  {
+   "q": "Who is threatening industrial action?",
+   "rank": 4,
+   "top": [
+    "Priya Raman is associated with the Tenants Alliance.",
+    "Tomas Reyes is the chief executive of HVWA.",
+    "Brightline Consulting is owned by Marco Reyes."
+   ]
+  },
+  {
+   "q": "Who speaks for renters in the campaign?",
+   "rank": 1,
+   "top": [
+    "The Tenants Alliance of Harbor Vale, led by organizer Priya Raman, started a petition against the tariff in February.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "Samuel Adeyemi leads the Water Workers Union."
+   ]
+  },
+  {
+   "q": "Which politician changed position after the scandal?",
+   "rank": 1,
+   "top": [
+    "Mayor Ilse Varga backed the plan to raise water tariffs.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "Tomas Reyes resigned as chief executive of the Authority."
+   ]
+  },
+  {
+   "q": "How much did the utility spend on the outside pipeline report?",
+   "rank": 1,
+   "top": [
+    "Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.",
+    "Mayor Ilse Varga backed the plan to raise water tariffs.",
+    "Council member Daniel Oyelaran opposed the rise in water tariffs."
+   ]
+  },
+  {
+   "q": "Who took over after the resignation?",
+   "rank": 3,
+   "top": [
+    "Tomas Reyes is the chief executive of HVWA.",
+    "Tomas Reyes resigned as chief executive of the Authority.",
+    "The HVWA board appointed its chief engineer, Nadia Okafor, as acting chief executive."
+   ]
+  }
+ ],
+ "graph": {
+  "graph_id": "mirofish_ca06de32880d464e",
+  "nodes": [
+   {
+    "uuid": "1a1bceea-5a2b-4b0e-832f-bac0d40e2c46",
+    "name": "Tomas Reyes",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Chief executive of HVWA",
+    "attributes": {
+     "role": "individual"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "4aa179a4-f9f4-40c0-80cd-c754acbd18a3",
+    "name": "Harbor Vale Water Authority",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Water supplier for Harbor Vale",
+    "attributes": {
+     "sector": "Water Utility"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "a0db9a28-1b14-472f-84ba-0e98cf0e89e0",
+    "name": "Ilse Varga",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Mayor of Harbor Vale",
+    "attributes": {
+     "role": "Mayor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "08e1aa3b-f81a-4177-9042-8f3ef4242640",
+    "name": "Daniel Oyelaran",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Council member and finance committee chair",
+    "attributes": {
+     "role": "official"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "41a69ac3-e3ae-4b1f-9d88-db55dccf8ebf",
+    "name": "Priya Raman",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "organizer",
+    "attributes": {
+     "role": "campaigner"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "f006ab4f-4a44-4195-a958-eb6cbf8df870",
+    "name": "Tenants Alliance of Harbor Vale",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "organization leading a petition",
+    "attributes": {
+     "sector": "advocacy"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "699ef4b6-e66e-4e3c-bffc-4932d6c9feaa",
+    "name": "Lena Fischer",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "reporter",
+    "attributes": {
+     "role": "reporter"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "922f10fb-fbfc-4228-bc03-e9d9f2946a7c",
+    "name": "Harbor Vale Courier",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "city's largest newspaper",
+    "attributes": {
+     "sector": "media"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "name": "HVWA",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "organization that paid for a pipeline study",
+    "attributes": {
+     "sector": "utility"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "5c519418-04c0-4cc9-970d-167adfefbebc",
+    "name": "Brightline Consulting",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "consulting firm",
+    "attributes": {
+     "sector": "consulting"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "8196dda4-5361-46fc-be70-bc5b6e9d9584",
+    "name": "Marco Reyes",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "owner of Brightline Consulting",
+    "attributes": {
+     "role": "owner"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "dca50eb1-3301-4b0f-8346-6ade6557d6f2",
+    "name": "Grace Lindqvist",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "state auditor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "49d81198-4feb-40bf-b261-2cae549804f6",
+    "name": "Nadia Okafor",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "chief engineer"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "6a0def14-fc97-4ae9-b518-256a8d637469",
+    "name": "Oyelaran",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "Council member"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "7ab190a7-76c7-477d-bb58-60550aa85d10",
+    "name": "Varga",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "Mayor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "ce0b5f1c-c603-48b3-9fa3-cd492fbe617a",
+    "name": "Samuel Adeyemi",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "leader of Water Workers Union"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "66657bc9-68df-4e6c-b5af-8852419e6f80",
+    "name": "Water Workers Union",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "",
+    "attributes": {
+     "sector": "union"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "858a6578-bb88-4eea-8784-f72d90fa3878",
+    "name": "Tenants Alliance",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "",
+    "attributes": {
+     "sector": "campaign group"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "03d7344c-4205-4b4f-9263-15d1d17fff94",
+    "name": "Coastal Infrastructure Bank",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "",
+    "attributes": {
+     "sector": "bank"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "1640e468-b378-4aa1-8cc1-29547c621d03",
+    "name": "Lindqvist",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "",
+    "attributes": {
+     "role": "auditor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "80bdbaf1-4d00-48fa-bd63-b8490b97e3a5",
+    "name": "Brightline",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "",
+    "attributes": {
+     "sector": "contract"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "7a33b02e-a76b-4035-b489-5c46b46d7ef7",
+    "name": "city council",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "",
+    "attributes": {
+     "sector": "government"
+    },
+    "created_at": "2026-11-18"
+   }
+  ],
+  "edges": [
+   {
+    "uuid": "b2bb66a6-4d6a-4639-9303-8db1e57e8f1a",
+    "name": "LEADS",
+    "fact": "Tomas Reyes is the chief executive of HVWA.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "1a1bceea-5a2b-4b0e-832f-bac0d40e2c46",
+    "target_node_uuid": "4aa179a4-f9f4-40c0-80cd-c754acbd18a3",
+    "source_node_name": "Tomas Reyes",
+    "target_node_name": "Harbor Vale Water Authority",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "9eba6f11-eb58-4319-9b49-315556e48d27"
+    ]
+   },
+   {
+    "uuid": "9af14e63-4a03-4fab-84c3-c8a73779f5dc",
+    "name": "SUPPORTS",
+    "fact": "Mayor Ilse Varga backed the plan to raise water tariffs.",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "a0db9a28-1b14-472f-84ba-0e98cf0e89e0",
+    "target_node_uuid": "4aa179a4-f9f4-40c0-80cd-c754acbd18a3",
+    "source_node_name": "Ilse Varga",
+    "target_node_name": "Harbor Vale Water Authority",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "9eba6f11-eb58-4319-9b49-315556e48d27"
+    ]
+   },
+   {
+    "uuid": "204758fe-29bf-4d2b-8963-59ba4e6ba190",
+    "name": "OPPOSES",
+    "fact": "Council member Daniel Oyelaran opposed the rise in water tariffs.",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "08e1aa3b-f81a-4177-9042-8f3ef4242640",
+    "target_node_uuid": "4aa179a4-f9f4-40c0-80cd-c754acbd18a3",
+    "source_node_name": "Daniel Oyelaran",
+    "target_node_name": "Harbor Vale Water Authority",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "9eba6f11-eb58-4319-9b49-315556e48d27"
+    ]
+   },
+   {
+    "uuid": "0359ce8a-5793-41d4-a340-1e829190b54f",
+    "name": "LEADS",
+    "fact": "The Tenants Alliance of Harbor Vale, led by organizer Priya Raman, started a petition against the tariff in February.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "41a69ac3-e3ae-4b1f-9d88-db55dccf8ebf",
+    "target_node_uuid": "f006ab4f-4a44-4195-a958-eb6cbf8df870",
+    "source_node_name": "Priya Raman",
+    "target_node_name": "Tenants Alliance of Harbor Vale",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "437551c8-40dc-4f0f-b143-b9fee5c5ab3e"
+    ]
+   },
+   {
+    "uuid": "4b0f5c65-3d2e-46c8-a520-4eb99c47f567",
+    "name": "WORKS_FOR",
+    "fact": "The Harbor Vale Courier, the city's largest newspaper, published an investigation by reporter Lena Fischer.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "699ef4b6-e66e-4e3c-bffc-4932d6c9feaa",
+    "target_node_uuid": "922f10fb-fbfc-4228-bc03-e9d9f2946a7c",
+    "source_node_name": "Lena Fischer",
+    "target_node_name": "Harbor Vale Courier",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "437551c8-40dc-4f0f-b143-b9fee5c5ab3e"
+    ]
+   },
+   {
+    "uuid": "ed6c7bbe-c9e4-44c1-a9c4-6eae997bf868",
+    "name": "PAYS",
+    "fact": "Fischer reported that HVWA had paid 4.2 million dollars to Brightline Consulting for a pipeline study.",
+    "fact_type": "PAYS",
+    "source_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "target_node_uuid": "5c519418-04c0-4cc9-970d-167adfefbebc",
+    "source_node_name": "HVWA",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "437551c8-40dc-4f0f-b143-b9fee5c5ab3e"
+    ]
+   },
+   {
+    "uuid": "27574162-86f6-4e06-9852-23f6bffea0ca",
+    "name": "OWNS",
+    "fact": "Brightline Consulting is owned by Marco Reyes.",
+    "fact_type": "OWNS",
+    "source_node_uuid": "8196dda4-5361-46fc-be70-bc5b6e9d9584",
+    "target_node_uuid": "5c519418-04c0-4cc9-970d-167adfefbebc",
+    "source_node_name": "Marco Reyes",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "437551c8-40dc-4f0f-b143-b9fee5c5ab3e"
+    ]
+   },
+   {
+    "uuid": "4dd4ba7f-9225-47a5-8a9b-6385628c22d3",
+    "name": "WORKS_FOR",
+    "fact": "Tomas Reyes resigned as chief executive of the Authority.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "1a1bceea-5a2b-4b0e-832f-bac0d40e2c46",
+    "target_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "source_node_name": "Tomas Reyes",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "7fb2acb2-be6e-44ba-a4ae-ddf3be91e55f"
+    ]
+   },
+   {
+    "uuid": "59cf7691-d8d4-4db4-b4a9-18e32981062b",
+    "name": "WORKS_FOR",
+    "fact": "The HVWA board appointed its chief engineer, Nadia Okafor, as acting chief executive.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "49d81198-4feb-40bf-b261-2cae549804f6",
+    "target_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "source_node_name": "Nadia Okafor",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "7fb2acb2-be6e-44ba-a4ae-ddf3be91e55f"
+    ]
+   },
+   {
+    "uuid": "eb25edc5-2926-40e5-a449-926fe2576a8f",
+    "name": "INVESTIGATES",
+    "fact": "Grace Lindqvist opened a formal audit of HVWA in March.",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "dca50eb1-3301-4b0f-8346-6ade6557d6f2",
+    "target_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "source_node_name": "Grace Lindqvist",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "7fb2acb2-be6e-44ba-a4ae-ddf3be91e55f"
+    ]
+   },
+   {
+    "uuid": "84e23523-64f4-441d-a4e9-8c3a266da349",
+    "name": "LEADS",
+    "fact": "Samuel Adeyemi leads the Water Workers Union.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "ce0b5f1c-c603-48b3-9fa3-cd492fbe617a",
+    "target_node_uuid": "66657bc9-68df-4e6c-b5af-8852419e6f80",
+    "source_node_name": "Samuel Adeyemi",
+    "target_node_name": "Water Workers Union",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "ebe023d9-87c8-4881-88cf-7519dcb8ac4a"
+    ]
+   },
+   {
+    "uuid": "75ec1110-1d65-41ef-9aef-4faf5b08b941",
+    "name": "SUPPORTS",
+    "fact": "The Water Workers Union supported the original plan because it protected maintenance jobs.",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "66657bc9-68df-4e6c-b5af-8852419e6f80",
+    "target_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "source_node_name": "Water Workers Union",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "ebe023d9-87c8-4881-88cf-7519dcb8ac4a"
+    ]
+   },
+   {
+    "uuid": "0a3095ee-1d83-447e-af32-3426d49d3d9f",
+    "name": "OPPOSES",
+    "fact": "Samuel Adeyemi turned against the revised plan, saying the smaller rise would force HVWA to cut 200 maintenance positions.",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "ce0b5f1c-c603-48b3-9fa3-cd492fbe617a",
+    "target_node_uuid": "77158151-3afa-4646-b861-8d7b73ffdc60",
+    "source_node_name": "Samuel Adeyemi",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "ebe023d9-87c8-4881-88cf-7519dcb8ac4a"
+    ]
+   },
+   {
+    "uuid": "aba080b0-902d-44c7-9507-a4148113e99e",
+    "name": "WORKS_FOR",
+    "fact": "Priya Raman is associated with the Tenants Alliance.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "41a69ac3-e3ae-4b1f-9d88-db55dccf8ebf",
+    "target_node_uuid": "858a6578-bb88-4eea-8784-f72d90fa3878",
+    "source_node_name": "Priya Raman",
+    "target_node_name": "Tenants Alliance",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "ebe023d9-87c8-4881-88cf-7519dcb8ac4a"
+    ]
+   },
+   {
+    "uuid": "60cb55d5-2350-4d94-ab9f-5fcfd8da782a",
+    "name": "INVESTIGATES",
+    "fact": "The audit by Lindqvist found in June that the Brightline contract had broken procurement rules",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "1640e468-b378-4aa1-8cc1-29547c621d03",
+    "target_node_uuid": "80bdbaf1-4d00-48fa-bd63-b8490b97e3a5",
+    "source_node_name": "Lindqvist",
+    "target_node_name": "Brightline",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "2a7c68c3-9fa5-44d5-ab50-e0da22591140"
+    ]
+   },
+   {
+    "uuid": "f8811f57-100f-4efe-abf2-0073e44341e9",
+    "name": "SUPPORTS",
+    "fact": "Daniel Oyelaran now says he will support the revised plan",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "08e1aa3b-f81a-4177-9042-8f3ef4242640",
+    "target_node_uuid": "80bdbaf1-4d00-48fa-bd63-b8490b97e3a5",
+    "source_node_name": "Daniel Oyelaran",
+    "target_node_name": "Brightline",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "2a7c68c3-9fa5-44d5-ab50-e0da22591140"
+    ]
+   },
+   {
+    "uuid": "f2175f50-fb51-430f-b65c-21002d3468bb",
+    "name": "OPPOSES",
+    "fact": "The Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "66657bc9-68df-4e6c-b5af-8852419e6f80",
+    "target_node_uuid": "80bdbaf1-4d00-48fa-bd63-b8490b97e3a5",
+    "source_node_name": "Water Workers Union",
+    "target_node_name": "Brightline",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "2a7c68c3-9fa5-44d5-ab50-e0da22591140"
+    ]
+   }
+  ],
+  "node_count": 22,
+  "edge_count": 17
+ }
+}

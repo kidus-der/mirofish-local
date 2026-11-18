@@ -1,0 +1,852 @@
+{
+ "metrics": {
+  "entity_recall": 1.0,
+  "entities_found": 15,
+  "entities_total": 15,
+  "duplicate_entities": {
+   "Harbor Vale Water Authority": [
+    "Harbor Vale Water Authority",
+    "HVWA"
+   ]
+  },
+  "extra_nodes": [
+   "Harbor Vale",
+   "Reservoir pipeline",
+   "city council",
+   "Kessler Reservoir pipeline",
+   "Eastside"
+  ],
+  "node_count": 21,
+  "edge_count": 23,
+  "fact_recall": 0.6153846153846154,
+  "facts": {
+   "f1": true,
+   "f2": true,
+   "f3": false,
+   "f4": true,
+   "f5": false,
+   "f6": true,
+   "f7": true,
+   "f8": true,
+   "f9": true,
+   "f10": false,
+   "f11": true,
+   "f12": false,
+   "f13": false
+  },
+  "fact_recall_loose": 0.8461538461538461,
+  "facts_loose": {
+   "f1": true,
+   "f2": true,
+   "f3": false,
+   "f4": true,
+   "f5": false,
+   "f6": true,
+   "f7": true,
+   "f8": true,
+   "f9": true,
+   "f10": true,
+   "f11": true,
+   "f12": true,
+   "f13": true
+  },
+  "temporal_recall": 0.3333333333333333,
+  "temporal": {
+   "t1": true,
+   "t2": false,
+   "t3": false
+  },
+  "search_hit_at_5": 0.9,
+  "search_mrr": 0.7366666666666666,
+  "label": "graphiti-3",
+  "note": "500-char chunks + naming hint",
+  "chunk_size": 500,
+  "backend": "graphiti",
+  "chunks": 8,
+  "search_seconds_each": 4.35,
+  "build_error": null,
+  "model": "mirofish-qwen",
+  "llm_calls": 106,
+  "prompt_tokens": 145937,
+  "completion_tokens": 5394,
+  "embed_calls": 44
+ },
+ "searches": [
+  {
+   "q": "Who is running the water utility now?",
+   "rank": 6,
+   "top": [
+    "Samuel Adeyemi leads the Water Workers Union.",
+    "Tomas Reyes is the chief executive of the Harbor Vale Water Authority.",
+    "The Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs"
+   ]
+  },
+  {
+   "q": "Which relative of the former boss benefited from a consulting deal?",
+   "rank": 2,
+   "top": [
+    "HVWA paid 4.2 million dollars to Brightline Consulting.",
+    "Marco Reyes owns Brightline Consulting.",
+    "Marco Reyes is the brother of Tomas Reyes."
+   ]
+  },
+  {
+   "q": "Who is looking into the procurement irregularities?",
+   "rank": 1,
+   "top": [
+    "Lindqvist found that the Brightline contract had broken procurement rules",
+    "Lena Fischer investigated HVWA.",
+    "Grace Lindqvist opened a formal audit of HVWA in March 2026."
+   ]
+  },
+  {
+   "q": "Where is the extra money for the pipe replacement coming from?",
+   "rank": 1,
+   "top": [
+    "Mayor Varga supports a plan involving a 60 million dollar loan from the Coastal Infrastructure Bank to cover the remaining cost of a tariff rise.",
+    "HVWA paid 4.2 million dollars to Brightline Consulting.",
+    "Ilse Varga supported the plan to raise household water tariffs."
+   ]
+  },
+  {
+   "q": "Which journalist exposed the consultancy payment?",
+   "rank": 1,
+   "top": [
+    "Lena Fischer investigated HVWA.",
+    "HVWA paid 4.2 million dollars to Brightline Consulting.",
+    "Grace Lindqvist opened a formal audit of HVWA in March 2026."
+   ]
+  },
+  {
+   "q": "Who is threatening industrial action?",
+   "rank": 1,
+   "top": [
+    "The Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+    "Samuel Adeyemi opposes the revised plan of HVWA.",
+    "Grace Lindqvist opened a formal audit of HVWA in March 2026."
+   ]
+  },
+  {
+   "q": "Who speaks for renters in the campaign?",
+   "rank": 1,
+   "top": [
+    "Priya Raman leads the Tenants Alliance.",
+    "Priya Raman leads the Tenants Alliance of Harbor Vale",
+    "Priya Raman supports the income-support discount."
+   ]
+  },
+  {
+   "q": "Which politician changed position after the scandal?",
+   "rank": 5,
+   "top": [
+    "Grace Lindqvist opened a formal audit of HVWA in March 2026.",
+    "Nadia Okafor was appointed as acting chief executive of the Authority.",
+    "Tomas Reyes resigned as chief executive of the Authority on 28 March 2026."
+   ]
+  },
+  {
+   "q": "How much did the utility spend on the outside pipeline report?",
+   "rank": 1,
+   "top": [
+    "HVWA paid 4.2 million dollars to Brightline Consulting.",
+    "Mayor Varga supports a plan involving a 60 million dollar loan from the Coastal Infrastructure Bank to cover the remaining cost of a tariff rise.",
+    "Grace Lindqvist opened a formal audit of HVWA in March 2026."
+   ]
+  },
+  {
+   "q": "Who took over after the resignation?",
+   "rank": 2,
+   "top": [
+    "Tomas Reyes resigned as chief executive of the Authority on 28 March 2026.",
+    "Nadia Okafor was appointed as acting chief executive of the Authority.",
+    "Priya Raman leads the Tenants Alliance."
+   ]
+  }
+ ],
+ "graph": {
+  "graph_id": "mirofish_a29fa5c8e1be4b37",
+  "nodes": [
+   {
+    "uuid": "ec518ce5-2939-4a95-9d00-d9fa6b20a8ed",
+    "name": "Coastal Infrastructure Bank",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Mayor Varga supports a plan involving a 60 million dollar loan from the Coastal Infrastructure Bank to cover the remaining cost of a tariff rise.",
+    "attributes": {
+     "sector": "Bank"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "de9ff5a0-7589-40eb-aa74-c34d50065be7",
+    "name": "Harbor Vale",
+    "labels": [
+     "Entity"
+    ],
+    "summary": "Harbor Vale is a coastal city of 240,000 people supplied by the Harbor Vale Water Authority.",
+    "attributes": {},
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "dcd6e512-e3c9-45cd-b0c5-4e134052c938",
+    "name": "Reservoir pipeline",
+    "labels": [
+     "Entity"
+    ],
+    "summary": "The Kessler Reservoir pipeline, built in 1961, supplies drinking water to Harbor Vale. HVWA chief executive Tomas Reyes announced in January 2026 a plan to replace the pipeline, which Mayor Ilse Varga called \"a failure waiting to happen\".",
+    "attributes": {},
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "c88ab1e2-4bcd-4008-ab48-6e2904afbd55",
+    "name": "Tomas Reyes",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Tomas Reyes is the chief executive of the Harbor Vale Water Authority.\nMarco Reyes is the brother of Tomas Reyes.\nTomas Reyes resigned as chief executive of the Authority on 28 March 2026.",
+    "attributes": {
+     "role": "chief executive"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "b09788d7-c7c8-483c-9d22-876af8b478fd",
+    "name": "Daniel Oyelaran",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Daniel Oyelaran chairs the finance committee of the city council.\nDaniel Oyelaran opposed the rise in household water tariffs.\nDaniel Oyelaran now says he will support the revised plan",
+    "attributes": {
+     "role": "Council member"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "a36d4a5e-38e0-464d-b373-0b74c41957a0",
+    "name": "Grace Lindqvist",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Grace Lindqvist opened a formal audit of HVWA in March 2026.\nLindqvist found that the Brightline contract had broken procurement rules",
+    "attributes": {
+     "role": "state auditor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "name": "Brightline Consulting",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "HVWA paid 4.2 million dollars to Brightline Consulting.\nMarco Reyes owns Brightline Consulting.\nLindqvist found that the Brightline contract had broken procurement rules\nThe city council will vote on the 9 percent plan\nDaniel Oyelaran now says he will support the revised plan\nThe Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+    "attributes": {
+     "sector": "Consulting"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "8e88570d-a241-4d51-b617-7be80e5a3190",
+    "name": "The Harbor Vale Courier",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "The Harbor Vale Courier, Harbor Vale's largest newspaper, published an investigation by reporter Lena Fischer revealing that the Harbor Vale Water Authority paid $4.2 million to Brightline Consulting for a pipeline study, noting that Brightline Consulting is owned by Marco Reyes, the brother of HVWA chief executive Tomas Reyes.",
+    "attributes": {
+     "sector": "Media"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "8c48389b-570b-44cc-afad-c6b91a1391d2",
+    "name": "Harbor Vale Water Authority",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Tomas Reyes is the chief executive of the Harbor Vale Water Authority.",
+    "attributes": {
+     "sector": "Water Authority"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "8af80691-6d1f-4493-88b9-a9005e80371c",
+    "name": "Nadia Okafor",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Nadia Okafor was appointed as acting chief executive of the Authority.",
+    "attributes": {
+     "role": "chief engineer"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "name": "city council",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Ilse Varga is a member of the city council.\nDaniel Oyelaran chairs the finance committee of the city council.\nIlse Varga supported the plan to raise household water tariffs.\nDaniel Oyelaran opposed the rise in household water tariffs.\nThe city council will vote on the 9 percent plan",
+    "attributes": {
+     "sector": "Government"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "5f84c36b-22ea-4894-9543-e9288ea9fee8",
+    "name": "Marco Reyes",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Marco Reyes owns Brightline Consulting.\nMarco Reyes is the brother of Tomas Reyes.",
+    "attributes": {
+     "role": "Brightline Consulting owner"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "480da2cc-068e-4f6a-8917-67a666df3ab1",
+    "name": "Ilse Varga",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Ilse Varga is a member of the city council.\nIlse Varga supported the plan to raise household water tariffs.\nMayor Varga supports a plan involving a 60 million dollar loan from the Coastal Infrastructure Bank to cover the remaining cost of a tariff rise.",
+    "attributes": {
+     "role": "Mayor"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "4513a6ef-14a9-46e3-a923-a2fc7c9493cf",
+    "name": "Lena Fischer",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Lena Fischer investigated HVWA.",
+    "attributes": {
+     "role": "reporter"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "33f9e28a-ce2a-49ef-8902-a3f079652148",
+    "name": "Tenants Alliance of Harbor Vale",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Priya Raman leads the Tenants Alliance of Harbor Vale\nPriya Raman leads the Tenants Alliance.\nPriya Raman supports the income-support discount.\nThe Tenants Alliance opposes the shared meters in Eastside.",
+    "attributes": {
+     "sector": "Non-profit"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "320f00ae-3a23-49a3-91a3-d20e664a728b",
+    "name": "Kessler Reservoir pipeline",
+    "labels": [
+     "Entity"
+    ],
+    "summary": "The Kessler Reservoir pipeline was built in 1961. HVWA chief executive Tomas Reyes announced a plan in January to replace it by raising household water tariffs by 18 percent.",
+    "attributes": {},
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "31169dc5-2952-4f21-8e2e-4879da316e4b",
+    "name": "Priya Raman",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Priya Raman leads the Tenants Alliance of Harbor Vale\nPriya Raman leads the Tenants Alliance.\nPriya Raman supports the income-support discount.",
+    "attributes": {
+     "role": "organizer"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "name": "HVWA",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "The Harbor Vale Water Authority, usually called HVWA, supplies drinking water to Harbor Vale. Chief executive Tomas Reyes announced a plan in January to raise household water tariffs by 18 percent to pay for replacing the Kessler Reservoir pipeline.\nLena Fischer investigated HVWA.\nHVWA paid 4.2 million dollars to Brightline Consulting.\nTomas Reyes resigned as chief executive of the Authority on 28 March 2026.\nNadia Okafor was appointed as acting chief executive of the Authority.\nGrace Lindqvist opened a formal audit of HVWA in March 2026.\nSamuel Adeyemi opposes the revised plan of HVWA.\nThe Tenants Alliance opposes the shared meters in Eastside.",
+    "attributes": {
+     "sector": "Water Authority"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "12cc120f-5f2b-47e1-bbe1-769a5e04fdf4",
+    "name": "Eastside",
+    "labels": [
+     "Entity"
+    ],
+    "summary": "Eastside is a district in Harbor Vale where renters pay more per litre than homeowners due to old shared meters. The Tenants Alliance of Harbor Vale, led by Priya Raman, campaigned to replace these shared meters in Eastside.",
+    "attributes": {},
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "05892f49-48c6-46a2-81fb-be411edf1e52",
+    "name": "Water Workers Union",
+    "labels": [
+     "Entity",
+     "Organization"
+    ],
+    "summary": "Samuel Adeyemi leads the Water Workers Union.\nThe Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+    "attributes": {
+     "sector": "Labor union"
+    },
+    "created_at": "2026-11-18"
+   },
+   {
+    "uuid": "036d6dad-c361-40e4-ba58-5690bbdebed8",
+    "name": "Samuel Adeyemi",
+    "labels": [
+     "Entity",
+     "Person"
+    ],
+    "summary": "Samuel Adeyemi leads the Water Workers Union.\nSamuel Adeyemi opposes the revised plan of HVWA.",
+    "attributes": {
+     "role": "leader of the Water Workers Union"
+    },
+    "created_at": "2026-11-18"
+   }
+  ],
+  "edges": [
+   {
+    "uuid": "fec0bb77-37b4-417d-9158-52abfac85c73",
+    "name": "RELATED_TO",
+    "fact": "Marco Reyes is the brother of Tomas Reyes.",
+    "fact_type": "RELATED_TO",
+    "source_node_uuid": "5f84c36b-22ea-4894-9543-e9288ea9fee8",
+    "target_node_uuid": "c88ab1e2-4bcd-4008-ab48-6e2904afbd55",
+    "source_node_name": "Marco Reyes",
+    "target_node_name": "Tomas Reyes",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "e7fcbdc6-2c80-4e82-88ca-f1878c19e362"
+    ]
+   },
+   {
+    "uuid": "f7897b7a-386c-4197-a1f0-61b0754ab6cd",
+    "name": "OPPOSES",
+    "fact": "The Water Workers Union has threatened a strike if the plan passes without a guarantee on jobs",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "05892f49-48c6-46a2-81fb-be411edf1e52",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "Water Workers Union",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "490b24c5-6ca1-4a39-81bf-ba2de3fc5b91"
+    ]
+   },
+   {
+    "uuid": "eea1e341-6d96-461a-8a20-6676c121b63e",
+    "name": "LEADS",
+    "fact": "Samuel Adeyemi leads the Water Workers Union.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "036d6dad-c361-40e4-ba58-5690bbdebed8",
+    "target_node_uuid": "05892f49-48c6-46a2-81fb-be411edf1e52",
+    "source_node_name": "Samuel Adeyemi",
+    "target_node_name": "Water Workers Union",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "275e730c-4c74-4cbc-956f-c2d4968a250d"
+    ]
+   },
+   {
+    "uuid": "ecb4eb34-b579-4b89-a91d-30f5b03f0b18",
+    "name": "INVESTIGATES",
+    "fact": "Grace Lindqvist opened a formal audit of HVWA in March 2026.",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "a36d4a5e-38e0-464d-b373-0b74c41957a0",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Grace Lindqvist",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-03-01",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "b025fbc8-053d-44c0-8e45-2065944b8051"
+    ]
+   },
+   {
+    "uuid": "c496ecf2-53f9-4c4e-b884-f03d67ff744b",
+    "name": "SUPPORTS",
+    "fact": "Daniel Oyelaran now says he will support the revised plan",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "b09788d7-c7c8-483c-9d22-876af8b478fd",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "Daniel Oyelaran",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "490b24c5-6ca1-4a39-81bf-ba2de3fc5b91"
+    ]
+   },
+   {
+    "uuid": "c1cc1c60-bd07-4352-859f-4e9e771f5d7f",
+    "name": "WORKS_FOR",
+    "fact": "Tomas Reyes is the chief executive of the Harbor Vale Water Authority.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "c88ab1e2-4bcd-4008-ab48-6e2904afbd55",
+    "target_node_uuid": "8c48389b-570b-44cc-afad-c6b91a1391d2",
+    "source_node_name": "Tomas Reyes",
+    "target_node_name": "Harbor Vale Water Authority",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "63e5bac6-7a5a-47de-9968-9b468b8fbad8"
+    ]
+   },
+   {
+    "uuid": "b3bc88c6-4f74-4e6f-a63c-f6a4821e28ab",
+    "name": "INVESTIGATES",
+    "fact": "Lena Fischer investigated HVWA.",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "4513a6ef-14a9-46e3-a923-a2fc7c9493cf",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Lena Fischer",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "e7fcbdc6-2c80-4e82-88ca-f1878c19e362"
+    ]
+   },
+   {
+    "uuid": "af07194b-4178-4433-8605-f2e8438f5bdc",
+    "name": "LEADS",
+    "fact": "Priya Raman leads the Tenants Alliance of Harbor Vale",
+    "fact_type": "LEADS",
+    "source_node_uuid": "31169dc5-2952-4f21-8e2e-4879da316e4b",
+    "target_node_uuid": "33f9e28a-ce2a-49ef-8902-a3f079652148",
+    "source_node_name": "Priya Raman",
+    "target_node_name": "Tenants Alliance of Harbor Vale",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "42db7aa8-b9b1-433a-ad6e-d5dd28c75f08"
+    ]
+   },
+   {
+    "uuid": "ab8851fd-5bf8-4039-97aa-0c78897292ef",
+    "name": "LEADS",
+    "fact": "Tomas Reyes resigned as chief executive of the Authority on 28 March 2026.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "c88ab1e2-4bcd-4008-ab48-6e2904afbd55",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Tomas Reyes",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-03-28",
+    "invalid_at": "2026-11-18",
+    "expired_at": "2026-11-18",
+    "episodes": [
+     "b025fbc8-053d-44c0-8e45-2065944b8051"
+    ]
+   },
+   {
+    "uuid": "a7a7d74d-bc0e-45b0-aef6-4071f3a69b87",
+    "name": "OPPOSES",
+    "fact": "Daniel Oyelaran opposed the rise in household water tariffs.",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "b09788d7-c7c8-483c-9d22-876af8b478fd",
+    "target_node_uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "source_node_name": "Daniel Oyelaran",
+    "target_node_name": "city council",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": "2026-11-18",
+    "expired_at": "2026-11-18",
+    "episodes": [
+     "0c9cf534-7768-47c5-a358-1a562d320dce"
+    ]
+   },
+   {
+    "uuid": "a0c49638-0608-4b63-9643-27d489894073",
+    "name": "INVESTIGATES",
+    "fact": "The city council will vote on the 9 percent plan",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "city council",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "490b24c5-6ca1-4a39-81bf-ba2de3fc5b91"
+    ]
+   },
+   {
+    "uuid": "97f88402-5913-4680-829c-023f77956a3a",
+    "name": "WORKS_FOR",
+    "fact": "Daniel Oyelaran chairs the finance committee of the city council.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "b09788d7-c7c8-483c-9d22-876af8b478fd",
+    "target_node_uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "source_node_name": "Daniel Oyelaran",
+    "target_node_name": "city council",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "0c9cf534-7768-47c5-a358-1a562d320dce"
+    ]
+   },
+   {
+    "uuid": "94dc488a-649a-4ff6-b388-4344cfda2f23",
+    "name": "WORKS_FOR",
+    "fact": "Ilse Varga is a member of the city council.",
+    "fact_type": "WORKS_FOR",
+    "source_node_uuid": "480da2cc-068e-4f6a-8917-67a666df3ab1",
+    "target_node_uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "source_node_name": "Ilse Varga",
+    "target_node_name": "city council",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "0c9cf534-7768-47c5-a358-1a562d320dce"
+    ]
+   },
+   {
+    "uuid": "8a5f41dc-9750-4a3b-be03-2f5ec0983e1c",
+    "name": "INVESTIGATES",
+    "fact": "Lindqvist found that the Brightline contract had broken procurement rules",
+    "fact_type": "INVESTIGATES",
+    "source_node_uuid": "a36d4a5e-38e0-464d-b373-0b74c41957a0",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "Grace Lindqvist",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "490b24c5-6ca1-4a39-81bf-ba2de3fc5b91"
+    ]
+   },
+   {
+    "uuid": "88505218-6299-4de4-b13a-234d75d5d362",
+    "name": "OWNS",
+    "fact": "Marco Reyes owns Brightline Consulting.",
+    "fact_type": "OWNS",
+    "source_node_uuid": "5f84c36b-22ea-4894-9543-e9288ea9fee8",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "Marco Reyes",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "e7fcbdc6-2c80-4e82-88ca-f1878c19e362"
+    ]
+   },
+   {
+    "uuid": "7cb151fd-8696-4477-b220-618387b96081",
+    "name": "OPPOSES",
+    "fact": "The Tenants Alliance opposes the shared meters in Eastside.",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "33f9e28a-ce2a-49ef-8902-a3f079652148",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Tenants Alliance of Harbor Vale",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "275e730c-4c74-4cbc-956f-c2d4968a250d"
+    ]
+   },
+   {
+    "uuid": "6b444cb9-7d24-485f-8a76-fe508414080b",
+    "name": "PAYS",
+    "fact": "HVWA paid 4.2 million dollars to Brightline Consulting.",
+    "fact_type": "PAYS",
+    "source_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "target_node_uuid": "8fc63faa-097c-49de-b544-c06898be2e21",
+    "source_node_name": "HVWA",
+    "target_node_name": "Brightline Consulting",
+    "attributes": {
+     "details": "HVWA paid 4.2 million dollars to Brightline Consulting."
+    },
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "e7fcbdc6-2c80-4e82-88ca-f1878c19e362"
+    ]
+   },
+   {
+    "uuid": "55091661-6b75-4e7f-ae2b-e128846a4b96",
+    "name": "SUPPORTS",
+    "fact": "Priya Raman supports the income-support discount.",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "31169dc5-2952-4f21-8e2e-4879da316e4b",
+    "target_node_uuid": "33f9e28a-ce2a-49ef-8902-a3f079652148",
+    "source_node_name": "Priya Raman",
+    "target_node_name": "Tenants Alliance of Harbor Vale",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "275e730c-4c74-4cbc-956f-c2d4968a250d"
+    ]
+   },
+   {
+    "uuid": "53e51dbb-4060-4244-a3e8-e3762b8496bb",
+    "name": "SUPPORTS",
+    "fact": "Ilse Varga supported the plan to raise household water tariffs.",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "480da2cc-068e-4f6a-8917-67a666df3ab1",
+    "target_node_uuid": "6275ab31-3ccf-4034-afb4-26da7d422970",
+    "source_node_name": "Ilse Varga",
+    "target_node_name": "city council",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "0c9cf534-7768-47c5-a358-1a562d320dce"
+    ]
+   },
+   {
+    "uuid": "49f52f07-f5e7-4b5e-ac8f-f36d4e588d5e",
+    "name": "SUPPORTS",
+    "fact": "Mayor Varga supports a plan involving a 60 million dollar loan from the Coastal Infrastructure Bank to cover the remaining cost of a tariff rise.",
+    "fact_type": "SUPPORTS",
+    "source_node_uuid": "480da2cc-068e-4f6a-8917-67a666df3ab1",
+    "target_node_uuid": "ec518ce5-2939-4a95-9d00-d9fa6b20a8ed",
+    "source_node_name": "Ilse Varga",
+    "target_node_name": "Coastal Infrastructure Bank",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-05-01",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "07e9a9f4-1c14-4786-ae58-5c071b3f8b16"
+    ]
+   },
+   {
+    "uuid": "2519227b-d7db-428a-b860-6307aadaf8ee",
+    "name": "LEADS",
+    "fact": "Priya Raman leads the Tenants Alliance.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "31169dc5-2952-4f21-8e2e-4879da316e4b",
+    "target_node_uuid": "33f9e28a-ce2a-49ef-8902-a3f079652148",
+    "source_node_name": "Priya Raman",
+    "target_node_name": "Tenants Alliance of Harbor Vale",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "275e730c-4c74-4cbc-956f-c2d4968a250d"
+    ]
+   },
+   {
+    "uuid": "16741aec-b43f-48c5-ad98-2843e9bd574c",
+    "name": "OPPOSES",
+    "fact": "Samuel Adeyemi opposes the revised plan of HVWA.",
+    "fact_type": "OPPOSES",
+    "source_node_uuid": "036d6dad-c361-40e4-ba58-5690bbdebed8",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Samuel Adeyemi",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-11-18",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "275e730c-4c74-4cbc-956f-c2d4968a250d"
+    ]
+   },
+   {
+    "uuid": "059bd8fe-7582-4d70-b298-a261808c3bf6",
+    "name": "LEADS",
+    "fact": "Nadia Okafor was appointed as acting chief executive of the Authority.",
+    "fact_type": "LEADS",
+    "source_node_uuid": "8af80691-6d1f-4493-88b9-a9005e80371c",
+    "target_node_uuid": "29952006-52cf-4548-8158-fa46fab0948a",
+    "source_node_name": "Nadia Okafor",
+    "target_node_name": "HVWA",
+    "attributes": {},
+    "created_at": "2026-11-18",
+    "valid_at": "2026-03-28",
+    "invalid_at": null,
+    "expired_at": null,
+    "episodes": [
+     "b025fbc8-053d-44c0-8e45-2065944b8051"
+    ]
+   }
+  ],
+  "node_count": 21,
+  "edge_count": 23
+ }
+}
