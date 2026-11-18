@@ -868,6 +868,20 @@ CHAT_OBSERVATION_SUFFIX = "\n\n请简洁回答问题。"
 # ═══════════════════════════════════════════════════════════════
 
 
+# A fork rule: the report must not turn simulated talk into fact or one run into a forecast.
+EVIDENCE_RULES = """
+
+[EVIDENCE RULES - these override anything above]
+- A fact starting with [SIMULATED] was produced by simulated agents. Attribute it ("in the simulation, ...") and never present it as a real event or as true background.
+- A fact without that tag comes from the source documents. If the two conflict, the source document is right; point out the conflict.
+- Only quote text as an agent's words when it appears in that agent's recorded posts, comments or interview answers. Graph facts are summaries, not quotes.
+- This is one small simulation. Describe scenarios and arguments; never state that an outcome is certain or give probabilities. If the simulation did not reach an event such as a vote or a strike, say so."""
+
+PLAN_SYSTEM_PROMPT += EVIDENCE_RULES
+SECTION_SYSTEM_PROMPT_TEMPLATE += EVIDENCE_RULES
+CHAT_SYSTEM_PROMPT_TEMPLATE += EVIDENCE_RULES
+
+
 class ReportAgent:
     """
     Report Agent - 模拟报告生成Agent
