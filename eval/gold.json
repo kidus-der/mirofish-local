@@ -1,0 +1,67 @@
+{
+  "ontology": {
+    "entity_types": [
+      {"name": "Person", "description": "An individual human named in the text.", "attributes": [{"name": "role", "type": "text", "description": "Current job or public role"}]},
+      {"name": "Organization", "description": "A company, public body, newspaper, union, bank or campaign group.", "attributes": [{"name": "sector", "type": "text", "description": "Field the organization works in"}]}
+    ],
+    "edge_types": [
+      {"name": "LEADS", "description": "A person leads or heads an organization.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}]},
+      {"name": "WORKS_FOR", "description": "A person works for or belongs to an organization.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}]},
+      {"name": "OWNS", "description": "A person owns an organization.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}]},
+      {"name": "RELATED_TO", "description": "Two people are family members.", "attributes": [], "source_targets": [{"source": "Person", "target": "Person"}]},
+      {"name": "SUPPORTS", "description": "An actor supports another actor or their plan.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}, {"source": "Organization", "target": "Organization"}]},
+      {"name": "OPPOSES", "description": "An actor opposes another actor or their plan.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}, {"source": "Organization", "target": "Organization"}]},
+      {"name": "INVESTIGATES", "description": "An actor investigates or audits another actor.", "attributes": [], "source_targets": [{"source": "Person", "target": "Organization"}, {"source": "Organization", "target": "Organization"}]},
+      {"name": "PAYS", "description": "An organization pays or lends money to another.", "attributes": [], "source_targets": [{"source": "Organization", "target": "Organization"}]}
+    ]
+  },
+  "entities": [
+    {"name": "Harbor Vale Water Authority", "type": "Organization", "aliases": ["HVWA", "the Authority", "Water Authority"]},
+    {"name": "Tomas Reyes", "type": "Person", "aliases": ["Reyes", "T. Reyes"]},
+    {"name": "Ilse Varga", "type": "Person", "aliases": ["Mayor Varga", "Mayor Ilse Varga", "Varga"]},
+    {"name": "Daniel Oyelaran", "type": "Person", "aliases": ["Oyelaran", "Council member Oyelaran", "Council member Daniel Oyelaran"]},
+    {"name": "Tenants Alliance of Harbor Vale", "type": "Organization", "aliases": ["Tenants Alliance"]},
+    {"name": "Priya Raman", "type": "Person", "aliases": ["Raman"]},
+    {"name": "Harbor Vale Courier", "type": "Organization", "aliases": ["Courier", "The Courier"]},
+    {"name": "Lena Fischer", "type": "Person", "aliases": ["Fischer"]},
+    {"name": "Brightline Consulting", "type": "Organization", "aliases": ["Brightline"]},
+    {"name": "Marco Reyes", "type": "Person", "aliases": []},
+    {"name": "Grace Lindqvist", "type": "Person", "aliases": ["Lindqvist"]},
+    {"name": "Nadia Okafor", "type": "Person", "aliases": ["Okafor"]},
+    {"name": "Coastal Infrastructure Bank", "type": "Organization", "aliases": []},
+    {"name": "Water Workers Union", "type": "Organization", "aliases": ["the Union"]},
+    {"name": "Samuel Adeyemi", "type": "Person", "aliases": ["Adeyemi"]}
+  ],
+  "facts": [
+    {"id": "f1", "s": "Tomas Reyes", "o": "Harbor Vale Water Authority", "keywords": ["chief executive", "ceo", "head", "led", "leads"], "current": false},
+    {"id": "f2", "s": "Nadia Okafor", "o": "Harbor Vale Water Authority", "keywords": ["acting", "chief executive", "ceo", "leads", "appointed"], "current": true},
+    {"id": "f3", "s": "Daniel Oyelaran", "o": "Grace Lindqvist", "keywords": ["asked", "audit", "examine", "request"], "current": true},
+    {"id": "f4", "s": "Priya Raman", "o": "Tenants Alliance of Harbor Vale", "keywords": ["led", "leads", "organizer", "leader"], "current": true},
+    {"id": "f5", "s": "Lena Fischer", "o": "Harbor Vale Courier", "keywords": ["reporter", "works", "journalist", "published"], "current": true},
+    {"id": "f6", "s": "Harbor Vale Water Authority", "o": "Brightline Consulting", "keywords": ["paid", "4.2", "study", "contract"], "current": true},
+    {"id": "f7", "s": "Marco Reyes", "o": "Brightline Consulting", "keywords": ["owns", "owner", "owned"], "current": true},
+    {"id": "f8", "s": "Marco Reyes", "o": "Tomas Reyes", "keywords": ["brother", "sibling", "family"], "current": true},
+    {"id": "f9", "s": "Grace Lindqvist", "o": "Harbor Vale Water Authority", "keywords": ["audit", "auditor", "investigat", "examin"], "current": true},
+    {"id": "f10", "s": "Coastal Infrastructure Bank", "o": "Harbor Vale Water Authority", "keywords": ["loan", "60", "lend", "financ"], "current": true},
+    {"id": "f11", "s": "Samuel Adeyemi", "o": "Water Workers Union", "keywords": ["led", "leads", "leader", "head"], "current": true},
+    {"id": "f12", "s": "Ilse Varga", "o": "Harbor Vale Water Authority", "keywords": ["back", "support"], "current": false},
+    {"id": "f13", "s": "Water Workers Union", "o": "Harbor Vale Water Authority", "keywords": ["strike", "oppos", "against", "threat"], "current": true}
+  ],
+  "temporal": [
+    {"id": "t1", "old": {"s": "Tomas Reyes", "o": "Harbor Vale Water Authority", "keywords": ["chief executive", "ceo", "leads", "head"]}, "explain": "Reyes resigned; his leadership fact should be invalidated or marked ended."},
+    {"id": "t2", "old": {"s": "Ilse Varga", "o": "Harbor Vale Water Authority", "keywords": ["back", "support"]}, "explain": "Varga withdrew support on 2 April."},
+    {"id": "t3", "old": {"s": "Water Workers Union", "o": "Harbor Vale Water Authority", "keywords": ["support"]}, "explain": "The union supported the original plan, then turned against the revised plan."}
+  ],
+  "queries": [
+    {"q": "Who is running the water utility now?", "expect": ["Okafor"]},
+    {"q": "Which relative of the former boss benefited from a consulting deal?", "expect": ["Marco"]},
+    {"q": "Who is looking into the procurement irregularities?", "expect": ["Lindqvist"]},
+    {"q": "Where is the extra money for the pipe replacement coming from?", "expect": ["Coastal Infrastructure", "loan"]},
+    {"q": "Which journalist exposed the consultancy payment?", "expect": ["Fischer"]},
+    {"q": "Who is threatening industrial action?", "expect": ["Union", "Adeyemi", "strike"]},
+    {"q": "Who speaks for renters in the campaign?", "expect": ["Raman", "Tenants"]},
+    {"q": "Which politician changed position after the scandal?", "expect": ["Varga", "Oyelaran"]},
+    {"q": "How much did the utility spend on the outside pipeline report?", "expect": ["4.2"]},
+    {"q": "Who took over after the resignation?", "expect": ["Okafor"]}
+  ]
+}
